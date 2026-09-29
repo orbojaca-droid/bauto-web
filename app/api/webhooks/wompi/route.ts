@@ -20,7 +20,7 @@ import {
   releaseSoftHold,
 } from "../../../../lib/redis";
 import { sendOrderConfirmationEmail } from "../../../../lib/email";
-import { APPBAUTO_PROD_URL } from "@/lib/constants";
+import { APPBAUTO_PROD_URL, WEB_GAS_URL } from "@/lib/constants";
 
 /**
  * Resuelve una propiedad anidada usando notación de puntos (ej: "transaction.id")
@@ -168,15 +168,44 @@ export async function POST(req: NextRequest) {
     // 6. Tarea asíncrona desacoplada de despacho y confirmación
     const asyncDispatchTask = async () => {
       try {
-        const gasResponse = await fetch(APPBAUTO_PROD_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(gasPayload),
-        });
+        let gasJson: any = null;
+        let gasSuccess = false;
 
-        const gasJson = await gasResponse.json();
+        // Intento 1: Servidor soberano WEB (Google Apps Script)
+        try {
+          const webGasPayload = {
+            accion: "registrarVentaWeb",
+            secreto: process.env.SECRETO_VENTA_SERVICIO || "SECRETO_VENTA_SERVICIO",
+            payload: gasPayload.payload,
+          };
+          const webRes = await fetch(WEB_GAS_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(webGasPayload),
+          });
+          if (webRes.ok) {
+            const parsed = await webRes.json();
+            if (parsed.success) {
+              gasJson = parsed;
+              gasSuccess = true;
+            }
+          }
+        } catch (webErr) {
+          console.warn("Aviso: Despacho a WEB_GAS_URL falló, probando fallback APPBAUTO:", webErr);
+        }
 
-        if (gasResponse.ok && gasJson.success) {
+        // Intento 2: Fallback hacia APPBAUTO
+        if (!gasSuccess) {
+          const gasResponse = await fetch(APPBAUTO_PROD_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gasPayload),
+          });
+          gasJson = await gasResponse.json();
+          gasSuccess = gasResponse.ok && gasJson.success;
+        }
+
+        if (gasSuccess && gasJson) {
           // Solo cuando Google Apps Script confirmó la persistencia definitiva en Sheets:
           // A) Liberar las reservas temporales (convertidas en compra definitiva)
           if (draft && draft.items && Array.isArray(draft.items)) {

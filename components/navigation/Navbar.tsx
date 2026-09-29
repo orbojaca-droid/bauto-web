@@ -188,7 +188,7 @@ export function Navbar() {
                 <span>Calle 20 # 2-36, Centro Histórico, Santa Marta</span>
               </p>
               <p className="text-[11px] text-bauto-piedra/80">
-                Lunes a Sábado: 10:00 AM - 8:00 PM
+                Lunes a sábado: 10:00 AM - 8:00 PM
               </p>
             </div>
           </div>

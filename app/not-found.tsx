@@ -1,7 +1,7 @@
 /**
  * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Error 404 Poético
- * @Propósito: Página personalizada de 'No Encontrado' con estética Quiet Luxury
+ * @Propósito: Página personalizada de 'No Encontrado' con estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Bajo - Página de error 404 estándar de Next.js
  */
@@ -13,46 +13,46 @@ import { BAUTO_WHATSAPP_URL } from '../lib/constants';
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 animate-fade-in">
+    <div className="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 animate-fade-in font-body">
       <div className="max-w-md w-full text-center">
         
-        {/* Ícono de Compás Serena */}
+        {/* Ícono de compás serena */}
         <Compass className="w-8 h-8 text-bauto-terracota/80 stroke-[1.25] mx-auto mb-6" />
 
-        {/* Indicador Numérico Discreto */}
+        {/* Indicador numérico discreto */}
         <span className="font-title text-[10px] font-medium uppercase tracking-[0.35em] text-bauto-piedra block mb-2">
-          404 — Fuera de Rumbo
+          404 — Fuera de rumbo
         </span>
 
-        {/* Título Principal */}
+        {/* Título principal */}
         <h1 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-3">
-          Un Rincón Inexplorado
+          Un rincón inexplorado
         </h1>
 
-        {/* Narrativa Poética */}
+        {/* Narrativa poética */}
         <p className="font-editorial italic text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-8 max-w-sm mx-auto">
           Como una brisa que cambia de rumbo sobre el mar de Santa Marta, la coordenada que buscas no existe en esta colección.
         </p>
 
-        {/* Botones de Retorno y Navegación */}
+        {/* Botones de retorno y navegación */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
           <Link
             href="/catalogo"
-            className="w-full sm:w-auto px-7 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs tracking-[0.18em] uppercase inline-flex items-center justify-center gap-2 font-medium"
+            className="w-full sm:w-auto px-7 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-medium"
           >
-            <span>Ver Catálogo</span>
+            <span>Ver catálogo</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
           <Link
             href="/"
-            className="btn-pill-ghost w-full sm:w-auto px-7 py-3 text-xs tracking-[0.18em] uppercase inline-flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-3 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-normal"
           >
-            <span>Volver al Inicio</span>
+            <span>Volver al inicio</span>
           </Link>
         </div>
 
-        {/* Asistencia Concierge */}
+        {/* Asistencia concierge */}
         <div className="pt-6 border-t border-bauto-carbon/[0.06] text-xs text-bauto-piedra font-light">
           <span>¿Buscabas una pieza o silueta específica? </span>
           <a
@@ -62,7 +62,7 @@ export default function NotFound() {
             className="text-bauto-carbon font-medium hover:text-bauto-terracota inline-flex items-center gap-1 border-b border-bauto-carbon/20 pb-0.5 ml-1 transition-colors"
           >
             <MessageCircle className="w-3.5 h-3.5 text-bauto-terracota" />
-            <span>Asistencia Concierge</span>
+            <span>Asistencia concierge</span>
           </a>
         </div>
 

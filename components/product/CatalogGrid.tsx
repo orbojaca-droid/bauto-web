@@ -82,7 +82,7 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
                     : 'text-bauto-piedra/60 hover:text-bauto-carbon'
                 }`}
               >
-                {cat === 'TODAS' ? 'Toda la Colección' : cat}
+                {cat === 'TODAS' ? 'Toda la colección' : cat}
               </button>
             );
           })}
@@ -119,8 +119,8 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
             className="text-xs py-2 px-1 bg-transparent border-b border-bauto-carbon/20 text-bauto-carbon focus:border-bauto-carbon focus:outline-none cursor-pointer"
           >
             <option value="NEWEST">Novedades</option>
-            <option value="PRICE_ASC">Precio: Menor a Mayor</option>
-            <option value="PRICE_DESC">Precio: Mayor a Menor</option>
+            <option value="PRICE_ASC">Precio: menor a mayor</option>
+            <option value="PRICE_DESC">Precio: mayor a menor</option>
           </select>
 
         </div>
@@ -164,7 +164,7 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
             }}
             className="px-7 py-3 text-xs uppercase tracking-[0.2em] bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
           >
-            Restablecer Criterios
+            Restablecer criterios
           </button>
         </div>
       )}

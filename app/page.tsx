@@ -1,7 +1,8 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Home Cinemática
- * @Propósito: Página de inicio cinemática con video hero, curated drops y pilares de marca
+ * @Propósito: Página de inicio cinemática con VideoHero ambiental, curated drops y pilares de marca.
+ *             Tipografía estricta en Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Bajo - Página principal pública
  */
@@ -11,6 +12,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { fetchStockProducts } from '../lib/sheets';
 import { ProductCard } from '../components/product/ProductCard';
+import { VideoHero } from '../components/media/VideoHero';
 import { Product } from '../types/catalog';
 
 export const revalidate = 60; // Revalidación cada 60s en Edge CDN
@@ -20,7 +22,6 @@ export default async function HomePage() {
   try {
     products = await fetchStockProducts();
   } catch (error) {
-    // Si la hoja no responde temporalmente en build time
     products = [];
   }
 
@@ -30,12 +31,12 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col gap-20 sm:gap-32 pb-24">
       
-      {/* 1. Hero Editorial Minimalista */}
-      <section className="relative min-h-[calc(88vh-80px)] min-h-[calc(88dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 text-center">
+      {/* 1. Hero editorial minimalista */}
+      <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-7 animate-fade-in">
           
           <span className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-bauto-piedra font-normal block">
-            Santa Marta • Caribe Colombiano
+            Santa Marta • Caribe colombiano
           </span>
 
           <h1 className="font-title font-light text-4xl sm:text-6xl lg:text-7xl tracking-[-0.03em] text-bauto-carbon max-w-3xl leading-[1.08]">
@@ -49,9 +50,9 @@ export default async function HomePage() {
           <div className="pt-3">
             <Link
               href="/catalogo"
-              className="btn-pill-primary px-8 py-3.5 text-xs tracking-[0.2em] uppercase shadow-sm"
+              className="btn-pill-primary px-8 py-3.5 text-xs font-sans font-normal shadow-sm"
             >
-              <span>Explorar Colección</span>
+              <span>Explorar colección</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -59,7 +60,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. Curated Drops (Escaparate de Temporada) */}
+      {/* 2. Espacio audiovisual cinemático (Lookbook en movimiento) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <VideoHero
+          aspectRatio="cinematic"
+          tagline="Atmósfera y movimiento"
+          title="La cadencia del lino bajo la brisa caribeña"
+          description="Prendas concebidas para acompañar el andar sereno entre la bahía de Santa Marta y la Sierra Nevada."
+        />
+      </section>
+
+      {/* 3. Curated Drops (Escaparate de temporada) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
           <div>
@@ -67,15 +78,15 @@ export default async function HomePage() {
               Selección
             </span>
             <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
-              Edición de Temporada
+              Edición de temporada
             </h2>
           </div>
 
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-2 text-xs font-normal tracking-[0.15em] uppercase text-bauto-carbon hover:text-bauto-terracota transition-colors border-b border-bauto-carbon/20 hover:border-bauto-terracota pb-0.5"
+            className="inline-flex items-center gap-2 text-xs font-normal text-bauto-carbon hover:text-bauto-terracota transition-colors border-b border-bauto-carbon/20 hover:border-bauto-terracota pb-0.5"
           >
-            <span>Ver Colección Completa ({products.length})</span>
+            <span>Ver colección completa ({products.length})</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -93,7 +104,7 @@ export default async function HomePage() {
         )}
       </section>
 
-      {/* 3. Manifiesto Textil (Editorial Spread) */}
+      {/* 4. Manifiesto textil (Editorial spread) */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-20 border-t border-bauto-carbon/5">
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
           <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-4">
@@ -109,7 +120,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-2.5">
             <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">01</span>
             <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
-              Cuerpo Consciente
+              Cuerpo consciente
             </h3>
             <p className="text-xs text-bauto-piedra leading-relaxed font-light">
               Atención al tacto y confort activo. Piezas livianas de fibra natural que regulan la temperatura y permiten a la piel respirar en libertad.
@@ -119,7 +130,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-2.5">
             <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">02</span>
             <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
-              Movimiento del Trópico
+              Movimiento del trópico
             </h3>
             <p className="text-xs text-bauto-piedra leading-relaxed font-light">
               Siluetas holgadas que acompañan el andar sereno. Cortes sin rigideces que cobran vida y fluidez con la brisa marina de Santa Marta.
@@ -129,22 +140,22 @@ export default async function HomePage() {
           <div className="flex flex-col gap-2.5">
             <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">03</span>
             <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
-              Tejido de Reciprocidad
+              Tejido de reciprocidad
             </h3>
             <p className="text-xs text-bauto-piedra leading-relaxed font-light">
-              Lino puro 100% y confección de autor. Cada prenda honra el oficio artesanal y la longevidad del tejido frente a la prisa del consumo.
+              Lino puro y confección de autor. Cada prenda honra el oficio artesanal y la longevidad del tejido frente a la prisa del consumo.
             </p>
           </div>
 
         </div>
       </section>
 
-      {/* 4. Boutique en Santa Marta */}
+      {/* 5. Boutique en Santa Marta */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="rounded-sm bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-16 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="max-w-xl flex flex-col gap-2">
             <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
-              Boutique & Taller Caribe
+              Boutique y taller caribeño
             </span>
             <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
               Habita el espacio en Calle 20 # 2-36
@@ -157,9 +168,9 @@ export default async function HomePage() {
           <div className="shrink-0">
             <Link
               href="/tienda-santa-marta"
-              className="btn-pill-glass px-7 py-3 text-xs tracking-[0.15em] uppercase text-bauto-carbon hover:bg-white transition-all shadow-none"
+              className="btn-pill-glass px-7 py-3 text-xs font-sans text-bauto-carbon hover:bg-white transition-all shadow-none"
             >
-              <span>Conoce la Boutique</span>
+              <span>Conoce la boutique</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

@@ -9,6 +9,7 @@
 import { Product, StockPorTalla, Talla } from "../types/catalog";
 import { formatCOP, slugify } from "./grammar";
 import { getOptimizedImageUrl } from "./images";
+import { WEB_GAS_URL } from "./constants";
 
 export const MASTER_STOCK_SHEET_ID = "1cKL-Rt04R6e_Xdesg_2RkQufN6DKmTcSQpxVVTySZxg";
 export const DEFAULT_STOCK_GID = "1027393668";
@@ -166,6 +167,50 @@ export async function fetchStockProducts(
   options?: { noCache?: boolean }
 ): Promise<Product[]> {
   try {
+    // 1. Intento primario: Gateway soberano y confidencial de Google Apps Script (WEB)
+    try {
+      const gasRes = await fetch(WEB_GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          accion: "obtenerCatalogoWeb",
+          secreto: process.env.SECRETO_VENTA_SERVICIO || "SECRETO_VENTA_SERVICIO",
+        }),
+        ...(options?.noCache ? { cache: "no-store" } : { next: { revalidate: 60 } }),
+      });
+
+      if (gasRes.ok) {
+        const data = await gasRes.json();
+        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+          return data.products.map((p: any) => ({
+            id: p.reference,
+            reference: p.reference,
+            slug: `${slugify(p.name)}-${slugify(p.reference)}`,
+            name: p.name,
+            price: p.price,
+            formattedPrice: formatCOP(p.price),
+            usdPrice: Math.round(p.price / 4000),
+            description:
+              p.description ||
+              `Prenda confeccionada en ${p.material} de tacto suave y corte caribeño.`,
+            tipologia: p.tipologia || "Prenda",
+            material: p.material || "Lino",
+            images: p.images || [],
+            primaryImage: getOptimizedImageUrl(p.primaryImage || p.images[0] || "", 800, 85),
+            secondaryImage: p.secondaryImage
+              ? getOptimizedImageUrl(p.secondaryImage, 800, 85)
+              : undefined,
+            sizes: p.sizes || [],
+            stockPerSize: p.stockPerSize || {},
+            totalStock: p.totalStock || 0,
+            isExclusiveInStore: p.isExclusiveInStore || false,
+          }));
+        }
+      }
+    } catch (gasErr) {
+      console.warn("Aviso: Fallback temporal desde Google Apps Script:", gasErr);
+    }
+
     const exportUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=${gid}`;
     const fetchOptions: RequestInit = options?.noCache
       ? { cache: "no-store" }

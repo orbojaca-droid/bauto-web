@@ -1,9 +1,9 @@
 /**
  * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Centro de Ayuda & Legal
- * @Propósito: Políticas de atención, envíos, cambios y Derecho de Retracto (Ley 1480 de 2011) bajo estética Quiet Luxury
+ * @Propósito: Políticas de atención, envíos, cambios y derecho de retracto (Ley 1480 de 2011) bajo estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Controlado - Respaldo legal y enlaces canónicos intactos
+ * @Riesgo_Evaluado: Controlado
  */
 
 import React from 'react';
@@ -13,7 +13,7 @@ import { MessageCircle } from 'lucide-react';
 import { BAUTO_WHATSAPP_PHONE } from '../../lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Atención & Políticas | BAUTO Resort Wear',
+  title: 'Atención y políticas | BAUTO Resort Wear',
   description:
     'Preguntas frecuentes sobre envíos nacionales, cambios de talla, derecho de retracto (Ley 1480) y medios de pago seguros.',
 };
@@ -22,29 +22,29 @@ export default function AyudaPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 lg:px-8 py-16 sm:py-24 animate-fade-in font-body">
       
-      {/* Encabezado Editorial */}
+      {/* Encabezado editorial */}
       <div className="text-center max-w-xl mx-auto mb-16">
         <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
-          Servicio al Cliente
+          Servicio al cliente
         </span>
         <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
-          Atención & Políticas
+          Atención y políticas
         </h1>
         <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
           Claridad, respaldo y atención personalizada en cada etapa de tu experiencia BAUTO.
         </p>
       </div>
 
-      {/* Secciones de Políticas con Divisores Hairline */}
+      {/* Secciones de políticas con divisores hairline */}
       <div className="divide-y divide-bauto-carbon/10 border-t border-b border-bauto-carbon/10">
         
-        {/* 1. Envíos Nacionales */}
+        {/* 1. Envíos nacionales */}
         <section id="envios" className="py-10 sm:py-12">
           <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
-            01 · Logística & Entrega
+            01 · Logística y entrega
           </span>
           <h2 className="font-title font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
-            Envíos y Despachos Nacionales
+            Envíos y despachos nacionales
           </h2>
           <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed font-body">
             <p>
@@ -56,19 +56,19 @@ export default function AyudaPage() {
             <p>
               • <strong className="text-bauto-carbon font-medium">Seguimiento en línea:</strong> Puedes consultar el progreso de tu envío en cualquier momento desde nuestro{' '}
               <Link href="/rastreo" className="text-bauto-carbon underline underline-offset-4 hover:text-bauto-piedra transition-colors">
-                Portal de Rastreo
+                portal de rastreo
               </Link>.
             </p>
           </div>
         </section>
 
-        {/* 2. Cambios de Talla */}
+        {/* 2. Cambios de talla */}
         <section id="cambios" className="py-10 sm:py-12">
           <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
-            02 · Ajuste & Talla
+            02 · Ajuste y talla
           </span>
           <h2 className="font-title font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
-            Políticas de Cambios y Garantía
+            Políticas de cambios y garantía
           </h2>
           <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed font-body">
             <p>
@@ -83,13 +83,13 @@ export default function AyudaPage() {
           </div>
         </section>
 
-        {/* 3. Derecho de Retracto (Ley 1480 de 2011) */}
+        {/* 3. Derecho de retracto (Ley 1480 de 2011) */}
         <section id="retracto" className="py-10 sm:py-12">
           <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
-            03 · Marco Legal
+            03 · Marco legal
           </span>
           <h2 className="font-title font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
-            Derecho de Retracto (Ley 1480 de 2011 - Colombia)
+            Derecho de retracto (Ley 1480 de 2011 - Colombia)
           </h2>
           <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed font-body">
             <p>
@@ -104,33 +104,33 @@ export default function AyudaPage() {
           </div>
         </section>
 
-        {/* 4. Medios de Pago y Seguridad */}
+        {/* 4. Medios de pago y seguridad */}
         <section id="pagos" className="py-10 sm:py-12">
           <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
-            04 · Pasarela Bancaria
+            04 · Pasarela bancaria
           </span>
           <h2 className="font-title font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
-            Medios de Pago Seguros
+            Medios de pago seguros
           </h2>
           <p className="text-xs sm:text-sm text-bauto-piedra leading-relaxed font-body mb-4">
             Todas las transacciones son gestionadas a través de <strong className="text-bauto-carbon font-medium">Wompi</strong> (Bancolombia) bajo estándar internacional <strong className="text-bauto-carbon font-medium">PCI-DSS Nivel 1</strong> y validación criptográfica 3D Secure 2.0.
           </p>
           <div className="p-4 bg-bauto-perla/40 border border-bauto-carbon/10 text-xs text-bauto-carbon flex flex-wrap gap-x-4 gap-y-2 font-normal">
-            <span>PSE (Todos los bancos)</span>
+            <span>PSE (todos los bancos)</span>
             <span className="text-bauto-carbon/20">·</span>
             <span>Botón Bancolombia</span>
             <span className="text-bauto-carbon/20">·</span>
             <span>Nequi</span>
             <span className="text-bauto-carbon/20">·</span>
-            <span>Tarjetas de Crédito y Débito</span>
+            <span>Tarjetas de crédito y débito</span>
             <span className="text-bauto-carbon/20">·</span>
-            <span>Addi (Financiamiento)</span>
+            <span>Addi (financiamiento)</span>
           </div>
         </section>
 
       </div>
 
-      {/* Asistencia Directa */}
+      {/* Asistencia directa */}
       <div className="text-center pt-12">
         <p className="text-xs text-bauto-piedra mb-4">
           ¿Deseas atención individual para tu pedido?
@@ -139,10 +139,10 @@ export default function AyudaPage() {
           href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, tengo una consulta sobre políticas o mi pedido.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs uppercase tracking-[0.2em] font-medium"
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
         >
           <MessageCircle className="w-4 h-4 stroke-[1.5]" />
-          <span>Atención Concierge de Taller</span>
+          <span>Atención concierge de taller</span>
         </a>
       </div>
 

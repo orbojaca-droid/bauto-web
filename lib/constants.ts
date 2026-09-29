@@ -11,6 +11,10 @@ export const APPBAUTO_PROD_URL =
   process.env.APPBAUTO_GAS_URL ||
   "https://script.google.com/macros/s/AKfycbzB6gSJwqTC7xHgzzYhR1V6nfsTJEgva83pvIvVxjb7xjvrnEjeuZGhJdv3kJpw2KA/exec";
 
+export const WEB_GAS_URL =
+  process.env.WEB_GAS_URL ||
+  "https://script.google.com/macros/s/AKfycbwFYVVqwy9VaE3y_AhaTSYmVVQ9x36Y4ZrHFwl-EEWcSP7J6N4U2NdRs40V6jbwNQ/exec";
+
 export const MIPAPE_BASE_URL =
   process.env.MIPAQUETE_API_URL || "https://api-v2.mpr.mipaquete.com";
 

@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {/* Encabezado de la Tipología */}
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
-          Siluetas de Autor
+          Siluetas de autor
         </span>
         <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
           {officialCategory}

@@ -88,10 +88,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex items-end justify-between mb-10">
             <div>
               <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra block mb-1 font-light">
-                Complementa tu Atuendo
+                Complementa tu atuendo
               </span>
               <h2 className="font-title font-light sm:font-normal text-xl sm:text-2xl text-bauto-carbon">
-                Otras Piezas de la Colección
+                Otras piezas de la colección
               </h2>
             </div>
 

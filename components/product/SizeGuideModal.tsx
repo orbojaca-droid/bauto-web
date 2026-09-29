@@ -47,11 +47,11 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
         className="relative z-10 w-full max-w-lg bg-bauto-nube rounded-sm p-6 sm:p-8 border border-bauto-carbon/15 shadow-2xl animate-slide-up max-h-[90dvh] overflow-y-auto"
         role="dialog"
         aria-modal="true"
-        aria-label="Guía de Medidas BAUTO"
+        aria-label="Guía de medidas BAUTO"
       >
         <div className="flex items-center justify-between pb-4 border-b border-bauto-carbon/10 mb-5">
           <h3 className="font-title font-light text-lg sm:text-xl text-bauto-carbon">
-            Guía de Medidas (cm)
+            Guía de medidas (cm)
           </h3>
 
           <button

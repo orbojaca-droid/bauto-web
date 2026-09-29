@@ -1,7 +1,7 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
- * @Propósito: Página canónica del catálogo completo de prendas
+ * @Propósito: Página canónica del catálogo completo de prendas con espacio audiovisual y Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Bajo - Vista pública del catálogo
  */
@@ -10,12 +10,13 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { fetchStockProducts } from '../../lib/sheets';
 import { CatalogGrid } from '../../components/product/CatalogGrid';
+import { VideoHero } from '../../components/media/VideoHero';
 import { Product } from '../../types/catalog';
 
 export const revalidate = 60; // Revalidación cada 60s
 
 export const metadata: Metadata = {
-  title: 'Colección Completa | BAUTO Resort Wear',
+  title: 'Colección completa | BAUTO Resort Wear',
   description:
     'Explora nuestra colección de prendas en lino puro, algodón noble y siluetas del trópico creadas en Santa Marta.',
 };
@@ -31,10 +32,10 @@ export default async function CatalogoPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
       
-      {/* Encabezado Editorial */}
-      <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      {/* Encabezado editorial */}
+      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
-          Colección Permanente
+          Colección permanente
         </span>
         <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3">
           Colección BAUTO
@@ -44,7 +45,18 @@ export default async function CatalogoPage() {
         </p>
       </div>
 
-      {/* Rejilla Interactiva con Filtros */}
+      {/* Espacio audiovisual del catálogo */}
+      <div className="mb-12 sm:mb-16">
+        <VideoHero
+          aspectRatio="cinematic"
+          tagline="Sinfonía textil"
+          title="El vuelo de las prendas en movimiento"
+          description="Explora cada fibra noble en su interacción natural con la brisa de Santa Marta."
+          showControls={true}
+        />
+      </div>
+
+      {/* Rejilla interactiva con filtros */}
       <CatalogGrid products={products} />
 
     </div>

@@ -139,29 +139,29 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
           </div>
 
-          {/* Badge Exclusivo Tienda Física */}
+          {/* Badge exclusivo tienda física */}
           {isExclusive && (
             <div className="border-l-2 border-bauto-arena pl-3.5 py-1 text-xs text-bauto-carbon">
-              <span className="block font-medium tracking-wide">Exclusividad Tienda Física</span>
+              <span className="block font-medium tracking-wide">Exclusividad en tienda física</span>
               <p className="text-[11px] text-bauto-piedra mt-0.5 leading-relaxed font-light">
                 Pieza disponible en Calle 20 # 2-36, Centro Histórico de Santa Marta.
               </p>
             </div>
           )}
 
-          {/* Ficha Sensorial del Tejido */}
+          {/* Ficha sensorial del tejido */}
           <div className="border-t border-b border-bauto-carbon/[0.08] py-4 flex flex-col gap-3 text-xs">
             <span className="text-[9px] tracking-[0.25em] uppercase text-bauto-piedra/80 block">
-              Ficha Sensorial del Tejido
+              Ficha sensorial del tejido
             </span>
 
             <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-[11px]">
               <div>
                 <span className="text-bauto-piedra block font-light">Composición:</span>
-                <span className="font-normal text-bauto-carbon">{product.material || 'Fibras Nobles'}</span>
+                <span className="font-normal text-bauto-carbon">{product.material || 'Fibras nobles'}</span>
               </div>
               <div>
-                <span className="text-bauto-piedra block font-light">Tacto al Lavado:</span>
+                <span className="text-bauto-piedra block font-light">Tacto al lavado:</span>
                 <span className="font-normal text-bauto-carbon">Suavizado artesanal</span>
               </div>
               <div>
@@ -175,7 +175,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
           </div>
 
-          {/* Selector de Tallas */}
+          {/* Selector de tallas */}
           {!isOutOfStock && (
             <div>
               <SizeSelector
@@ -196,38 +196,38 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
           )}
 
-          {/* Botón Principal de Adición a la Bolsa */}
+          {/* Botón principal de adición a la bolsa */}
           <div className="flex flex-col gap-2.5 pt-2">
             <button
               type="button"
               disabled={isOutOfStock}
               onClick={handleAddToCart}
-              className={`w-full py-4 text-xs uppercase tracking-[0.25em] font-medium transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
+              className={`w-full py-4 text-xs font-sans font-medium transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
                 isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
               }`}
             >
               {isOutOfStock ? (
-                <span>Agotado Temporalmente</span>
+                <span>Agotado temporalmente</span>
               ) : addedAnimation ? (
                 <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4" />
-                  <span>¡Añadido a la Bolsa!</span>
+                  <span>¡Añadido a la bolsa!</span>
                 </span>
               ) : (
-                <span>Añadir a la Bolsa</span>
+                <span>Añadir a la bolsa</span>
               )}
             </button>
 
-            {/* Asesoría Directa por WhatsApp */}
+            {/* Asesoría directa por WhatsApp */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={playHapticClick}
-              className="btn-pill-ghost w-full py-3 text-xs uppercase tracking-[0.18em] flex items-center justify-center gap-2"
+              className="btn-pill-ghost w-full py-3 text-xs font-sans flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-3.5 h-3.5 text-bauto-carbon/70" />
-              <span>Consultar con Concierge de Taller</span>
+              <span>Consultar con concierge de taller</span>
             </a>
           </div>
 

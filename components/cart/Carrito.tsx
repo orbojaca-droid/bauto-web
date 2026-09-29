@@ -89,7 +89,7 @@ export function Carrito() {
         <div className="flex items-center justify-between px-6 py-5 border-b border-bauto-carbon/10">
           <div className="flex items-baseline gap-2">
             <h2 className="font-title font-light text-base tracking-wide text-bauto-carbon">
-              Bolsa de Compra
+              Bolsa de compra
             </h2>
             <span className="font-body text-xs text-bauto-piedra">
               ({itemCount} {itemCount === 1 ? 'pieza' : 'piezas'})
@@ -131,9 +131,9 @@ export function Carrito() {
                   handleClose();
                   router.push('/catalogo');
                 }}
-                className="mt-2 px-6 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] uppercase tracking-[0.2em] font-medium"
+                className="mt-2 px-6 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] font-sans font-medium"
               >
-                <span>Explorar Colección</span>
+                <span>Explorar colección</span>
               </button>
             </div>
           ) : (
@@ -174,7 +174,7 @@ export function Carrito() {
               </div>
 
               <div className="flex justify-between text-sm font-medium text-bauto-carbon pt-3 border-t border-bauto-carbon/10">
-                <span>Total Estimado</span>
+                <span>Total estimado</span>
                 <span className="text-base text-bauto-carbon">
                   {formatCOP(total)}
                 </span>
@@ -185,9 +185,9 @@ export function Carrito() {
             <button
               type="button"
               onClick={handleGoToCheckout}
-              className="w-full py-3.5 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs uppercase tracking-[0.2em] font-medium flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs font-sans font-medium flex items-center justify-center gap-2"
             >
-              <span>Continuar con el Pago</span>
+              <span>Continuar con el pago</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
 

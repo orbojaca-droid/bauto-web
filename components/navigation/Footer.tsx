@@ -1,7 +1,7 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless)
- * @Propósito: Pie de página institucional y legal de BAUTO Resort Wear
+ * @Propósito: Pie de página institucional y legal de BAUTO Resort Wear con Sentence case estricto.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Bajo - Componente informativo estático
  */
@@ -15,11 +15,11 @@ export function Footer() {
   return (
     <footer className="mt-auto bg-[#FAF9F6] border-t border-bauto-carbon/[0.06] text-bauto-carbon">
 
-      {/* Cuerpo Principal del Footer */}
+      {/* Cuerpo principal del footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           
-          {/* Columna 1 & 2: Identidad & Manifiesto */}
+          {/* Columna 1 & 2: Identidad y manifiesto */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <div>
               <Link href="/" className="inline-block">
@@ -61,40 +61,40 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna 3: Colección & Tipologías */}
+          {/* Columna 3: Colección y tipologías */}
           <div>
             <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
               Colección
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
-              <li><Link href="/catalogo" className="hover:text-bauto-terracota transition-colors">Ver Todo el Catálogo</Link></li>
-              <li><Link href="/catalogo/camisa" className="hover:text-bauto-terracota transition-colors">Camisas de Lino</Link></li>
-              <li><Link href="/catalogo/pantalon" className="hover:text-bauto-terracota transition-colors">Pantalones Fluidos</Link></li>
-              <li><Link href="/catalogo/kimono" className="hover:text-bauto-terracota transition-colors">Kimonos & Capas</Link></li>
-              <li><Link href="/catalogo/bermuda" className="hover:text-bauto-terracota transition-colors">Bermudas & Shorts</Link></li>
-              <li><Link href="/catalogo/chaleco" className="hover:text-bauto-terracota transition-colors">Chalecos & Terceras Piezas</Link></li>
+              <li><Link href="/catalogo" className="hover:text-bauto-terracota transition-colors">Ver todo el catálogo</Link></li>
+              <li><Link href="/catalogo/camisa" className="hover:text-bauto-terracota transition-colors">Camisas de lino</Link></li>
+              <li><Link href="/catalogo/pantalon" className="hover:text-bauto-terracota transition-colors">Pantalones fluidos</Link></li>
+              <li><Link href="/catalogo/kimono" className="hover:text-bauto-terracota transition-colors">Kimonos y capas</Link></li>
+              <li><Link href="/catalogo/bermuda" className="hover:text-bauto-terracota transition-colors">Bermudas y shorts</Link></li>
+              <li><Link href="/catalogo/chaleco" className="hover:text-bauto-terracota transition-colors">Chalecos y terceras piezas</Link></li>
             </ul>
           </div>
 
-          {/* Columna 4: Experiencia & Ayuda */}
+          {/* Columna 4: Experiencia y ayuda */}
           <div>
             <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
               Experiencia
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
-              <li><Link href="/rastreo" className="hover:text-bauto-terracota transition-colors">Rastrear mi Envío</Link></li>
+              <li><Link href="/rastreo" className="hover:text-bauto-terracota transition-colors">Rastrear mi envío</Link></li>
               <li><Link href="/tienda-santa-marta" className="hover:text-bauto-terracota transition-colors">Boutique Santa Marta</Link></li>
-              <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Filosofía & Fibras Nobles</Link></li>
-              <li><Link href="/ayuda" className="hover:text-bauto-terracota transition-colors">Políticas & Cambios</Link></li>
-              <li><Link href="/ayuda#retracto" className="hover:text-bauto-terracota transition-colors">Derecho de Retracto (Ley 1480)</Link></li>
-              <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">Atención Concierge</Link></li>
+              <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Filosofía y fibras nobles</Link></li>
+              <li><Link href="/ayuda" className="hover:text-bauto-terracota transition-colors">Políticas y cambios</Link></li>
+              <li><Link href="/ayuda#retracto" className="hover:text-bauto-terracota transition-colors">Derecho de retracto (Ley 1480)</Link></li>
+              <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">Atención concierge</Link></li>
             </ul>
           </div>
 
-          {/* Columna 5: Boutique Física */}
+          {/* Columna 5: Boutique física */}
           <div>
             <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
-              Boutique Taller
+              Boutique taller
             </h3>
             <div className="flex flex-col gap-3 text-xs text-bauto-piedra">
               <p className="flex items-start gap-2">
@@ -103,21 +103,21 @@ export function Footer() {
               </p>
               <p className="text-[11px] leading-relaxed">
                 <span className="font-semibold text-bauto-carbon block">Horarios:</span>
-                Lunes a Sábado: 10:00 AM – 8:00 PM<br />
-                Domingos & Festivos: 11:00 AM – 6:00 PM
+                Lunes a sábado: 10:00 AM – 8:00 PM<br />
+                Domingos y festivos: 11:00 AM – 6:00 PM
               </p>
             </div>
           </div>
 
         </div>
 
-        {/* Línea Divisoria Inferior y Derechos */}
+        {/* Línea divisoria inferior y derechos */}
         <div className="mt-12 pt-8 border-t border-bauto-carbon/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-bauto-piedra">
           <p>© 2026 BAUTO Resort Wear. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4">
-            <Link href="/ayuda#terminos" className="hover:text-bauto-terracota transition-colors">Términos y Condiciones</Link>
+            <Link href="/ayuda#terminos" className="hover:text-bauto-terracota transition-colors">Términos y condiciones</Link>
             <span>•</span>
-            <Link href="/ayuda#privacidad" className="hover:text-bauto-terracota transition-colors">Política de Privacidad</Link>
+            <Link href="/ayuda#privacidad" className="hover:text-bauto-terracota transition-colors">Política de privacidad</Link>
           </div>
         </div>
 

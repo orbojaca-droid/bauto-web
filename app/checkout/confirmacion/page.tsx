@@ -3,9 +3,9 @@
 /**
  * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 2: Confirmación Post-Pago
- * @Propósito: Pantalla de confirmación de compra post-pasarela Wompi con estética de pliego editorial y narrativa de atelier
+ * @Propósito: Pantalla de confirmación de compra post-pasarela Wompi con estética de pliego editorial y Sentence case.
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Controlado - Enlaces transaccionales y limpieza de carrito intactos
+ * @Riesgo_Evaluado: Controlado
  */
 
 import React, { useEffect, Suspense } from 'react';
@@ -35,22 +35,22 @@ function ConfirmationContent() {
   const whatsappUrl = `https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${whatsappMsg}`;
 
   const stages = [
-    { num: '01', title: 'Orden Recibida', desc: 'Pago procesado exitosamente por Wompi', done: true },
-    { num: '02', title: 'Alistamiento en Taller', desc: 'Prenda doblada y perfumada en Santa Marta', current: true },
-    { num: '03', title: 'En Tránsito con la Brisa', desc: 'Guía MiPaquete generada y en camino', pending: true },
-    { num: '04', title: 'Entrega en tu Puerta', desc: 'Confort consciente del Caribe en tus manos', pending: true },
+    { num: '01', title: 'Orden recibida', desc: 'Pago procesado exitosamente por Wompi', done: true },
+    { num: '02', title: 'Alistamiento en taller', desc: 'Prenda doblada y perfumada en Santa Marta', current: true },
+    { num: '03', title: 'En tránsito con la brisa', desc: 'Guía MiPaquete generada y en camino', pending: true },
+    { num: '04', title: 'Entrega en tu puerta', desc: 'Confort consciente del Caribe en tus manos', pending: true },
   ];
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24 text-center animate-fade-in font-body">
       
-      {/* Sello Editorial Sutil */}
+      {/* Sello editorial sutil */}
       <div className="w-12 h-12 rounded-full border border-bauto-carbon/20 mx-auto flex items-center justify-center text-bauto-carbon mb-6">
         <Check className="w-5 h-5 stroke-[1.5]" />
       </div>
 
       <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
-        Pedido Confirmado · Taller Santa Marta
+        Pedido confirmado · Taller Santa Marta
       </span>
 
       <h1 className="font-title font-light text-3xl sm:text-4xl tracking-wide text-bauto-carbon mb-3">
@@ -61,16 +61,16 @@ function ConfirmationContent() {
         Tus prendas están siendo seleccionadas con dedicación bajo la brisa y la luz de nuestro atelier en Santa Marta.
       </p>
 
-      {/* Referencia de la Orden */}
+      {/* Referencia de la orden */}
       <div className="inline-flex items-center gap-2 px-4 py-2 border-b border-bauto-carbon/20 text-xs text-bauto-carbon mb-12">
         <span className="text-bauto-piedra font-normal">Referencia:</span>
         <span className="font-medium tracking-wider">{reference}</span>
       </div>
 
-      {/* Storytelling Editorial de 4 Etapas */}
+      {/* Storytelling editorial de 4 etapas */}
       <div className="border-t border-b border-bauto-carbon/10 py-8 mb-12 text-left">
         <h2 className="text-[10px] font-normal tracking-[0.2em] uppercase text-bauto-piedra mb-8">
-          Etapas de Preparación del Pedido
+          Etapas de preparación del pedido
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -90,15 +90,15 @@ function ConfirmationContent() {
         </div>
       </div>
 
-      {/* Botones de Acción */}
+      {/* Botones de acción */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <Link
           href={`/rastreo?guia=${encodeURIComponent(reference)}`}
           onClick={playHapticClick}
-          className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs uppercase tracking-[0.2em] font-medium flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
         >
           <PackageCheck className="w-4 h-4 stroke-[1.5]" />
-          <span>Consultar Portal de Rastreo</span>
+          <span>Consultar portal de rastreo</span>
         </Link>
 
         <a
@@ -106,18 +106,18 @@ function ConfirmationContent() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={playHapticClick}
-          className="w-full sm:w-auto px-6 py-3.5 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs tracking-wide flex items-center justify-center gap-2 font-normal"
+          className="w-full sm:w-auto px-6 py-3.5 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans flex items-center justify-center gap-2 font-normal"
         >
           <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
-          <span>Atención Concierge</span>
+          <span>Atención concierge</span>
         </a>
 
         <Link
           href="/catalogo"
           onClick={playHapticClick}
-          className="w-full sm:w-auto px-5 py-3.5 text-xs text-bauto-piedra hover:text-bauto-carbon transition-colors"
+          className="w-full sm:w-auto px-5 py-3.5 text-xs font-sans text-bauto-piedra hover:text-bauto-carbon transition-colors"
         >
-          <span>Volver al Catálogo</span>
+          <span>Volver al catálogo</span>
         </Link>
       </div>
 

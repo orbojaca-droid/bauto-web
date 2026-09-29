@@ -89,7 +89,7 @@ export function StickyBuyBar({
           }}
           className="h-10 px-5 text-[11px] uppercase tracking-[0.2em] font-medium shrink-0 flex items-center justify-center bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
         >
-          <span>{selectedSize ? 'Añadir' : 'Elegir Talla'}</span>
+          <span>{selectedSize ? 'Añadir' : 'Elegir talla'}</span>
         </button>
 
       </div>

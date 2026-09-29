@@ -39,7 +39,7 @@ export function GiftCeremony() {
         <div className="flex items-center gap-3">
           <Gift className="w-4 h-4 text-bauto-carbon/70 stroke-[1.25]" />
           <div>
-            <h4 className="text-xs font-normal text-bauto-carbon">Presentación para Obsequio</h4>
+            <h4 className="text-xs font-normal text-bauto-carbon">Presentación para obsequio</h4>
             <p className="text-[11px] text-bauto-piedra">Caja rígida artesanal y tarjeta caligráfica BAUTO</p>
           </div>
         </div>

@@ -1,0 +1,24 @@
+{
+  "timeZone": "America/Bogota",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "Platform",
+        "libraryId": "1dhP6-1TfLwnLWsIapB0Nl2OLZTHcNjtO_RoDf69SUEgaw3tWkfvOfP2o",
+        "version": "925",
+        "developmentMode": true
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.scriptapp"
+  ],
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
+  }
+}

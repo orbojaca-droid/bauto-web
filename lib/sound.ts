@@ -56,6 +56,7 @@ export function playHapticClick(): void {
 }
 
 export const playHapticFeedback = playHapticClick;
+export const playClickSound = playHapticClick;
 
 /**
  * Reproduce un tono sutil ascendente para acciones de éxito o añadido a bolsa.

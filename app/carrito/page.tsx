@@ -1,9 +1,9 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 2: Carrito
- * @Propósito: Página canónica de revisión y checkout con pasarela Wompi
+ * @Propósito: Página canónica de revisión y checkout con pasarela Wompi y tipografía en Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Medio - Manejo del formulario de envío e inicio de checkout bancario
  */
@@ -117,7 +117,7 @@ export default function CartPage() {
     return (
       <div className="max-w-md mx-auto px-4 py-28 text-center animate-fade-in">
         <span className="font-title text-[10px] font-medium uppercase tracking-[0.35em] text-bauto-piedra block mb-2">
-          Bolsa de Viaje
+          Bolsa de viaje
         </span>
         <h1 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-3">
           Tu bolsa está vacía
@@ -128,9 +128,9 @@ export default function CartPage() {
         <Link
           href="/catalogo"
           onClick={playHapticClick}
-          className="px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2 font-medium"
+          className="px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center gap-2 font-medium"
         >
-          <span>Explorar la Colección</span>
+          <span>Explorar la colección</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
@@ -142,22 +142,22 @@ export default function CartPage() {
       
       <div className="mb-10 sm:mb-12">
         <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra block mb-1 font-light">
-          Finalizar Pedido
+          Finalizar pedido
         </span>
         <h1 className="font-title font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon">
-          Tu Bolsa & Entrega
+          Tu bolsa y entrega
         </h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         
-        {/* Columna Izquierda: Lista de Prendas y Datos del Comprador (7 columnas) */}
+        {/* Columna izquierda: Lista de prendas y datos del comprador (7 columnas) */}
         <div className="lg:col-span-7 flex flex-col gap-10">
           
-          {/* Lista de Prendas */}
+          {/* Lista de prendas */}
           <div className="border-b border-bauto-carbon/[0.08] pb-8">
             <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-5 flex items-center justify-between">
-              <span>Prendas Seleccionadas</span>
+              <span>Prendas seleccionadas</span>
               <span className="text-bauto-piedra/70 font-light lowercase">
                 ({items.reduce((acc, i) => acc + i.quantity, 0)} piezas)
               </span>
@@ -169,22 +169,22 @@ export default function CartPage() {
               ))}
             </div>
 
-            {/* Módulo de Regalo */}
+            {/* Módulo de regalo */}
             <div className="mt-6 pt-4 border-t border-bauto-carbon/[0.06]">
               <GiftCeremony />
             </div>
           </div>
 
-          {/* Formulario de Entrega */}
+          {/* Formulario de entrega */}
           <form id="checkout-form" onSubmit={handleCheckout} className="flex flex-col gap-5 pt-2">
             <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-1">
-              Datos para el Envío Nacional
+              Datos para el envío nacional
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-normal text-bauto-piedra mb-1">
-                  Nombre Completo *
+                  Nombre completo *
                 </label>
                 <input
                   type="text"
@@ -213,7 +213,7 @@ export default function CartPage() {
 
             <div>
               <label className="block text-xs font-normal text-bauto-piedra mb-1">
-                Correo Electrónico (para guía y recibo) *
+                Correo electrónico (para guía y recibo) *
               </label>
               <input
                 type="email"
@@ -227,7 +227,7 @@ export default function CartPage() {
 
             <div>
               <label className="block text-xs font-normal text-bauto-piedra mb-1">
-                Dirección de Entrega *
+                Dirección de entrega *
               </label>
               <AddressAutocomplete
                 value={address}
@@ -240,7 +240,7 @@ export default function CartPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-normal text-bauto-piedra mb-1">
-                  Ciudad / Municipio *
+                  Ciudad / municipio *
                 </label>
                 <input
                   type="text"
@@ -254,7 +254,7 @@ export default function CartPage() {
 
               <div>
                 <label className="block text-xs font-normal text-bauto-piedra mb-1">
-                  Indicaciones Adicionales (Opcional)
+                  Indicaciones adicionales (opcional)
                 </label>
                 <input
                   type="text"
@@ -275,12 +275,12 @@ export default function CartPage() {
 
         </div>
 
-        {/* Columna Derecha: Resumen Financiero y Pago Wompi (5 columnas) */}
+        {/* Columna derecha: Resumen financiero y pago Wompi (5 columnas) */}
         <div className="lg:col-span-5 sticky top-24">
           <div className="border border-bauto-carbon/10 p-6 sm:p-8 bg-[#FAF6F0]/40 rounded-sm">
             
             <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-5">
-              Resumen de la Orden
+              Resumen de la orden
             </h2>
 
             <div className="flex flex-col gap-3 text-xs border-b border-bauto-carbon/10 pb-5">
@@ -318,27 +318,27 @@ export default function CartPage() {
               </span>
             </div>
 
-            {/* Botón de Pago Principal */}
+            {/* Botón de pago principal */}
             <button
               type="submit"
               form="checkout-form"
               disabled={loading}
-              className="w-full py-4 text-xs uppercase tracking-[0.25em] font-medium bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 text-xs font-sans font-medium bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="inline-flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Procesando Sesión...</span>
+                  <span>Procesando sesión...</span>
                 </span>
               ) : (
-                <span>Proceder al Pago Seguro · {formatCOP(total)}</span>
+                <span>Proceder al pago seguro · {formatCOP(total)}</span>
               )}
             </button>
 
-            {/* Sellos de Confianza Bancaria */}
+            {/* Sellos de confianza bancaria */}
             <div className="mt-6 pt-5 border-t border-bauto-carbon/[0.06] text-[11px] text-bauto-piedra text-center font-light leading-relaxed">
               <p className="text-bauto-carbon font-normal mb-1">
-                Procesamiento Seguro y Cifrado
+                Procesamiento seguro y cifrado
               </p>
               <p className="text-[10px] text-bauto-piedra/80">
                 Aceptamos PSE, Bancolombia, Nequi, Tarjetas Débito/Crédito y Addi. Fondos procesados bajo certificación bancaria PCI-DSS.

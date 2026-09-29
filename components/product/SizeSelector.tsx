@@ -52,7 +52,7 @@ export function SizeSelector({
             }}
             className="text-[11px] uppercase tracking-wider text-bauto-piedra hover:text-bauto-carbon border-b border-bauto-piedra/30 hover:border-bauto-carbon pb-0.5 transition-colors"
           >
-            Guía de Medidas
+            Guía de medidas
           </button>
         )}
       </div>
