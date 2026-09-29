@@ -18,7 +18,7 @@ export default function JournalIndexPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 animate-fade-in">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 animate-fade-in">
       <header className="text-center mb-16 sm:mb-24">
         <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-4">
           Nuestra visión

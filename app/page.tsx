@@ -32,7 +32,7 @@ export default async function HomePage() {
     <div className="flex flex-col gap-20 sm:gap-32 pb-24">
       
       {/* 1. Hero editorial minimalista */}
-      <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-7 animate-fade-in">
           
           <span className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-bauto-piedra font-normal block">
@@ -152,7 +152,7 @@ export default async function HomePage() {
 
       {/* 5. Boutique en Santa Marta */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className=" bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-16 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className=" bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-20 sm:py-24 md:py-32 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="max-w-xl flex flex-col gap-2">
             <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
               Boutique y taller caribeño

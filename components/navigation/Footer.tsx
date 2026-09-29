@@ -64,31 +64,30 @@ export function Footer() {
           {/* Columna 3: Colección y tipologías */}
           <div>
             <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
-              Colección
+              Categorías
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
-              <li><Link href="/catalogo" className="hover:text-bauto-terracota transition-colors">Ver todo el catálogo</Link></li>
-              <li><Link href="/catalogo/camisa" className="hover:text-bauto-terracota transition-colors">Camisas de lino</Link></li>
-              <li><Link href="/catalogo/pantalon" className="hover:text-bauto-terracota transition-colors">Pantalones fluidos</Link></li>
-              <li><Link href="/catalogo/kimono" className="hover:text-bauto-terracota transition-colors">Kimonos y capas</Link></li>
-              <li><Link href="/catalogo/bermuda" className="hover:text-bauto-terracota transition-colors">Bermudas y shorts</Link></li>
-              <li><Link href="/catalogo/chaleco" className="hover:text-bauto-terracota transition-colors">Chalecos y terceras piezas</Link></li>
+              <li><Link href="/catalogo" className="hover:text-bauto-carbon transition-colors">Ver todo</Link></li>
+              <li><Link href="/catalogo/camisas" className="hover:text-bauto-carbon transition-colors">Camisas</Link></li>
+              <li><Link href="/catalogo/pantalones" className="hover:text-bauto-carbon transition-colors">Pantalones</Link></li>
+              <li><Link href="/catalogo/pantalonetas" className="hover:text-bauto-carbon transition-colors">Pantalonetas</Link></li>
+              <li><Link href="/catalogo/guayaberas" className="hover:text-bauto-carbon transition-colors">Guayaberas</Link></li>
+              <li><Link href="/catalogo/vestidos" className="hover:text-bauto-carbon transition-colors">Vestidos</Link></li>
+              <li><Link href="/catalogo/sets" className="hover:text-bauto-carbon transition-colors">Sets</Link></li>
             </ul>
           </div>
 
           {/* Columna 4: Experiencia y ayuda */}
           <div>
             <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
-              Experiencia
+              Soporte
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
-              <li><Link href="/rastreo" className="hover:text-bauto-terracota transition-colors">Rastrear mi envío</Link></li>
-              <li><Link href="/tienda-santa-marta" className="hover:text-bauto-terracota transition-colors">Boutique Santa Marta</Link></li>
-              <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Filosofía y fibras nobles</Link></li>
-              <li><Link href="/journal" className="hover:text-bauto-terracota transition-colors">Diario BAUTO</Link></li>
-              <li><Link href="/ayuda" className="hover:text-bauto-terracota transition-colors">Políticas y cambios</Link></li>
-              <li><Link href="/ayuda#retracto" className="hover:text-bauto-terracota transition-colors">Derecho de retracto (Ley 1480)</Link></li>
-              <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">Atención concierge</Link></li>
+              <li><Link href="/rastreo" className="hover:text-bauto-carbon transition-colors">Rastreo</Link></li>
+              <li><Link href="/filosofia" className="hover:text-bauto-carbon transition-colors">Manifiesto</Link></li>
+              <li><Link href="/journal" className="hover:text-bauto-carbon transition-colors">Journal</Link></li>
+              <li><Link href="/ayuda" className="hover:text-bauto-carbon transition-colors">Políticas</Link></li>
+              <li><Link href="/contacto" className="hover:text-bauto-carbon transition-colors">Concierge</Link></li>
             </ul>
           </div>
 

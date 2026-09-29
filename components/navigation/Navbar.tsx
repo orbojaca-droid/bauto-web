@@ -50,10 +50,8 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/catalogo', label: 'Colección', icon: Compass },
-    { href: '/tienda-santa-marta', label: 'Boutique Santa Marta', icon: MapPin },
-    { href: '/rastreo', label: 'Rastreo', icon: PackageCheck },
-    { href: '/filosofia', label: 'Filosofía', icon: BookOpen },
-    { href: '/journal', label: 'Diario', icon: BookOpen },
+    { href: '/journal', label: 'Journal', icon: BookOpen },
+    { href: '/tienda-santa-marta', label: 'Boutique', icon: MapPin },
   ];
 
   return (
