@@ -17,64 +17,64 @@ import { Product } from '../../../types/catalog';
 export const revalidate = 60;
 
 interface CategoryPageProps {
-  params: {
-    categoria: string;
-  };
+ params: {
+ categoria: string;
+ };
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const catName = decodeURIComponent(params.categoria).replace(/-/g, ' ');
-  const capitalized = catName.charAt(0).toUpperCase() + catName.slice(1);
-  return {
-    title: `${capitalized} | BAUTO Resort Wear`,
-    description: `Descubre nuestra selección de ${catName} en fibras nobles y siluetas diseñadas para el trópico.`,
-  };
+ const catName = decodeURIComponent(params.categoria).replace(/-/g, ' ');
+ const capitalized = catName.charAt(0).toUpperCase() + catName.slice(1);
+ return {
+ title: `${capitalized} | BAUTO Resort Wear`,
+ description: `Descubre nuestra selección de ${catName} en fibras nobles y siluetas diseñadas para el trópico.`,
+ };
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const rawCat = decodeURIComponent(params.categoria).toLowerCase();
-  let products: Product[] = [];
-  try {
-    products = await fetchStockProducts();
-  } catch (error) {
-    products = [];
-  }
+ const rawCat = decodeURIComponent(params.categoria).toLowerCase();
+ let products: Product[] = [];
+ try {
+ products = await fetchStockProducts();
+ } catch (error) {
+ products = [];
+ }
 
-  // Encontrar el nombre oficial de la categoría comparando slug
-  const matchingProduct = products.find(
-    (p) => slugify(p.tipologia || '').toLowerCase() === rawCat
-  );
-  const officialCategory = matchingProduct ? matchingProduct.tipologia : rawCat;
+ // Encontrar el nombre oficial de la categoría comparando slug
+ const matchingProduct = products.find(
+ (p) => slugify(p.tipologia || '').toLowerCase() === rawCat
+ );
+ const officialCategory = matchingProduct ? matchingProduct.tipologia : rawCat;
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
-      
-      {/* Botón Volver al Catálogo */}
-      <div className="mb-8">
-        <Link
-          href="/catalogo"
-          className="inline-flex items-center text-xs tracking-wider uppercase text-bauto-piedra hover:text-bauto-carbon transition-colors border-b border-transparent hover:border-bauto-carbon pb-0.5"
-        >
-          <span>← Volver a la colección</span>
-        </Link>
-      </div>
+ return (
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
+ 
+ {/* Botón Volver al Catálogo */}
+ <div className="mb-8">
+ <Link
+ href="/catalogo"
+ className="inline-flex items-center text-xs tracking-wider uppercase text-bauto-piedra hover:text-bauto-carbon transition-colors border-b border-transparent hover:border-bauto-carbon pb-0.5"
+ >
+ <span>← Volver a la colección</span>
+ </Link>
+ </div>
 
-      {/* Encabezado de la Tipología */}
-      <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
-          Siluetas de autor
-        </span>
-        <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
-          {officialCategory}
-        </h1>
-        <p className="font-editorial italic text-sm text-bauto-piedra leading-relaxed">
-          Concebidas bajo la atención al confort y la libertad de movimiento.
-        </p>
-      </div>
+ {/* Encabezado de la Tipología */}
+ <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+ <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
+ Siluetas de autor
+ </span>
+ <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
+ {officialCategory}
+ </h1>
+ <p className="font-editorial italic text-sm text-bauto-piedra leading-relaxed">
+ Concebidas bajo la atención al confort y la libertad de movimiento.
+ </p>
+ </div>
 
-      {/* Rejilla Filtrada con la Categoría Preseleccionada */}
-      <CatalogGrid products={products} initialCategory={officialCategory} />
+ {/* Rejilla Filtrada con la Categoría Preseleccionada */}
+ <CatalogGrid products={products} initialCategory={officialCategory} />
 
-    </div>
-  );
+ </div>
+ );
 }

@@ -12,9 +12,9 @@ import { useEffect } from 'react';
 import { useCartStore } from '../../lib/cartStore';
 
 export function CartInitializer() {
-  useEffect(() => {
-    useCartStore.getState().setHydrated();
-  }, []);
+ useEffect(() => {
+ useCartStore.getState().setHydrated();
+ }, []);
 
-  return null;
+ return null;
 }

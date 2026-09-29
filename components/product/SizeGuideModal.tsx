@@ -13,94 +13,94 @@ import { X } from 'lucide-react';
 import { playHapticClick } from '../../lib/sound';
 
 interface SizeGuideModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  categoria?: string;
+ isOpen: boolean;
+ onClose: () => void;
+ categoria?: string;
 }
 
 export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiores' }: SizeGuideModalProps) {
-  if (!isOpen) return null;
+ if (!isOpen) return null;
 
-  const measurements = [
-    { talla: 'XS', pecho: '92 - 96', cintura: '74 - 78', cadera: '90 - 94', largo: '70' },
-    { talla: 'S', pecho: '96 - 100', cintura: '78 - 82', cadera: '94 - 98', largo: '72' },
-    { talla: 'M', pecho: '100 - 104', cintura: '82 - 86', cadera: '98 - 102', largo: '74' },
-    { talla: 'L', pecho: '104 - 108', cintura: '86 - 90', cadera: '102 - 106', largo: '76' },
-    { talla: 'XL', pecho: '108 - 114', cintura: '90 - 96', cadera: '106 - 112', largo: '78' },
-    { talla: 'XXL', pecho: '114 - 120', cintura: '96 - 102', cadera: '112 - 118', largo: '80' },
-  ];
+ const measurements = [
+ { talla: 'XS', pecho: '92 - 96', cintura: '74 - 78', cadera: '90 - 94', largo: '70' },
+ { talla: 'S', pecho: '96 - 100', cintura: '78 - 82', cadera: '94 - 98', largo: '72' },
+ { talla: 'M', pecho: '100 - 104', cintura: '82 - 86', cadera: '98 - 102', largo: '74' },
+ { talla: 'L', pecho: '104 - 108', cintura: '86 - 90', cadera: '102 - 106', largo: '76' },
+ { talla: 'XL', pecho: '108 - 114', cintura: '90 - 96', cadera: '106 - 112', largo: '78' },
+ { talla: 'XXL', pecho: '114 - 120', cintura: '96 - 102', cadera: '112 - 118', largo: '80' },
+ ];
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop con Desenfoque */}
-      <div
-        className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm animate-fade-in"
-        onClick={() => {
-          playHapticClick();
-          onClose();
-        }}
-        aria-hidden="true"
-      />
+ return (
+ <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+ {/* Backdrop con Desenfoque */}
+ <div
+ className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm animate-fade-in"
+ onClick={() => {
+ playHapticClick();
+ onClose();
+ }}
+ aria-hidden="true"
+ />
 
-      {/* Modal Box */}
-      <div
-        className="relative z-10 w-full max-w-lg bg-bauto-nube  p-6 sm:p-8 border border-bauto-carbon/15 shadow-2xl animate-slide-up max-h-[90dvh] overflow-y-auto"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Guía de medidas BAUTO"
-      >
-        <div className="flex items-center justify-between pb-4 border-b border-bauto-carbon/10 mb-5">
-          <h3 className="font-title font-light text-lg sm:text-xl text-bauto-carbon">
-            Guía de medidas (cm)
-          </h3>
+ {/* Modal Box */}
+ <div
+ className="relative z-10 w-full max-w-lg bg-bauto-nube p-6 sm:p-8 animate-slide-up max-h-[90dvh] overflow-y-auto"
+ role="dialog"
+ aria-modal="true"
+ aria-label="Guía de medidas BAUTO"
+ >
+ <div className="flex items-center justify-between pb-4 mb-5">
+ <h3 className="font-title font-light text-lg sm:text-xl text-bauto-carbon">
+ Guía de medidas (cm)
+ </h3>
 
-          <button
-            type="button"
-            onClick={() => {
-              playHapticClick();
-              onClose();
-            }}
-            className="w-10 h-10 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
-            aria-label="Cerrar modal"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
+ <button
+ type="button"
+ onClick={() => {
+ playHapticClick();
+ onClose();
+ }}
+ className="w-10 h-10 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
+ aria-label="Cerrar modal"
+ >
+ <X className="w-4 h-4" />
+ </button>
+ </div>
 
-        {/* Tabla de Medidas */}
-        <div className="overflow-x-auto border border-bauto-carbon/10 mb-5">
-          <table className="w-full text-xs text-left">
-            <thead className="bg-bauto-perla/80 text-[10px] uppercase font-medium text-bauto-piedra border-b border-bauto-carbon/10">
-              <tr>
-                <th className="px-3.5 py-3 font-normal">Talla</th>
-                <th className="px-3 py-3 font-normal">Pecho</th>
-                <th className="px-3 py-3 font-normal">Cintura</th>
-                <th className="px-3 py-3 font-normal">Cadera</th>
-                <th className="px-3 py-3 font-normal">Largo</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-bauto-carbon/5 text-bauto-carbon font-body">
-              {measurements.map((m) => (
-                <tr key={m.talla} className="hover:bg-bauto-perla/30 transition-colors">
-                  <td className="px-3.5 py-2.5 font-medium text-bauto-carbon">{m.talla}</td>
-                  <td className="px-3 py-2.5">{m.pecho} cm</td>
-                  <td className="px-3 py-2.5">{m.cintura} cm</td>
-                  <td className="px-3 py-2.5">{m.cadera} cm</td>
-                  <td className="px-3 py-2.5">{m.largo} cm</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+ {/* Tabla de Medidas */}
+ <div className="overflow-x-auto mb-5">
+ <table className="w-full text-xs text-left">
+ <thead className="bg-bauto-perla/80 text-[10px] uppercase font-medium text-bauto-piedra ">
+ <tr>
+ <th className="px-3.5 py-3 font-normal">Talla</th>
+ <th className="px-3 py-3 font-normal">Pecho</th>
+ <th className="px-3 py-3 font-normal">Cintura</th>
+ <th className="px-3 py-3 font-normal">Cadera</th>
+ <th className="px-3 py-3 font-normal">Largo</th>
+ </tr>
+ </thead>
+ <tbody className="divide-y divide-bauto-carbon/5 text-bauto-carbon font-body">
+ {measurements.map((m) => (
+ <tr key={m.talla} className="hover:bg-bauto-perla/30 transition-colors">
+ <td className="px-3.5 py-2.5 font-medium text-bauto-carbon">{m.talla}</td>
+ <td className="px-3 py-2.5">{m.pecho} cm</td>
+ <td className="px-3 py-2.5">{m.cintura} cm</td>
+ <td className="px-3 py-2.5">{m.cadera} cm</td>
+ <td className="px-3 py-2.5">{m.largo} cm</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-        {/* Nota Editorial de Calce */}
-        <div className="pt-4 border-t border-bauto-carbon/[0.08] text-xs">
-          <p className="font-editorial italic leading-relaxed text-[11px] text-bauto-piedra">
-            Nuestras siluetas están concebidas para el movimiento libre y la brisa del Caribe. 
-            El corte es holgado y relajado (Relaxed Fit). Para una silueta más entallada, te sugerimos seleccionar una talla menor.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+ {/* Nota Editorial de Calce */}
+ <div className="pt-4 text-xs">
+ <p className="font-editorial italic leading-relaxed text-[11px] text-bauto-piedra">
+ Nuestras siluetas están concebidas para el movimiento libre y la brisa del Caribe. 
+ El corte es holgado y relajado (Relaxed Fit). Para una silueta más entallada, te sugerimos seleccionar una talla menor.
+ </p>
+ </div>
+ </div>
+ </div>
+ );
 }
