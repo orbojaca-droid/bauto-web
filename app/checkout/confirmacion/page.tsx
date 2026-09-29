@@ -45,7 +45,7 @@ function ConfirmationContent() {
     <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24 text-center animate-fade-in font-body">
       
       {/* Sello editorial sutil */}
-      <div className="w-12 h-12 rounded-full border border-bauto-carbon/20 mx-auto flex items-center justify-center text-bauto-carbon mb-6">
+      <div className="w-12 h-12  border border-bauto-carbon/20 mx-auto flex items-center justify-center text-bauto-carbon mb-6">
         <Check className="w-5 h-5 stroke-[1.5]" />
       </div>
 
@@ -95,7 +95,7 @@ function ConfirmationContent() {
         <Link
           href={`/rastreo?guia=${encodeURIComponent(reference)}`}
           onClick={playHapticClick}
-          className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-7 py-3.5  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
         >
           <PackageCheck className="w-4 h-4 stroke-[1.5]" />
           <span>Consultar portal de rastreo</span>
@@ -106,7 +106,7 @@ function ConfirmationContent() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={playHapticClick}
-          className="w-full sm:w-auto px-6 py-3.5 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans flex items-center justify-center gap-2 font-normal"
+          className="w-full sm:w-auto px-6 py-3.5  border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans flex items-center justify-center gap-2 font-normal"
         >
           <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
           <span>Atención concierge</span>

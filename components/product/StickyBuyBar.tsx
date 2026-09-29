@@ -54,7 +54,7 @@ export function StickyBuyBar({
         
         {/* Miniatura y Precio */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-10 h-12 rounded-sm overflow-hidden bg-[#FAF6F0] shrink-0">
+          <div className="w-10 h-12  overflow-hidden bg-[#FAF6F0] shrink-0">
             <img
               src={imageUrl}
               alt={product.name}

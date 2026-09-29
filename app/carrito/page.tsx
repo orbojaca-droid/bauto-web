@@ -128,7 +128,7 @@ export default function CartPage() {
         <Link
           href="/catalogo"
           onClick={playHapticClick}
-          className="px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center gap-2 font-medium"
+          className="px-8 py-3.5  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center gap-2 font-medium"
         >
           <span>Explorar la colección</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -267,7 +267,7 @@ export default function CartPage() {
             </div>
 
             {errorMessage && (
-              <div className="p-3 bg-bauto-danger/10 border border-bauto-danger/20 text-bauto-danger text-xs rounded-sm">
+              <div className="p-3 bg-bauto-danger/10 border border-bauto-danger/20 text-bauto-danger text-xs ">
                 {errorMessage}
               </div>
             )}
@@ -277,7 +277,7 @@ export default function CartPage() {
 
         {/* Columna derecha: Resumen financiero y pago Wompi (5 columnas) */}
         <div className="lg:col-span-5 sticky top-24">
-          <div className="border border-bauto-carbon/10 p-6 sm:p-8 bg-[#FAF6F0]/40 rounded-sm">
+          <div className="border border-bauto-carbon/10 p-6 sm:p-8 bg-[#FAF6F0]/40 ">
             
             <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-5">
               Resumen de la orden

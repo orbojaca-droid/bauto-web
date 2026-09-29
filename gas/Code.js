@@ -336,3 +336,14 @@ function registrarVentaWeb_(payload) {
     } catch (e) {}
   }
 }
+
+/**
+ * Función pública de un solo uso para autorizar los permisos de OAuth (Spreadsheets)
+ * desde el editor de Google Apps Script.
+ */
+function test_autorizarConexionDB() {
+  const ss = SpreadsheetApp.openById(STOCK_SPREADSHEET_ID);
+  const sheet = ss.getSheetByName('STOCK');
+  Logger.log('Acceso exitoso. Filas en STOCK: ' + sheet.getLastRow());
+  return 'Autorizado';
+}

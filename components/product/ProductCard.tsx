@@ -32,7 +32,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       <Link
         href={`/catalogo/producto/${product.slug}`}
         onClick={playHapticClick}
-        className="relative aspect-[3/4] w-full rounded-sm overflow-hidden bg-[#FAF6F0] mb-3 block"
+        className="relative aspect-[3/4] w-full  overflow-hidden bg-[#FAF6F0] mb-3 block"
       >
         <img
           src={imageUrl}
@@ -43,14 +43,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         {/* Badge Exclusivo Tienda Física */}
         {product.isExclusiveInStore && (
-          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
+          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5  bg-white/95 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
             <span>Boutique Santa Marta</span>
           </div>
         )}
 
         {/* Badge de Stock Bajo */}
         {!product.isExclusiveInStore && product.totalStock > 0 && product.totalStock <= 2 && (
-          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
+          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5  bg-white/95 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
             Últimas piezas
           </div>
         )}

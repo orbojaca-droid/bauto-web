@@ -82,7 +82,7 @@ export function Carrito() {
       >
         {/* Tirador Táctil (Drag Handle) solo visible en pantallas móviles */}
         <div className="sm:hidden pt-3 pb-1 flex justify-center">
-          <div className="w-10 h-1 bg-bauto-carbon/20 rounded-full" />
+          <div className="w-10 h-1 bg-bauto-carbon/20 " />
         </div>
 
         {/* Cabecera del Carrito */}
@@ -99,7 +99,7 @@ export function Carrito() {
           <button
             type="button"
             onClick={handleClose}
-            className="w-9 h-9 flex items-center justify-center -mr-2 rounded-full text-bauto-piedra hover:text-bauto-carbon transition-colors"
+            className="w-9 h-9 flex items-center justify-center -mr-2  text-bauto-piedra hover:text-bauto-carbon transition-colors"
             aria-label="Cerrar bolsa"
           >
             <X className="w-4 h-4 stroke-[1.5]" />
@@ -131,7 +131,7 @@ export function Carrito() {
                   handleClose();
                   router.push('/catalogo');
                 }}
-                className="mt-2 px-6 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] font-sans font-medium"
+                className="mt-2 px-6 py-3  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] font-sans font-medium"
               >
                 <span>Explorar colección</span>
               </button>
@@ -185,7 +185,7 @@ export function Carrito() {
             <button
               type="button"
               onClick={handleGoToCheckout}
-              className="w-full py-3.5 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs font-sans font-medium flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-6  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs font-sans font-medium flex items-center justify-center gap-2"
             >
               <span>Continuar con el pago</span>
               <ArrowRight className="w-3.5 h-3.5" />

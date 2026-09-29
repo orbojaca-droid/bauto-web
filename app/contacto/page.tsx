@@ -78,7 +78,7 @@ export default function ContactoPage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playHapticFeedback()}
-              className="w-full py-3 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+              className="w-full py-3 px-6  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-3.5 h-3.5 stroke-[1.5]" />
               <span>Escribir por WhatsApp</span>
@@ -148,7 +148,7 @@ export default function ContactoPage() {
 
           {enviado ? (
             <div className="p-8 text-center border border-bauto-carbon/10 bg-bauto-perla/30 animate-fade-in">
-              <div className="w-10 h-10 rounded-full border border-bauto-carbon/20 mx-auto flex items-center justify-center text-bauto-carbon mb-4">
+              <div className="w-10 h-10  border border-bauto-carbon/20 mx-auto flex items-center justify-center text-bauto-carbon mb-4">
                 <Check className="w-4 h-4 stroke-[1.5]" />
               </div>
               <h3 className="font-title font-light text-lg text-bauto-carbon mb-2 tracking-wide">
@@ -245,7 +245,7 @@ export default function ContactoPage() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+                  className="w-full py-4 px-6  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
                 >
                   <span>Enviar al concierge</span>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />

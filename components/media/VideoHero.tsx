@@ -120,7 +120,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
             <button
               onClick={togglePlay}
               type="button"
-              className="px-3 py-1.5 rounded-full bg-bauto-carbon/40 hover:bg-bauto-carbon/70 backdrop-blur-md border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-bauto-nube/50"
+              className="px-3 py-1.5  bg-bauto-carbon/40 hover:bg-bauto-carbon/70 backdrop-blur-md border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-bauto-nube/50"
               aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
             >
               {isPlaying ? "Pausar" : "Reproducir"}
@@ -128,7 +128,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
             <button
               onClick={toggleMute}
               type="button"
-              className="px-3 py-1.5 rounded-full bg-bauto-carbon/40 hover:bg-bauto-carbon/70 backdrop-blur-md border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-bauto-nube/50"
+              className="px-3 py-1.5  bg-bauto-carbon/40 hover:bg-bauto-carbon/70 backdrop-blur-md border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-bauto-nube/50"
               aria-label={isMuted ? "Activar audio" : "Silenciar audio"}
             >
               {isMuted ? "Sonido" : "Silencio"}

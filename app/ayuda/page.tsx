@@ -139,7 +139,7 @@ export default function AyudaPage() {
           href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, tengo una consulta sobre políticas o mi pedido.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
+          className="inline-flex items-center gap-2 px-8 py-3.5  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
         >
           <MessageCircle className="w-4 h-4 stroke-[1.5]" />
           <span>Atención concierge de taller</span>

@@ -224,7 +224,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={playHapticClick}
-              className="btn-pill-ghost w-full py-3 text-xs font-sans flex items-center justify-center gap-2"
+              className="btn-ghost w-full py-3 text-xs font-sans flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-3.5 h-3.5 text-bauto-carbon/70" />
               <span>Consultar con concierge de taller</span>

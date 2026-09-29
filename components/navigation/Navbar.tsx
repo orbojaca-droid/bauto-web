@@ -76,7 +76,7 @@ export function Navbar() {
                   playHapticClick();
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
-                className="lg:hidden w-11 h-11 flex items-center justify-center -ml-2 rounded-full text-bauto-carbon hover:bg-bauto-perla/80 transition-colors"
+                className="lg:hidden w-11 h-11 flex items-center justify-center -ml-2  text-bauto-carbon hover:bg-bauto-perla/80 transition-colors"
                 aria-label="Abrir menú"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -137,7 +137,7 @@ export function Navbar() {
               >
                 <ShoppingBag className="w-[18px] h-[18px] stroke-[1.5]" />
                 {displayCount > 0 && (
-                  <span className="absolute top-1 right-0.5 flex items-center justify-center min-w-[15px] h-[15px] px-1 text-[8.5px] font-mono font-semibold text-white bg-bauto-carbon rounded-full animate-fade-in">
+                  <span className="absolute top-1 right-0.5 flex items-center justify-center min-w-[15px] h-[15px] px-1 text-[8.5px] font-mono font-semibold text-white bg-bauto-carbon  animate-fade-in">
                     {displayCount}
                   </span>
                 )}

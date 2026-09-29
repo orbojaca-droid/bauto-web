@@ -101,7 +101,7 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
             {formatCOP(item.product.price * item.quantity)}
           </span>
 
-          <div className="flex items-center border border-bauto-carbon/15 rounded-full px-1 py-0.5">
+          <div className="flex items-center border border-bauto-carbon/15  px-1 py-0.5">
             <button
               type="button"
               onClick={handleDecrease}

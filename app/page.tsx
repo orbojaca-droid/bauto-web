@@ -50,7 +50,7 @@ export default async function HomePage() {
           <div className="pt-3">
             <Link
               href="/catalogo"
-              className="btn-pill-primary px-8 py-3.5 text-xs font-sans font-normal shadow-sm"
+              className="btn-primary active:scale-[0.97] transition-transform duration-150 ease-out px-8 py-3.5 text-xs font-sans font-normal shadow-sm"
             >
               <span>Explorar colección</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -152,7 +152,7 @@ export default async function HomePage() {
 
       {/* 5. Boutique en Santa Marta */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="rounded-sm bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-16 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className=" bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-16 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="max-w-xl flex flex-col gap-2">
             <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
               Boutique y taller caribeño
@@ -168,7 +168,7 @@ export default async function HomePage() {
           <div className="shrink-0">
             <Link
               href="/tienda-santa-marta"
-              className="btn-pill-glass px-7 py-3 text-xs font-sans text-bauto-carbon hover:bg-white transition-all shadow-none"
+              className="btn-glass px-7 py-3 text-xs font-sans text-bauto-carbon hover:bg-white transition-all shadow-none"
             >
               <span>Conoce la boutique</span>
               <ArrowRight className="w-3.5 h-3.5" />

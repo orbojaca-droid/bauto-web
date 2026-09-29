@@ -38,7 +38,7 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
       onMouseEnter={() => setIsZooming(true)}
       onMouseLeave={() => setIsZooming(false)}
       onMouseMove={handleMouseMove}
-      className="relative w-full aspect-[3/4] rounded-sm overflow-hidden bg-[#FAF6F0] cursor-crosshair select-none group"
+      className="relative w-full aspect-[3/4]  overflow-hidden bg-[#FAF6F0] cursor-crosshair select-none group"
     >
       {/* Imagen Estándar */}
       <img
@@ -62,7 +62,7 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
       )}
 
       {/* Indicador Discreto */}
-      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[9px] uppercase tracking-[0.2em] text-bauto-piedra/80 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity border border-bauto-carbon/[0.06]">
+      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1  bg-white/90 backdrop-blur-sm text-[9px] uppercase tracking-[0.2em] text-bauto-piedra/80 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity border border-bauto-carbon/[0.06]">
         Detalle Textil
       </div>
     </div>

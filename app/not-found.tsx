@@ -38,7 +38,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
           <Link
             href="/catalogo"
-            className="w-full sm:w-auto px-7 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-medium"
+            className="w-full sm:w-auto px-7 py-3  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-medium"
           >
             <span>Ver catálogo</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -46,7 +46,7 @@ export default function NotFound() {
 
           <Link
             href="/"
-            className="w-full sm:w-auto px-7 py-3 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-normal"
+            className="w-full sm:w-auto px-7 py-3  border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-normal"
           >
             <span>Volver al inicio</span>
           </Link>

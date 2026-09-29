@@ -84,7 +84,7 @@ export default function FilosofiaPage() {
       <div className="mt-20 text-center">
         <Link
           href="/catalogo"
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
+          className="inline-flex items-center gap-3 px-8 py-4  bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
         >
           <span>Explorar siluetas de autor</span>
           <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />

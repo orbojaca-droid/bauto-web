@@ -123,7 +123,7 @@ function TrackingContent() {
               </strong>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bauto-arena/20 text-bauto-carbon text-xs font-normal">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5  bg-bauto-arena/20 text-bauto-carbon text-xs font-normal">
               <Sparkles className="w-3.5 h-3.5 text-bauto-terracota" />
               <span>{trackingData.estadoLegible || 'En proceso'}</span>
             </div>
@@ -145,7 +145,7 @@ function TrackingContent() {
                 <div key={idx} className="flex items-start gap-4">
                   <div className="flex flex-col items-center">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-medium ${
+                      className={`w-7 h-7  flex items-center justify-center text-xs font-mono font-medium ${
                         m.completed
                           ? 'bg-bauto-carbon text-white'
                           : m.current
@@ -181,7 +181,7 @@ function TrackingContent() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={playHapticClick}
-              className="px-5 py-2.5 rounded-full border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-nube transition-colors flex items-center gap-2 text-xs font-sans"
+              className="px-5 py-2.5  border border-bauto-carbon/20 text-bauto-carbon hover:bg-bauto-nube transition-colors flex items-center gap-2 text-xs font-sans"
             >
               <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
               <span>Contactar al asesor</span>
