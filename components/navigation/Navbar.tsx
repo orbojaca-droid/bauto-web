@@ -53,6 +53,7 @@ export function Navbar() {
     { href: '/tienda-santa-marta', label: 'Boutique Santa Marta', icon: MapPin },
     { href: '/rastreo', label: 'Rastreo', icon: PackageCheck },
     { href: '/filosofia', label: 'Filosofía', icon: BookOpen },
+    { href: '/journal', label: 'Diario', icon: BookOpen },
   ];
 
   return (

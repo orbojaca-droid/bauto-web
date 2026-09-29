@@ -85,6 +85,7 @@ export function Footer() {
               <li><Link href="/rastreo" className="hover:text-bauto-terracota transition-colors">Rastrear mi envío</Link></li>
               <li><Link href="/tienda-santa-marta" className="hover:text-bauto-terracota transition-colors">Boutique Santa Marta</Link></li>
               <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Filosofía y fibras nobles</Link></li>
+              <li><Link href="/journal" className="hover:text-bauto-terracota transition-colors">Diario BAUTO</Link></li>
               <li><Link href="/ayuda" className="hover:text-bauto-terracota transition-colors">Políticas y cambios</Link></li>
               <li><Link href="/ayuda#retracto" className="hover:text-bauto-terracota transition-colors">Derecho de retracto (Ley 1480)</Link></li>
               <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">Atención concierge</Link></li>
