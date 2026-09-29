@@ -8,7 +8,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, MapPin, Feather, Compass, Wind } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { fetchStockProducts } from '../lib/sheets';
 import { ProductCard } from '../components/product/ProductCard';
 import { Product } from '../types/catalog';
@@ -28,165 +28,139 @@ export default async function HomePage() {
   const curatedDrops = products.filter((p) => p.totalStock > 0).slice(0, 8);
 
   return (
-    <div className="flex flex-col gap-16 sm:gap-24 pb-16">
+    <div className="flex flex-col gap-20 sm:gap-32 pb-24">
       
-      {/* 1. Hero Cinemático */}
-      <section className="relative min-h-[calc(100vh-80px)] min-h-[calc(100dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 text-center overflow-hidden">
-        {/* Fondo Gradiente Cálido Caribeño */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF6F0] via-[#FAF9F6] to-[#F2F0EB] pointer-events-none" />
-        
-        {/* Orbes Difusos Cálidos de la Brisa */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-bauto-terracota/5 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-bauto-oceano/5 blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6 animate-fade-in">
+      {/* 1. Hero Editorial Minimalista */}
+      <section className="relative min-h-[calc(88vh-80px)] min-h-[calc(88dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-7 animate-fade-in">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-bauto-perla/80 border border-bauto-carbon/5 text-xs text-bauto-piedra shadow-subtle">
-            <Wind className="w-3.5 h-3.5 text-bauto-oceano" />
-            <span className="font-editorial italic font-medium">Santa Marta • Resort Wear Caribe</span>
-          </div>
+          <span className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-bauto-piedra font-normal block">
+            Santa Marta • Caribe Colombiano
+          </span>
 
-          <h1 className="font-title font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-bauto-carbon leading-[1.08]">
-            Confort consciente en <span className="text-bauto-terracota">lino noble</span>
+          <h1 className="font-title font-light text-4xl sm:text-6xl lg:text-7xl tracking-[-0.03em] text-bauto-carbon max-w-3xl leading-[1.08]">
+            El silencio y el confort del lino noble
           </h1>
 
-          <p className="font-editorial italic text-base sm:text-xl text-bauto-piedra max-w-2xl font-normal leading-relaxed">
-            Prendas de autor concebidas para habitar el trópico. Siluetas libres, artesanía sincera y aprecio por la arruga noble desde el Caribe colombiano.
+          <p className="font-editorial italic text-base sm:text-xl text-bauto-piedra max-w-xl font-normal leading-relaxed">
+            Prendas de autor concebidas para habitar el trópico con calma, ligereza y aprecio por la arruga noble.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+          <div className="pt-3">
             <Link
               href="/catalogo"
-              className="btn-pill-primary px-8 py-4 text-sm tracking-wide shadow-elevated"
+              className="btn-pill-primary px-8 py-3.5 text-xs tracking-[0.2em] uppercase shadow-sm"
             >
-              <span>Explorar la Colección</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              href="/tienda-santa-marta"
-              className="btn-pill-glass px-7 py-4 text-sm tracking-wide flex items-center gap-2"
-            >
-              <MapPin className="w-4 h-4 text-bauto-terracota" />
-              <span>Boutique Calle 20</span>
+              <span>Explorar Colección</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
         </div>
       </section>
 
-      {/* 2. Curated Drops (Prendas Destacadas) */}
+      {/* 2. Curated Drops (Escaparate de Temporada) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
           <div>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra block mb-1">
-              Selección de Temporada
+            <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-1">
+              Selección
             </span>
-            <h2 className="font-title font-bold text-2xl sm:text-3xl text-bauto-carbon">
-              Curated Drops
+            <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
+              Edición de Temporada
             </h2>
           </div>
 
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-bauto-terracota hover:text-bauto-terracota-dark transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-normal tracking-[0.15em] uppercase text-bauto-carbon hover:text-bauto-terracota transition-colors border-b border-bauto-carbon/20 hover:border-bauto-terracota pb-0.5"
           >
-            <span>Ver toda la colección ({products.length} piezas)</span>
+            <span>Ver Colección Completa ({products.length})</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         {curatedDrops.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 sm:gap-x-8 gap-y-12 sm:gap-y-16">
             {curatedDrops.map((product, idx) => (
               <ProductCard key={product.id || product.reference} product={product} priority={idx < 4} />
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center text-xs text-bauto-piedra bg-bauto-perla/40 rounded-card p-8">
-            <Compass className="w-8 h-8 text-bauto-terracota mx-auto mb-2 opacity-60" />
+          <div className="py-20 text-center text-xs text-bauto-piedra">
             <p className="font-editorial italic">Cargando las últimas prendas del taller...</p>
           </div>
         )}
       </section>
 
-      {/* 3. Pilares Conceptuales de Marca BAUTO */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="bg-bauto-perla/70 rounded-card p-8 sm:p-14 border border-bauto-carbon/5 shadow-subtle">
-          
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-terracota font-semibold block mb-2">
-              Manifiesto Textil
-            </span>
-            <h2 className="font-title font-bold text-2xl sm:text-3xl text-bauto-carbon">
-              El Universo Sensorial BAUTO
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-            
-            <div className="flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-bauto-terracota/10 text-bauto-terracota flex items-center justify-center">
-                <Feather className="w-5 h-5" />
-              </div>
-              <h3 className="font-title font-semibold text-base text-bauto-carbon">
-                1. Cuerpo Consciente
-              </h3>
-              <p className="text-xs text-bauto-piedra leading-relaxed">
-                Atención al tacto y confort activo. Diseñamos piezas ligeras que permiten a la piel respirar con libertad bajo las temperaturas del trópico.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-bauto-oceano/10 text-bauto-oceano flex items-center justify-center">
-                <Wind className="w-5 h-5" />
-              </div>
-              <h3 className="font-title font-semibold text-base text-bauto-carbon">
-                2. Movimiento del Trópico
-              </h3>
-              <p className="text-xs text-bauto-piedra leading-relaxed">
-                Siluetas fluidas que acompañan el andar relajado. Cortes amplios sin rigideces que cobran vida propia con la brisa marina.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-bauto-trigo/10 text-bauto-trigo flex items-center justify-center">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <h3 className="font-title font-semibold text-base text-bauto-carbon">
-                3. Tejido de Reciprocidad
-              </h3>
-              <p className="text-xs text-bauto-piedra leading-relaxed">
-                Lino puro 100%, fibras nobles y confección de autor. Cada prenda honra el tiempo de trabajo artesanal y la longevidad del tejido.
-              </p>
-            </div>
-
-          </div>
+      {/* 3. Manifiesto Textil (Editorial Spread) */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-20 border-t border-bauto-carbon/5">
+        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-4">
+            Manifiesto
+          </span>
+          <blockquote className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon leading-snug font-normal">
+            «Diseñamos prendas para habitar el Caribe con calma, ligereza y aprecio por la arruga noble.»
+          </blockquote>
         </div>
-      </section>
 
-      {/* 4. Invitación a la Boutique en Santa Marta */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="relative rounded-card overflow-hidden bg-bauto-carbon text-white p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-elevated">
-          <div className="max-w-lg flex flex-col gap-3 text-center md:text-left">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-trigo font-semibold">
-              Boutique & Taller Físico
-            </span>
-            <h2 className="font-title font-bold text-2xl sm:text-3xl tracking-tight">
-              Habita la experiencia en Calle 20 # 2-36
-            </h2>
-            <p className="text-xs text-bauto-perla/80 leading-relaxed font-body">
-              En pleno Centro Histórico de Santa Marta, a pasos del mar. Ven a sentir la textura real del lino, probarte las piezas exclusivas y recibir atención personalizada.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 text-left">
+          
+          <div className="flex flex-col gap-2.5">
+            <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">01</span>
+            <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+              Cuerpo Consciente
+            </h3>
+            <p className="text-xs text-bauto-piedra leading-relaxed font-light">
+              Atención al tacto y confort activo. Piezas livianas de fibra natural que regulan la temperatura y permiten a la piel respirar en libertad.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3.5 shrink-0">
+          <div className="flex flex-col gap-2.5">
+            <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">02</span>
+            <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+              Movimiento del Trópico
+            </h3>
+            <p className="text-xs text-bauto-piedra leading-relaxed font-light">
+              Siluetas holgadas que acompañan el andar sereno. Cortes sin rigideces que cobran vida y fluidez con la brisa marina de Santa Marta.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">03</span>
+            <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+              Tejido de Reciprocidad
+            </h3>
+            <p className="text-xs text-bauto-piedra leading-relaxed font-light">
+              Lino puro 100% y confección de autor. Cada prenda honra el oficio artesanal y la longevidad del tejido frente a la prisa del consumo.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. Boutique en Santa Marta */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="rounded-sm bg-[#F2F0EB]/50 border-t border-b border-bauto-carbon/10 py-12 sm:py-16 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+          <div className="max-w-xl flex flex-col gap-2">
+            <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
+              Boutique & Taller Caribe
+            </span>
+            <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
+              Habita el espacio en Calle 20 # 2-36
+            </h2>
+            <p className="font-editorial italic text-xs sm:text-sm text-bauto-piedra leading-relaxed">
+              En pleno Centro Histórico de Santa Marta, a dos cuadras del mar. Descubre la textura real del lino y vive una atención personalizada y sosegada.
+            </p>
+          </div>
+
+          <div className="shrink-0">
             <Link
               href="/tienda-santa-marta"
-              className="btn-pill-primary bg-bauto-terracota hover:bg-bauto-terracota-dark px-7 py-3.5 text-xs tracking-wide text-white shadow-elevated"
+              className="btn-pill-glass px-7 py-3 text-xs tracking-[0.15em] uppercase text-bauto-carbon hover:bg-white transition-all shadow-none"
             >
-              <span>Ver Ubicación & Horarios</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Conoce la Boutique</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

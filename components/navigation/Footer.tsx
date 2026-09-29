@@ -9,60 +9,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, Instagram, ShieldCheck, Truck, RefreshCw, Sparkles } from 'lucide-react';
+import { MapPin, Mail, Instagram } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="mt-auto bg-bauto-perla/80 border-t border-bauto-carbon/10 text-bauto-carbon">
-      
-      {/* Franja de Confianza y Filosofía Resort Wear */}
-      <div className="border-b border-bauto-carbon/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
-            
-            <div className="flex items-center gap-3.5 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-full bg-bauto-terracota/10 text-bauto-terracota">
-                <Truck className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold tracking-wide uppercase">Envío de Cortesía</h4>
-                <p className="text-[11px] text-bauto-piedra">En compras superiores a $300.000 COP</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3.5 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-full bg-bauto-terracota/10 text-bauto-terracota">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold tracking-wide uppercase">Fibras Nobles 100%</h4>
-                <p className="text-[11px] text-bauto-piedra">Lino europeo y confección caribeña</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3.5 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-full bg-bauto-terracota/10 text-bauto-terracota">
-                <RefreshCw className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold tracking-wide uppercase">Primer Cambio Ágil</h4>
-                <p className="text-[11px] text-bauto-piedra">Talla garantizada y derecho de retracto</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3.5 justify-center sm:justify-start">
-              <div className="p-2.5 rounded-full bg-bauto-terracota/10 text-bauto-terracota">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold tracking-wide uppercase">Pago Blindado</h4>
-                <p className="text-[11px] text-bauto-piedra">Wompi PCI-DSS • PSE • Bancolombia • Addi</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <footer className="mt-auto bg-[#FAF9F6] border-t border-bauto-carbon/[0.06] text-bauto-carbon">
 
       {/* Cuerpo Principal del Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">

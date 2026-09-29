@@ -131,12 +131,12 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={handleOpenCart}
-                className="relative flex items-center justify-center w-11 h-11 rounded-full bg-bauto-perla/80 hover:bg-bauto-perla border border-bauto-carbon/5 text-bauto-carbon transition-all active:scale-95"
+                className="relative flex items-center justify-center w-10 h-10 text-bauto-carbon hover:text-bauto-terracota transition-colors active:scale-95"
                 aria-label={`Ver bolsa de compras con ${displayCount} prendas`}
               >
-                <ShoppingBag className="w-4 h-4 text-bauto-carbon" />
+                <ShoppingBag className="w-[18px] h-[18px] stroke-[1.5]" />
                 {displayCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-mono font-bold text-white bg-bauto-terracota rounded-full shadow-sm animate-fade-in">
+                  <span className="absolute top-1 right-0.5 flex items-center justify-center min-w-[15px] h-[15px] px-1 text-[8.5px] font-mono font-semibold text-white bg-bauto-carbon rounded-full animate-fade-in">
                     {displayCount}
                   </span>
                 )}

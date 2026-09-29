@@ -65,24 +65,12 @@ export function WeatherWidget() {
 
   return (
     <div 
-      className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-pill bg-bauto-perla/70 hover:bg-bauto-perla border border-bauto-carbon/5 transition-colors cursor-default"
-      title={`${weather.phrase} (Sensación: ${weather.apparentTemperature}°C, Viento: ${weather.windSpeedKmh} km/h)`}
+      className="hidden lg:flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase text-bauto-piedra/70 cursor-default select-none transition-colors hover:text-bauto-carbon"
+      title={`${weather.phrase} • Sensación ${weather.apparentTemperature}°C • Viento ${weather.windSpeedKmh} km/h`}
     >
-      <span className="flex items-center gap-1 text-[11px] text-bauto-carbon font-medium">
-        {weather.temperature > 28 ? (
-          <Sun className="w-3.5 h-3.5 text-bauto-trigo" />
-        ) : (
-          <CloudSun className="w-3.5 h-3.5 text-bauto-oceano" />
-        )}
-        <span>Santa Marta</span>
-        <span className="font-mono font-semibold text-bauto-terracota">
-          {Math.round(weather.temperature)}°C
-        </span>
-      </span>
-      <span className="text-bauto-piedra/30">•</span>
-      <span className="text-[11px] text-bauto-piedra font-normal truncate max-w-[130px]">
-        {weather.condition}
-      </span>
+      <span>Santa Marta</span>
+      <span>•</span>
+      <span className="font-mono">{Math.round(weather.temperature)}°C</span>
     </div>
   );
 }

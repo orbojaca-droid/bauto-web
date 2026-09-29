@@ -29,11 +29,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
   return (
     <article className="group relative flex flex-col animate-fade-in">
-      {/* Contenedor de Imagen Proporción 3:4 */}
+      {/* Contenedor de Imagen de Pasarela */}
       <Link
         href={`/catalogo/producto/${product.slug}`}
         onClick={playHapticClick}
-        className="relative aspect-[3/4] w-full rounded-card-sm overflow-hidden bg-bauto-perla border border-bauto-carbon/5 mb-3.5 block"
+        className="relative aspect-[3/4] w-full rounded-sm overflow-hidden bg-[#FAF6F0] mb-3 block"
       >
         <img
           src={imageUrl}
@@ -44,24 +44,23 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         {/* Badge Exclusivo Tienda Física */}
         {product.isExclusiveInStore && (
-          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-pill bg-bauto-trigo text-white text-[10px] font-semibold tracking-wider uppercase shadow-sm">
-            <MapPin className="w-3 h-3" />
-            <span>Exclusivo Tienda</span>
+          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase shadow-sm">
+            <span>Boutique Santa Marta</span>
           </div>
         )}
 
         {/* Badge de Stock Bajo */}
         {!product.isExclusiveInStore && product.totalStock > 0 && product.totalStock <= 2 && (
-          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-pill bg-bauto-nube/90 backdrop-blur-sm text-bauto-terracota text-[9px] font-semibold tracking-wider uppercase border border-bauto-carbon/5">
+          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase">
             Últimas piezas
           </div>
         )}
 
         {/* Agotado */}
         {product.totalStock === 0 && (
-          <div className="absolute inset-0 bg-bauto-nube/70 backdrop-blur-[2px] flex items-center justify-center">
-            <span className="px-3.5 py-1 rounded-pill bg-bauto-carbon text-white text-[10px] font-semibold tracking-wider uppercase">
-              Agotado Temporalmente
+          <div className="absolute inset-0 bg-[#FAF9F6]/80 backdrop-blur-[2px] flex items-center justify-center">
+            <span className="text-[10px] font-medium tracking-[0.25em] uppercase text-bauto-piedra border-b border-bauto-piedra/30 pb-0.5">
+              Agotado
             </span>
           </div>
         )}
@@ -69,23 +68,19 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
       {/* Información de la Prenda */}
       <div className="flex flex-col gap-1 text-left">
-        <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block font-normal">
+        <span className="text-[9px] tracking-[0.25em] uppercase text-bauto-piedra/80 block font-normal">
           {product.tipologia || 'Resort Wear'}
         </span>
 
-        <h3 className="font-body font-medium text-xs sm:text-sm text-bauto-carbon group-hover:text-bauto-terracota transition-colors line-clamp-1">
+        <h3 className="font-title font-normal text-xs sm:text-sm text-bauto-carbon group-hover:text-bauto-terracota transition-colors line-clamp-1">
           <Link href={`/catalogo/producto/${product.slug}`} onClick={playHapticClick}>
             {product.name}
           </Link>
         </h3>
 
-        <div className="flex items-baseline justify-between pt-0.5">
-          <span className="font-mono font-semibold text-xs sm:text-sm text-bauto-terracota">
+        <div className="pt-0.5">
+          <span className="font-mono text-xs sm:text-sm text-bauto-carbon/90 font-medium">
             {formatCOP(product.price)}
-          </span>
-
-          <span className="text-[10px] font-mono text-bauto-piedra/60">
-            {product.reference}
           </span>
         </div>
       </div>
