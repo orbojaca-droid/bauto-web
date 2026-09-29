@@ -1,94 +1,93 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Filosofía de Marca
- * @Propósito: Manifiesto editorial sobre Cuerpo Consciente, Lino Puro y la Arruga Noble
+ * @Propósito: Manifiesto editorial sobre Cuerpo Consciente, Movimiento del Trópico y Tejido de Reciprocidad bajo estética Quiet Luxury
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Bajo - Página editorial estática
+ * @Riesgo_Evaluado: Controlado - Navegación canónica intacta
  */
 
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Feather, Wind, Sparkles, Heart } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Filosofía & Manifiesto | BAUTO Resort Wear',
   description:
-    'Cuerpo consciente, movimiento del trópico y aprecio por la arruga noble del lino puro. Nuestra filosofía de confección en Santa Marta.',
+    'Cuerpo consciente, movimiento del trópico y tejido de reciprocidad. Nuestra filosofía de confección en Santa Marta con fibras nobles.',
 };
 
 export default function FilosofiaPage() {
+  const pillars = [
+    {
+      num: '01',
+      eyebrow: 'Ergonomía & Sensación',
+      title: 'Cuerpo Consciente',
+      desc: 'Diseñamos prendas para habitar sin rigidez ni artificio. Cada patrón nace con una holgura generosa que respeta el reposo y la respiración de la piel. En un mundo saturado de fibras sintéticas y siluetas opresivas, BAUTO reivindica el contacto directo con fibras vivas: lino puro, algodones nobles y rayones fluidos que se adaptan con gracia al calor costero.',
+    },
+    {
+      num: '02',
+      eyebrow: 'El Elogio de la Arruga Noble',
+      title: 'Movimiento del Trópico',
+      desc: 'La arruga en las fibras nobles no es un descuido, sino la firma inequívoca de su pureza orgánica. El tejido dialoga con el viento, acompaña el paso sereno y guarda la memoria de un día vivido frente al mar. Nuestras siluetas son térmicamente inteligentes: conservan el frescor bajo el sol caribeño y acogen el cuerpo con templanza cuando arrecia la brisa nocturna.',
+    },
+    {
+      num: '03',
+      eyebrow: 'Taller Propio & Tirajes Ínfimos',
+      title: 'Tejido de Reciprocidad',
+      desc: 'Rechazamos de raíz la sobreproducción masiva. Cortamos y confeccionamos piezas en lotes diminutos de una a tres unidades por talla en nuestro atelier de Santa Marta. Cada acabado es inspeccionado con manos artesanas y cada prenda se perfuma antes de su viaje, creando un pacto silencioso de durabilidad y respeto entre quien confecciona y quien viste.',
+    },
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 animate-fade-in">
+    <div className="max-w-4xl mx-auto px-6 lg:px-8 py-16 sm:py-24 animate-fade-in font-body">
       
-      {/* Encabezado */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-terracota font-semibold block mb-2">
-          Manifiesto Editorial
+      {/* Encabezado Editorial */}
+      <div className="text-center max-w-2xl mx-auto mb-20">
+        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
+          Manifiesto BAUTO
         </span>
-        <h1 className="font-title font-bold text-3xl sm:text-5xl text-bauto-carbon mb-4 leading-tight">
+        <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-6 tracking-wide leading-tight">
           Cuerpo Consciente & El Movimiento del Trópico
         </h1>
         <p className="font-editorial italic text-base sm:text-lg text-bauto-piedra leading-relaxed">
-          Diseñamos prendas para habitar el Caribe sin prisas, con holgura y en íntima sintonía con la brisa.
+          Prendas creadas para habitar el Caribe sin prisas, con holgura serena y en íntima sintonía con la brisa.
         </p>
       </div>
 
-      {/* Contenido Editorial Principal */}
-      <div className="flex flex-col gap-12 text-sm text-bauto-carbon leading-relaxed">
-        
-        {/* Pilar 1: La Arruga Noble */}
-        <div className="bg-bauto-perla/80 rounded-card p-6 sm:p-10 border border-bauto-carbon/5">
-          <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-bauto-terracota mb-3">
-            <Feather className="w-4 h-4" />
-            <span>El Elogio de la Arruga Noble</span>
-          </div>
-          <h2 className="font-title font-bold text-xl sm:text-2xl text-bauto-carbon mb-3">
-            El lino no se somete, se disfruta
-          </h2>
-          <p className="text-xs sm:text-sm text-bauto-piedra leading-relaxed font-body">
-            En un mundo apresurado que impone telas sintéticas y planchados rígidos, BAUTO celebra la ondulación viva del lino 100%. La arruga noble no es un descuido: es la firma de una fibra pura que se acomoda al cuerpo, que respira con el viento y que cuenta la historia de un día habitado junto al mar.
-          </p>
-        </div>
+      {/* Los Tres Pilares Canónicos */}
+      <div className="divide-y divide-bauto-carbon/10 border-t border-b border-bauto-carbon/10">
+        {pillars.map((pillar) => (
+          <article key={pillar.num} className="py-12 sm:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-start">
+            <div className="md:col-span-3">
+              <span className="font-title font-light text-4xl sm:text-5xl text-bauto-piedra/40 block mb-2">
+                {pillar.num}
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block font-normal">
+                {pillar.eyebrow}
+              </span>
+            </div>
 
-        {/* Pilar 2: Confección Consciente y Lotes Pequeños */}
-        <div className="bg-[#FAF6F0] rounded-card p-6 sm:p-10 border border-[#E8DEC8]">
-          <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-bauto-arena mb-3">
-            <Sparkles className="w-4 h-4 text-bauto-terracota" />
-            <span>Sastrería en Lotes Reducidos</span>
-          </div>
-          <h2 className="font-title font-bold text-xl sm:text-2xl text-bauto-carbon mb-3">
-            Prendas de 1 a 3 unidades por talla
-          </h2>
-          <p className="text-xs sm:text-sm text-bauto-piedra leading-relaxed font-body">
-            Rechazamos la sobreproducción masiva. Cortamos y confeccionamos piezas en cantidades limitadas en nuestro taller propio. Cada costura es revisada manualmente y cada prenda es perfumada antes de viajar, garantizando que quien viste BAUTO porta una pieza casi irrepetible.
-          </p>
-        </div>
-
-        {/* Pilar 3: Confort Activo frente al Clima */}
-        <div className="bg-bauto-perla/60 rounded-card p-6 sm:p-10 border border-bauto-carbon/5">
-          <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-bauto-oceano mb-3">
-            <Wind className="w-4 h-4" />
-            <span>Termorregulación Natural</span>
-          </div>
-          <h2 className="font-title font-bold text-xl sm:text-2xl text-bauto-carbon mb-3">
-            La respuesta al calor húmedo de la costa
-          </h2>
-          <p className="text-xs sm:text-sm text-bauto-piedra leading-relaxed font-body">
-            El lino es una fibra vegetal hueca capaz de absorber hasta el 20% de su peso en humedad sin sentirse mojada al tacto. Actúa como un aislante térmico inteligente: mantiene el cuerpo fresco bajo el sol del mediodía y templado cuando cae la brisa nocturna en la playa.
-          </p>
-        </div>
-
+            <div className="md:col-span-9">
+              <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-4 tracking-wide">
+                {pillar.title}
+              </h2>
+              <p className="text-sm text-bauto-piedra leading-relaxed font-body">
+                {pillar.desc}
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
 
       {/* Llamado a la Acción al Final */}
-      <div className="mt-16 text-center">
+      <div className="mt-20 text-center">
         <Link
           href="/catalogo"
-          className="btn-pill-primary px-8 py-4 text-xs tracking-wide shadow-elevated"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs uppercase tracking-[0.2em] font-medium"
         >
-          <span>Descubrir las Prendas en Lino Puro</span>
-          <ArrowRight className="w-4 h-4" />
+          <span>Explorar Siluetas de Autor</span>
+          <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />
         </Link>
       </div>
 

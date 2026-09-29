@@ -1,15 +1,15 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 2: Carrito
- * @Propósito: Módulo de ceremonia de obsequio con previsualización en 'Lora' Italic
+ * @Propósito: Módulo de ceremonia de obsequio con pliego de papel de algodón y caligrafía 'Lora' Italic
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Bajo - UI de configuración de empaque de regalo
+ * @Riesgo_Evaluado: Controlado - Conexión íntegra con Zustand
  */
 
 import React from 'react';
-import { Gift, Sparkles } from 'lucide-react';
+import { Gift } from 'lucide-react';
 import { useCartStore } from '../../lib/cartStore';
 import { playHapticClick } from '../../lib/sound';
 
@@ -33,18 +33,14 @@ export function GiftCeremony() {
   };
 
   return (
-    <div className="py-4 border-b border-bauto-carbon/5">
+    <div className="py-4 border-b border-bauto-carbon/10 font-body">
       {/* Selector de Empaque de Regalo */}
       <div className="flex items-center justify-between cursor-pointer" onClick={handleToggle}>
-        <div className="flex items-center gap-2.5">
-          <div className={`p-2 rounded-full transition-colors ${
-            isGiftPackaging ? 'bg-bauto-terracota text-white' : 'bg-bauto-carbon/5 text-bauto-piedra'
-          }`}>
-            <Gift className="w-4 h-4" />
-          </div>
+        <div className="flex items-center gap-3">
+          <Gift className="w-4 h-4 text-bauto-carbon/70 stroke-[1.25]" />
           <div>
-            <h4 className="text-xs font-semibold text-bauto-carbon">Empaque para Obsequio</h4>
-            <p className="text-[11px] text-bauto-piedra">Caja rígida artesanal y tarjeta BAUTO</p>
+            <h4 className="text-xs font-normal text-bauto-carbon">Presentación para Obsequio</h4>
+            <p className="text-[11px] text-bauto-piedra">Caja rígida artesanal y tarjeta caligráfica BAUTO</p>
           </div>
         </div>
 
@@ -54,7 +50,7 @@ export function GiftCeremony() {
           role="switch"
           aria-checked={isGiftPackaging}
           className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-            isGiftPackaging ? 'bg-bauto-terracota' : 'bg-bauto-carbon/20'
+            isGiftPackaging ? 'bg-bauto-carbon' : 'bg-bauto-carbon/15'
           }`}
         >
           <span
@@ -69,10 +65,10 @@ export function GiftCeremony() {
       {isGiftPackaging && (
         <div className="mt-3.5 pt-3 border-t border-bauto-carbon/5 flex flex-col gap-2.5 animate-slide-up">
           <div className="flex items-center justify-between text-[11px]">
-            <label htmlFor="dedication" className="font-medium text-bauto-carbon">
+            <label htmlFor="dedication" className="font-normal text-bauto-carbon">
               Dedicatoria de puño y letra:
             </label>
-            <span className="font-mono text-[10px] text-bauto-piedra">
+            <span className="text-[10px] text-bauto-piedra">
               {giftDedicationNote.length}/{MAX_CHARS}
             </span>
           </div>
@@ -84,17 +80,16 @@ export function GiftCeremony() {
             placeholder="Escribe el mensaje para quien recibe las prendas..."
             rows={2}
             maxLength={MAX_CHARS}
-            className="w-full text-xs p-3 rounded-card-sm bg-bauto-perla/80 border border-bauto-carbon/10 focus:border-bauto-terracota focus:outline-none transition-colors resize-none text-bauto-carbon placeholder:text-bauto-piedra/60 font-body"
+            className="w-full text-xs p-3 bg-transparent border-b border-bauto-carbon/20 focus:border-bauto-carbon focus:outline-none transition-colors resize-none text-bauto-carbon placeholder:text-bauto-piedra/50 font-body rounded-none"
           />
 
-          {/* Tarjeta de Previsualización en 'Lora' SemiBold Italic */}
+          {/* Tarjeta de Previsualización en Papel de Algodón y 'Lora' Italic */}
           {giftDedicationNote.trim() && (
-            <div className="p-3.5 rounded-card-sm bg-[#FAF6F0] border border-[#E8DEC8] shadow-subtle">
-              <div className="flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-bauto-arena font-semibold mb-1">
-                <Sparkles className="w-3 h-3 text-bauto-terracota" />
-                <span>Tarjeta BAUTO de Regalo</span>
-              </div>
-              <p className="font-editorial italic text-xs text-bauto-carbon/90 leading-relaxed font-semibold">
+            <div className="p-4 bg-[#FAF6F0] border-l-2 border-bauto-arena shadow-sm mt-1">
+              <span className="text-[10px] tracking-widest uppercase text-bauto-piedra block mb-1">
+                Tarjeta BAUTO
+              </span>
+              <p className="font-editorial italic text-xs text-bauto-carbon leading-relaxed">
                 "{giftDedicationNote}"
               </p>
             </div>

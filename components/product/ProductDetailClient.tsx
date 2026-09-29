@@ -11,16 +11,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  ShoppingBag,
-  Sparkles,
-  ShieldCheck,
-  Truck,
   MessageCircle,
-  MapPin,
   Check,
-  Feather,
-  Sun,
-  Ruler,
 } from 'lucide-react';
 import { Product, Talla } from '../../types/catalog';
 import { useCartStore } from '../../lib/cartStore';
@@ -96,10 +88,10 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                       playHapticClick();
                       setSelectedImage(img);
                     }}
-                    className={`relative w-16 h-20 sm:w-20 sm:h-24 rounded-card-sm overflow-hidden bg-bauto-perla shrink-0 border transition-all ${
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 overflow-hidden bg-[#FAF6F0] shrink-0 transition-all ${
                       isCurrent
-                        ? 'border-bauto-terracota shadow-sm ring-1 ring-bauto-terracota'
-                        : 'border-bauto-carbon/10 hover:border-bauto-carbon/30 opacity-75 hover:opacity-100'
+                        ? 'border border-bauto-carbon opacity-100'
+                        : 'border border-transparent opacity-50 hover:opacity-100'
                     }`}
                   >
                     <img
@@ -130,59 +122,55 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                 {product.tipologia || 'Resort Wear'}
               </span>
               <span className="text-bauto-piedra/30">•</span>
-              <span className="font-mono text-[10px] text-bauto-piedra/70">
+              <span className="font-body text-[10px] text-bauto-piedra/70">
                 {product.reference}
               </span>
             </div>
 
-            <h1 className="font-title font-bold text-2xl sm:text-3xl tracking-tight text-bauto-carbon mb-2">
+            <h1 className="font-title font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon mb-2">
               {product.name}
             </h1>
 
             <div className="flex items-baseline gap-3">
-              <span className="font-mono font-bold text-2xl text-bauto-terracota">
+              <span className="font-body text-xl sm:text-2xl text-bauto-carbon font-normal">
                 {formatCOP(product.price)}
               </span>
-              <span className="text-xs text-bauto-piedra">IVA incluido</span>
+              <span className="text-[10px] text-bauto-piedra/70 uppercase tracking-widest">IVA incluido</span>
             </div>
           </div>
 
           {/* Badge Exclusivo Tienda Física */}
           {isExclusive && (
-            <div className="p-3 rounded-card-sm bg-bauto-trigo/15 border border-bauto-trigo/30 text-bauto-carbon flex items-start gap-2.5 text-xs">
-              <MapPin className="w-4 h-4 text-bauto-trigo shrink-0 mt-0.5" />
-              <div>
-                <strong className="font-semibold block">Pieza Única en Tienda Física</strong>
-                <p className="text-[11px] text-bauto-piedra mt-0.5">
-                  Esta prenda tiene inventario reservado en Calle 20 # 2-36, Santa Marta. Puedes comprarla en línea o consultar con nuestro Concierge para apartarla.
-                </p>
-              </div>
+            <div className="border-l-2 border-bauto-arena pl-3.5 py-1 text-xs text-bauto-carbon">
+              <span className="block font-medium tracking-wide">Exclusividad Tienda Física</span>
+              <p className="text-[11px] text-bauto-piedra mt-0.5 leading-relaxed font-light">
+                Pieza disponible en Calle 20 # 2-36, Centro Histórico de Santa Marta.
+              </p>
             </div>
           )}
 
           {/* Ficha Sensorial del Tejido */}
-          <div className="p-4 rounded-card-sm bg-bauto-perla/70 border border-bauto-carbon/5 flex flex-col gap-2.5 text-xs">
-            <span className="text-[10px] tracking-wider uppercase text-bauto-terracota font-semibold flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Ficha Sensorial del Tejido</span>
+          <div className="border-t border-b border-bauto-carbon/[0.08] py-4 flex flex-col gap-3 text-xs">
+            <span className="text-[9px] tracking-[0.25em] uppercase text-bauto-piedra/80 block">
+              Ficha Sensorial del Tejido
             </span>
 
-            <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
+            <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-[11px]">
               <div>
-                <span className="text-bauto-piedra block">Composición:</span>
-                <strong className="font-medium text-bauto-carbon">{product.material || '100% Lino Noble'}</strong>
+                <span className="text-bauto-piedra block font-light">Composición:</span>
+                <span className="font-normal text-bauto-carbon">{product.material || 'Fibras Nobles'}</span>
               </div>
               <div>
-                <span className="text-bauto-piedra block">Tacto al Lavado:</span>
-                <strong className="font-medium text-bauto-carbon">Suavizado artesanal</strong>
+                <span className="text-bauto-piedra block font-light">Tacto al Lavado:</span>
+                <span className="font-normal text-bauto-carbon">Suavizado artesanal</span>
               </div>
               <div>
-                <span className="text-bauto-piedra block">Gramaje:</span>
-                <strong className="font-medium text-bauto-carbon">{product.fabricGrammage || '165 g/m²'}</strong>
+                <span className="text-bauto-piedra block font-light">Gramaje:</span>
+                <span className="font-normal text-bauto-carbon">{product.fabricGrammage || '165 g/m²'}</span>
               </div>
               <div>
-                <span className="text-bauto-piedra block">Caída:</span>
-                <strong className="font-medium text-bauto-carbon">Fluida y relajada</strong>
+                <span className="text-bauto-piedra block font-light">Caída:</span>
+                <span className="font-normal text-bauto-carbon">Fluida y relajada</span>
               </div>
             </div>
           </div>
@@ -214,22 +202,19 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               type="button"
               disabled={isOutOfStock}
               onClick={handleAddToCart}
-              className={`btn-pill-primary w-full py-4 text-sm tracking-wide shadow-elevated ${
-                isOutOfStock ? 'opacity-50 cursor-not-allowed bg-bauto-carbon' : ''
+              className={`w-full py-4 text-xs uppercase tracking-[0.25em] font-medium transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
+                isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
               }`}
             >
               {isOutOfStock ? (
                 <span>Agotado Temporalmente</span>
               ) : addedAnimation ? (
-                <>
+                <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4" />
                   <span>¡Añadido a la Bolsa!</span>
-                </>
+                </span>
               ) : (
-                <>
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Añadir a la Bolsa</span>
-                </>
+                <span>Añadir a la Bolsa</span>
               )}
             </button>
 
@@ -239,23 +224,17 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={playHapticClick}
-              className="btn-pill-glass w-full py-3 text-xs tracking-wide flex items-center justify-center gap-2"
+              className="btn-pill-ghost w-full py-3 text-xs uppercase tracking-[0.18em] flex items-center justify-center gap-2"
             >
-              <MessageCircle className="w-4 h-4 text-[#25D366]" />
-              <span>Consultar al Asesor de Taller (WhatsApp)</span>
+              <MessageCircle className="w-3.5 h-3.5 text-bauto-carbon/70" />
+              <span>Consultar con Concierge de Taller</span>
             </a>
           </div>
 
           {/* Sellos de Confianza Rápidos */}
-          <div className="pt-4 border-t border-bauto-carbon/5 flex flex-col gap-2 text-[11px] text-bauto-piedra">
-            <div className="flex items-center gap-2">
-              <Truck className="w-3.5 h-3.5 text-bauto-terracota shrink-0" />
-              <span>Envío de cortesía en Colombia en compras superiores a $300.000 COP</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-bauto-terracota shrink-0" />
-              <span>Primer cambio de talla ágil sin costo adicional de flete</span>
-            </div>
+          <div className="pt-4 border-t border-bauto-carbon/[0.06] flex flex-col gap-1.5 text-[11px] font-editorial italic text-bauto-piedra">
+            <p>· Entrega de cortesía nacional en compras superiores a $300.000 COP.</p>
+            <p>· Primer cambio de talla asistido sin costo adicional de flete.</p>
           </div>
 
         </div>

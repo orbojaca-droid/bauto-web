@@ -9,7 +9,6 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Sparkles } from 'lucide-react';
 import { Product, Talla } from '../../types/catalog';
 import { formatCOP } from '../../lib/grammar';
 import { getOptimizedImageUrl } from '../../lib/images';
@@ -50,12 +49,12 @@ export function StickyBuyBar({
   );
 
   return (
-    <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-bauto-nube/95 backdrop-blur-md border-t border-bauto-carbon/10 px-4 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-elevated animate-slide-up">
+    <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-bauto-nube/95 backdrop-blur-md border-t border-bauto-carbon/[0.08] px-4 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] animate-slide-up">
       <div className="flex items-center justify-between gap-3">
         
         {/* Miniatura y Precio */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-10 h-12 rounded-card-sm overflow-hidden bg-bauto-perla shrink-0 border border-bauto-carbon/5">
+          <div className="w-10 h-12 rounded-sm overflow-hidden bg-[#FAF6F0] shrink-0">
             <img
               src={imageUrl}
               alt={product.name}
@@ -64,23 +63,23 @@ export function StickyBuyBar({
           </div>
 
           <div className="min-w-0">
-            <h4 className="text-xs font-medium text-bauto-carbon truncate max-w-[120px]">
+            <h4 className="text-xs font-normal text-bauto-carbon truncate max-w-[120px]">
               {product.name}
             </h4>
             <div className="flex items-center gap-1.5">
-              <span className="font-mono font-semibold text-xs text-bauto-terracota">
+              <span className="font-body font-normal text-xs text-bauto-carbon">
                 {formatCOP(product.price)}
               </span>
               {selectedSize && (
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-bauto-perla text-bauto-carbon font-semibold">
-                  {selectedSize}
+                <span className="text-[10px] text-bauto-piedra font-normal uppercase">
+                  · Talla {selectedSize}
                 </span>
               )}
             </div>
           </div>
         </div>
 
-        {/* Botón de Acción */}
+        {/* Botón de Acción en Negro Carbón */}
         <button
           type="button"
           disabled={disabled}
@@ -88,9 +87,8 @@ export function StickyBuyBar({
             playHapticClick();
             onAddToCart();
           }}
-          className="btn-pill-primary h-11 px-5 text-xs font-semibold tracking-wide shrink-0 shadow-sm flex items-center justify-center gap-1.5"
+          className="h-10 px-5 text-[11px] uppercase tracking-[0.2em] font-medium shrink-0 flex items-center justify-center bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
         >
-          <ShoppingBag className="w-4 h-4" />
           <span>{selectedSize ? 'Añadir' : 'Elegir Talla'}</span>
         </button>
 

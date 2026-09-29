@@ -9,7 +9,6 @@
  */
 
 import React from 'react';
-import { Ruler, Sparkles } from 'lucide-react';
 import { Talla, StockPorTalla } from '../../types/catalog';
 import { playHapticClick } from '../../lib/sound';
 
@@ -35,12 +34,12 @@ export function SizeSelector({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-bauto-carbon">
-          Seleccionar Talla:{' '}
+        <span className="font-normal text-bauto-carbon">
+          Talla:{' '}
           {selectedSize && (
-            <strong className="text-bauto-terracota font-semibold font-mono">
+            <span className="text-bauto-carbon font-medium ml-1">
               {selectedSize}
-            </strong>
+            </span>
           )}
         </span>
 
@@ -51,21 +50,19 @@ export function SizeSelector({
               playHapticClick();
               onOpenSizeGuide();
             }}
-            className="inline-flex items-center gap-1 text-[11px] text-bauto-piedra hover:text-bauto-terracota transition-colors underline underline-offset-2"
+            className="text-[11px] uppercase tracking-wider text-bauto-piedra hover:text-bauto-carbon border-b border-bauto-piedra/30 hover:border-bauto-carbon pb-0.5 transition-colors"
           >
-            <Ruler className="w-3.5 h-3.5" />
-            <span>Guía de Medidas (cm)</span>
+            Guía de Medidas
           </button>
         )}
       </div>
 
-      {/* Cuadrícula de Cápsulas de Tallas */}
+      {/* Cuadrícula de Botones de Tallas */}
       <div className="flex flex-wrap gap-2">
         {displaySizes.map((size) => {
           const stock = stockPorTalla[size] || 0;
           const isAvailable = stock > 0;
           const isSelected = selectedSize === size;
-          const isLowStock = stock === 1;
 
           return (
             <button
@@ -78,21 +75,15 @@ export function SizeSelector({
                   onSelectSize(size);
                 }
               }}
-              className={`relative min-w-[50px] sm:min-w-[56px] h-11 px-3 rounded-card-sm text-xs font-mono font-semibold transition-all duration-200 flex flex-col items-center justify-center ${
+              className={`h-10 min-w-[46px] px-3.5 text-xs font-body font-normal transition-colors flex items-center justify-center ${
                 isSelected
-                  ? 'bg-bauto-terracota text-white shadow-sm ring-2 ring-bauto-terracota/20'
+                  ? 'bg-bauto-carbon text-white border border-bauto-carbon'
                   : isAvailable
-                  ? 'bg-bauto-perla text-bauto-carbon hover:bg-bauto-perla/80 border border-bauto-carbon/10'
-                  : 'bg-bauto-carbon/5 text-bauto-piedra/40 cursor-not-allowed border border-dashed border-bauto-carbon/10 line-through'
+                  ? 'border border-bauto-carbon/20 text-bauto-carbon hover:border-bauto-carbon'
+                  : 'border border-bauto-carbon/10 text-bauto-piedra/30 cursor-not-allowed opacity-40'
               }`}
             >
               <span>{size}</span>
-
-              {isAvailable && isLowStock && !isSelected && (
-                <span className="text-[8px] font-sans text-bauto-terracota font-medium leading-none -mt-0.5">
-                  1 und
-                </span>
-              )}
             </button>
           );
         })}
@@ -100,12 +91,11 @@ export function SizeSelector({
 
       {/* Mensaje de Disponibilidad */}
       {selectedSize && (
-        <div className="text-[11px] text-bauto-piedra flex items-center gap-1.5 mt-0.5">
-          <Sparkles className="w-3 h-3 text-bauto-terracota" />
+        <div className="text-[11px] text-bauto-piedra font-editorial italic mt-0.5">
           <span>
             {stockPorTalla[selectedSize] === 1
-              ? 'Pieza exclusiva disponible en taller'
-              : `${stockPorTalla[selectedSize]} unidades disponibles en esta talla`}
+              ? 'Última pieza disponible en taller'
+              : `${stockPorTalla[selectedSize]} piezas disponibles en esta talla`}
           </span>
         </div>
       )}

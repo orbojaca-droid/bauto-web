@@ -1,15 +1,14 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Tienda Santa Marta
- * @Propósito: Página de la boutique y taller físico en Santa Marta con enlaces GPS nativos
+ * @Propósito: Página de la boutique y taller físico en Santa Marta bajo estética Quiet Luxury
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Bajo - Página informativa con integración GPS
+ * @Riesgo_Evaluado: Controlado - Enlaces GPS nativos e iframe de mapa intactos
  */
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { MapPin, Clock, Navigation, Coffee, Sparkles, MessageCircle, Phone } from 'lucide-react';
-import { WeatherWidget } from '../../components/navigation/WeatherWidget';
+import { MessageCircle } from 'lucide-react';
 import { BAUTO_WHATSAPP_PHONE } from '../../lib/constants';
 
 export const metadata: Metadata = {
@@ -29,28 +28,28 @@ export default function TiendaSantaMartaPage() {
     : 'https://www.openstreetmap.org/export/embed.html?bbox=-74.2165%2C11.2395%2C-74.2110%2C11.2445&layer=mapnik&marker=11.2420124%2C-74.2138635';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 animate-fade-in">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 sm:py-20 animate-fade-in font-body">
       
       {/* Encabezado Principal */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-terracota font-semibold block mb-2">
-          Boutique & Taller Caribe
+      <div className="text-center max-w-2xl mx-auto mb-16">
+        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
+          Atelier & Boutique · Santa Marta
         </span>
-        <h1 className="font-title font-bold text-3xl sm:text-4xl text-bauto-carbon mb-3">
-          BAUTO Santa Marta
+        <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
+          Calle 20 # 2-36
         </h1>
         <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
-          Un santuario de frescura y lino puro a dos cuadras de la bahía más hermosa de América.
+          Un santuario de frescura, lino puro y fibras nobles a dos cuadras de la bahía histórica.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Columna Izquierda: Visor del Mapa, Información de Visita y GPS (7 columnas) */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
+        <div className="lg:col-span-7 flex flex-col gap-10">
 
-          {/* Visor Interactivo del Mapa */}
-          <div className="relative w-full h-[320px] sm:h-[380px] rounded-card overflow-hidden border border-bauto-carbon/10 shadow-subtle bg-bauto-perla">
+          {/* Visor del Mapa con Marco Hairline */}
+          <div className="relative w-full h-[320px] sm:h-[400px] overflow-hidden border border-bauto-carbon/10 bg-bauto-perla">
             <iframe
               title="Mapa Boutique BAUTO Santa Marta"
               width="100%"
@@ -61,155 +60,132 @@ export default function TiendaSantaMartaPage() {
               marginWidth={0}
               loading="lazy"
               src={mapEmbedSrc}
-              className="w-full h-full filter saturate-[0.85] contrast-[1.05] border-0"
+              className="w-full h-full filter saturate-[0.8] contrast-[1.02] border-0"
             />
-            {/* Insignia Flotante BAUTO sobre el Mapa */}
-            <div className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-full border border-bauto-carbon/10 shadow-sm flex items-center gap-2 pointer-events-none z-10">
-              <div className="w-2.5 h-2.5 rounded-full bg-bauto-terracota animate-pulse" />
-              <span className="text-[11px] font-semibold text-bauto-carbon tracking-wide font-sans">
-                BAUTO • Calle 20 # 2-36
-              </span>
-            </div>
-            
-            {/* Badge de Proximidad al Mar */}
-            <div className="absolute bottom-3.5 right-3.5 bg-bauto-carbon/90 text-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-medium tracking-wider uppercase pointer-events-none z-10 hidden sm:block">
-              Centro Histórico • 2 cuadras del Mar
+            {/* Coordenada Sutil sobre el Mapa */}
+            <div className="absolute top-4 left-4 bg-bauto-nube/95 backdrop-blur-md px-3 py-1.5 border border-bauto-carbon/10 text-[10px] uppercase tracking-wider text-bauto-carbon font-normal pointer-events-none">
+              11°14′31″ N · 74°12′49″ W
             </div>
           </div>
           
-          {/* Tarjeta de Dirección & Horarios */}
-          <div className="bg-bauto-perla/80 rounded-card p-6 sm:p-8 border border-bauto-carbon/5 shadow-subtle flex flex-col gap-6">
+          {/* Información de Dirección & Horarios */}
+          <div className="border-t border-bauto-carbon/10 pt-8 flex flex-col gap-8">
             
-            <div className="flex items-start gap-3.5">
-              <div className="p-3 rounded-full bg-bauto-terracota/10 text-bauto-terracota shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div>
-                <span className="text-[10px] tracking-wider uppercase text-bauto-piedra block">
-                  Ubicación Exacta
+                <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
+                  Dirección
                 </span>
-                <strong className="text-base text-bauto-carbon block font-semibold">
+                <strong className="text-sm text-bauto-carbon block font-medium">
                   Calle 20 # 2-36, Centro Histórico
                 </strong>
-                <p className="text-xs text-bauto-piedra mt-0.5">
-                  Santa Marta, Magdalena, Colombia (Entre Carreras 2da y 3ra)
+                <p className="text-xs text-bauto-piedra mt-1 leading-relaxed">
+                  Entre Carreras 2da y 3ra · Santa Marta, Magdalena
                 </p>
               </div>
-            </div>
 
-            <div className="flex items-start gap-3.5">
-              <div className="p-3 rounded-full bg-bauto-terracota/10 text-bauto-terracota shrink-0">
-                <Clock className="w-5 h-5" />
-              </div>
               <div>
-                <span className="text-[10px] tracking-wider uppercase text-bauto-piedra block">
-                  Horarios de Atención
+                <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
+                  Horarios de Atelier
                 </span>
                 <p className="text-xs text-bauto-carbon leading-relaxed">
-                  <strong className="font-semibold">Lunes a Sábado:</strong> 10:00 AM – 8:00 PM<br />
-                  <strong className="font-semibold">Domingos y Festivos:</strong> 11:00 AM – 6:00 PM
+                  <span className="text-bauto-piedra">Lunes a Sábado:</span> 10:00 AM – 8:00 PM<br />
+                  <span className="text-bauto-piedra">Domingos y Festivos:</span> 11:00 AM – 6:00 PM
                 </p>
               </div>
             </div>
 
-            {/* Botones de Navegación GPS Directa */}
+            {/* Enlaces GPS Tipográficos */}
             <div className="pt-4 border-t border-bauto-carbon/10">
-              <span className="text-[11px] font-medium text-bauto-carbon block mb-3">
-                Cómo llegar con tu app de navegación preferida:
+              <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-3 font-normal">
+                Navegación GPS:
               </span>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex items-center gap-4 text-xs font-normal">
                 <a
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill-primary px-5 py-2.5 text-xs shadow-sm"
+                  className="text-bauto-carbon hover:text-bauto-piedra transition-colors underline underline-offset-4"
                 >
-                  <Navigation className="w-3.5 h-3.5" />
-                  <span>Google Maps</span>
+                  Google Maps
                 </a>
-
+                <span className="text-bauto-carbon/20">·</span>
                 <a
                   href={appleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill-glass px-5 py-2.5 text-xs"
+                  className="text-bauto-carbon hover:text-bauto-piedra transition-colors underline underline-offset-4"
                 >
-                  <span>Apple Maps</span>
+                  Apple Maps
                 </a>
-
+                <span className="text-bauto-carbon/20">·</span>
                 <a
                   href={wazeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill-glass px-5 py-2.5 text-xs"
+                  className="text-bauto-carbon hover:text-bauto-piedra transition-colors underline underline-offset-4"
                 >
-                  <span>Waze</span>
+                  Waze
                 </a>
               </div>
             </div>
 
           </div>
 
-          {/* Amenidades de la Boutique */}
-          <div className="bg-bauto-perla/60 rounded-card p-6 sm:p-8 border border-bauto-carbon/5">
-            <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-5">
-              La Experiencia en Boutique
+          {/* Experiencia en Atelier */}
+          <div className="border-t border-bauto-carbon/10 pt-8">
+            <h3 className="text-[10px] font-normal tracking-[0.2em] uppercase text-bauto-piedra mb-6">
+              La Experiencia en Taller
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div className="flex items-start gap-2.5">
-                <Sparkles className="w-4 h-4 text-bauto-terracota shrink-0 mt-0.5" />
-                <div>
-                  <strong className="font-semibold text-bauto-carbon block">Climatización Óptima</strong>
-                  <p className="text-[11px] text-bauto-piedra">Espacio fresco y relajante para probarte con total calma.</p>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
+              <div>
+                <strong className="font-normal text-bauto-carbon block mb-1">Espacio de Calma</strong>
+                <p className="text-[11px] text-bauto-piedra leading-relaxed">Ambiente sereno y climatizado para descubrir las texturas con reposo.</p>
               </div>
 
-              <div className="flex items-start gap-2.5">
-                <Coffee className="w-4 h-4 text-bauto-terracota shrink-0 mt-0.5" />
-                <div>
-                  <strong className="font-semibold text-bauto-carbon block">Café de la Sierra</strong>
-                  <p className="text-[11px] text-bauto-piedra">Disfruta una taza de café artesanal cosechado en la Sierra Nevada.</p>
-                </div>
+              <div>
+                <strong className="font-normal text-bauto-carbon block mb-1">Café de la Sierra</strong>
+                <p className="text-[11px] text-bauto-piedra leading-relaxed">Cosecha artesanal de la Sierra Nevada para acompañar tu visita.</p>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Columna Derecha: Vista Visual y Concierge VIP (5 columnas) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="rounded-card overflow-hidden bg-bauto-carbon text-white p-7 sm:p-9 flex flex-col gap-5 shadow-elevated">
+        {/* Columna Derecha: Concierge de Atelier y Viajeros (5 columnas) */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          <div className="border border-bauto-carbon/10 p-8 sm:p-10 flex flex-col gap-6 bg-bauto-perla/30">
             <div>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-trigo font-semibold block mb-1">
-                Concierge de Tienda
+              <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
+                Atención Concierge
               </span>
-              <h3 className="font-title font-bold text-xl">
-                ¿Deseas apartar una pieza o agendar una cita privada?
+              <h3 className="font-title font-light text-xl text-bauto-carbon tracking-wide">
+                ¿Deseas apartar una pieza o agendar una cita en boutique?
               </h3>
             </div>
 
-            <p className="text-xs text-bauto-perla/80 leading-relaxed font-body">
-              Nuestro equipo en taller puede preparar tus prendas favoritas para que estén listas en tu talla al momento de visitarnos.
+            <p className="text-xs text-bauto-piedra leading-relaxed font-body">
+              Nuestro taller puede reservar tus siluetas predilectas en tu talla exacta para que estén listas al momento de tu llegada.
             </p>
 
             <a
               href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, quisiera consultar disponibilidad en la boutique de Santa Marta.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pill-primary bg-bauto-terracota hover:bg-bauto-terracota-dark py-3.5 text-xs tracking-wide text-white flex items-center justify-center gap-2 shadow-elevated"
+              className="w-full py-3.5 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs uppercase tracking-[0.2em] font-medium flex items-center justify-center gap-2"
             >
-              <MessageCircle className="w-4 h-4 text-[#25D366]" />
-              <span>Escribir al Concierge de Tienda</span>
+              <MessageCircle className="w-4 h-4 stroke-[1.5]" />
+              <span>Contactar Concierge</span>
             </a>
           </div>
 
-          <div className="p-5 rounded-card bg-[#FAF6F0] border border-[#E8DEC8] text-xs text-bauto-carbon">
-            <h4 className="font-semibold text-bauto-carbon mb-1">
-              Atención a Turistas & Viajeros
+          <div className="p-6 bg-[#FAF6F0] border-l-2 border-bauto-arena text-xs text-bauto-carbon">
+            <h4 className="font-medium text-bauto-carbon mb-1">
+              Atención a Huéspedes & Viajeros
             </h4>
-            <p className="font-editorial italic text-[11px] text-bauto-piedra leading-relaxed">
-              Si estás de viaje en Santa Marta, Tayrona o Minca, realizamos entregas en tu hotel el mismo día o despacho aéreo nacional e internacional.
+            <p className="font-editorial italic text-xs text-bauto-piedra leading-relaxed">
+              Si estás de paso por Santa Marta, Tayrona o Minca, coordinamos entregas directas en tu hotel o despacho prioritario nacional e internacional.
             </p>
           </div>
         </div>

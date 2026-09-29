@@ -38,25 +38,25 @@ export function Footer() {
             
             <p className="text-xs text-bauto-piedra leading-relaxed max-w-sm">
               Prendas creadas bajo la brisa y la luz del Caribe colombiano. 
-              Confort consciente, movimiento libre y aprecio por la arruga noble del lino puro.
+              Confort consciente, movimiento libre y aprecio por la textura viva de las fibras nobles.
             </p>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-4 pt-2">
               <a 
                 href="https://instagram.com/bauto.studio" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-bauto-carbon/5 hover:bg-bauto-terracota hover:text-white transition-colors text-bauto-carbon"
+                className="text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
                 aria-label="Instagram BAUTO"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-4 h-4 stroke-[1.5]" />
               </a>
               <a 
                 href="mailto:hola@bauto.com.co" 
-                className="p-2 rounded-full bg-bauto-carbon/5 hover:bg-bauto-terracota hover:text-white transition-colors text-bauto-carbon"
+                className="text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
                 aria-label="Correo BAUTO"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 stroke-[1.5]" />
               </a>
             </div>
           </div>
@@ -84,10 +84,10 @@ export function Footer() {
             <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
               <li><Link href="/rastreo" className="hover:text-bauto-terracota transition-colors">Rastrear mi Envío</Link></li>
               <li><Link href="/tienda-santa-marta" className="hover:text-bauto-terracota transition-colors">Boutique Santa Marta</Link></li>
-              <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Cuerpo Consciente & Lino</Link></li>
+              <li><Link href="/filosofia" className="hover:text-bauto-terracota transition-colors">Filosofía & Fibras Nobles</Link></li>
               <li><Link href="/ayuda" className="hover:text-bauto-terracota transition-colors">Políticas & Cambios</Link></li>
               <li><Link href="/ayuda#retracto" className="hover:text-bauto-terracota transition-colors">Derecho de Retracto (Ley 1480)</Link></li>
-              <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">WhatsApp Concierge VIP</Link></li>
+              <li><Link href="/contacto" className="hover:text-bauto-terracota transition-colors">Atención Concierge</Link></li>
             </ul>
           </div>
 

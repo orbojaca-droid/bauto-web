@@ -10,7 +10,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Sparkles, MapPin } from 'lucide-react';
 import { Product } from '../../types/catalog';
 import { getOptimizedImageUrl } from '../../lib/images';
 import { formatCOP } from '../../lib/grammar';
@@ -44,14 +43,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         {/* Badge Exclusivo Tienda Física */}
         {product.isExclusiveInStore && (
-          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase shadow-sm">
+          <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
             <span>Boutique Santa Marta</span>
           </div>
         )}
 
         {/* Badge de Stock Bajo */}
         {!product.isExclusiveInStore && product.totalStock > 0 && product.totalStock <= 2 && (
-          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase">
+          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase border border-bauto-carbon/[0.06]">
             Últimas piezas
           </div>
         )}
@@ -72,14 +71,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           {product.tipologia || 'Resort Wear'}
         </span>
 
-        <h3 className="font-title font-normal text-xs sm:text-sm text-bauto-carbon group-hover:text-bauto-terracota transition-colors line-clamp-1">
+        <h3 className="font-title font-normal text-xs sm:text-sm text-bauto-carbon group-hover:opacity-75 transition-opacity line-clamp-1">
           <Link href={`/catalogo/producto/${product.slug}`} onClick={playHapticClick}>
             {product.name}
           </Link>
         </h3>
 
         <div className="pt-0.5">
-          <span className="font-mono text-xs sm:text-sm text-bauto-carbon/90 font-medium">
+          <span className="font-body text-xs sm:text-sm text-bauto-carbon font-normal">
             {formatCOP(product.price)}
           </span>
         </div>

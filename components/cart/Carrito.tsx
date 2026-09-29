@@ -1,17 +1,17 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 2: Carrito
- * @Propósito: Drawer lateral para desktop y Bottom Sheet para móvil (patrón iOS Safari)
+ * @Propósito: Drawer transaccional refinado bajo estética Quiet Luxury (Negro Carbón y tipografía serena)
  * @Capa: Estética / Funcional
- * @Riesgo_Evaluado: Medio - Manejo de gestos táctiles y bloqueo de scroll en iOS
+ * @Riesgo_Evaluado: Controlado - Preservación íntegra de Zustand y navegación
  */
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { X, ShoppingBag, ArrowRight, Compass } from 'lucide-react';
+import { X, ArrowRight, Compass } from 'lucide-react';
 import { useCartStore } from '../../lib/cartStore';
 import { FreeShippingBar } from './FreeShippingBar';
 import { CartItemRow } from './CartItemRow';
@@ -57,6 +57,8 @@ export function Carrito() {
     router.push('/carrito');
   };
 
+  const itemCount = items.reduce((acc, i) => acc + i.quantity, 0);
+
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       {/* Fondo Oscuro / Backdrop con Desenfoque */}
@@ -69,8 +71,8 @@ export function Carrito() {
       {/* Contenedor Adaptativo: Bottom Sheet en Móvil / Panel Lateral en Desktop */}
       <aside
         className={`relative z-10 w-full sm:max-w-md bg-bauto-nube shadow-2xl flex flex-col transition-all duration-300 ${
-          /* Móvil: anclado al fondo, máximo 92dvh con bordes redondeados superiores */
-          'max-sm:mt-auto max-sm:max-h-[92dvh] max-sm:rounded-t-[32px] ' +
+          /* Móvil: anclado al fondo, máximo 92dvh con esquinas suaves superiores */
+          'max-sm:mt-auto max-sm:max-h-[92dvh] max-sm:rounded-t-2xl ' +
           /* Desktop: 100vh de altura completa, fijado a la derecha */
           'sm:h-full sm:min-h-screen'
         }`}
@@ -80,28 +82,27 @@ export function Carrito() {
       >
         {/* Tirador Táctil (Drag Handle) solo visible en pantallas móviles */}
         <div className="sm:hidden pt-3 pb-1 flex justify-center">
-          <div className="w-12 h-1 bg-bauto-carbon/20 rounded-full" />
+          <div className="w-10 h-1 bg-bauto-carbon/20 rounded-full" />
         </div>
 
         {/* Cabecera del Carrito */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-bauto-carbon/5">
-          <div className="flex items-center gap-2.5">
-            <ShoppingBag className="w-4 h-4 text-bauto-terracota" />
-            <h2 className="font-title font-bold text-base tracking-wide text-bauto-carbon">
-              Tu Bolsa de Compra
+        <div className="flex items-center justify-between px-6 py-5 border-b border-bauto-carbon/10">
+          <div className="flex items-baseline gap-2">
+            <h2 className="font-title font-light text-base tracking-wide text-bauto-carbon">
+              Bolsa de Compra
             </h2>
-            <span className="font-mono text-xs px-2 py-0.5 rounded-full bg-bauto-perla text-bauto-piedra font-semibold">
-              {items.reduce((acc, i) => acc + i.quantity, 0)}
+            <span className="font-body text-xs text-bauto-piedra">
+              ({itemCount} {itemCount === 1 ? 'pieza' : 'piezas'})
             </span>
           </div>
 
           <button
             type="button"
             onClick={handleClose}
-            className="w-11 h-11 flex items-center justify-center -mr-2 rounded-full text-bauto-piedra hover:text-bauto-carbon hover:bg-bauto-perla transition-colors"
+            className="w-9 h-9 flex items-center justify-center -mr-2 rounded-full text-bauto-piedra hover:text-bauto-carbon transition-colors"
             aria-label="Cerrar bolsa"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[1.5]" />
           </button>
         </div>
 
@@ -109,20 +110,18 @@ export function Carrito() {
         {items.length > 0 && <FreeShippingBar />}
 
         {/* Cuerpo Principal del Carrito */}
-        <div className="flex-1 overflow-y-auto px-5 py-2 overscroll-contain">
+        <div className="flex-1 overflow-y-auto px-6 py-2 overscroll-contain">
           {items.length === 0 ? (
             /* Estado Vacío Poético */
-            <div className="h-full min-h-[300px] flex flex-col items-center justify-center text-center px-4 py-12 gap-5 animate-fade-in">
-              <div className="w-14 h-14 rounded-full bg-bauto-perla flex items-center justify-center text-bauto-terracota border border-bauto-carbon/5">
-                <Compass className="w-6 h-6 stroke-[1.5]" />
-              </div>
+            <div className="h-full min-h-[300px] flex flex-col items-center justify-center text-center px-4 py-16 gap-5 animate-fade-in">
+              <Compass className="w-8 h-8 text-bauto-carbon/40 stroke-[1.25]" />
               
               <div className="max-w-xs">
-                <h3 className="font-title font-semibold text-sm text-bauto-carbon mb-1.5">
-                  Tu bolsa de viaje aún está ligera
+                <h3 className="font-title font-light text-base text-bauto-carbon mb-2 tracking-wide">
+                  Tu bolsa aún está ligera
                 </h3>
                 <p className="font-editorial italic text-xs text-bauto-piedra leading-relaxed">
-                  La brisa y la luz del Caribe esperan tus próximas elecciones de lino puro y tejidos nobles.
+                  Siluetas fluidas y fibras nobles inspiradas en el Caribe esperan ser descubiertas.
                 </p>
               </div>
 
@@ -132,10 +131,9 @@ export function Carrito() {
                   handleClose();
                   router.push('/catalogo');
                 }}
-                className="btn-pill-primary px-6 py-2.5 text-xs tracking-wide shadow-sm mt-2"
+                className="mt-2 px-6 py-3 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] uppercase tracking-[0.2em] font-medium"
               >
                 <span>Explorar Colección</span>
-                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           ) : (
@@ -155,47 +153,47 @@ export function Carrito() {
 
         {/* Pie Transaccional Fijo con Desglose */}
         {items.length > 0 && (
-          <div className="px-5 py-4 border-t border-bauto-carbon/10 bg-bauto-nube/95 backdrop-blur-md pb-[max(1rem,env(safe-area-inset-bottom))]">
-            <div className="flex flex-col gap-1.5 mb-4 text-xs">
+          <div className="px-6 py-5 border-t border-bauto-carbon/10 bg-bauto-nube/95 backdrop-blur-md pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+            <div className="flex flex-col gap-2 mb-4 text-xs font-body">
               <div className="flex justify-between text-bauto-piedra">
                 <span>Subtotal</span>
-                <span className="font-mono text-bauto-carbon font-semibold">
+                <span className="text-bauto-carbon font-normal">
                   {formatCOP(subtotal)}
                 </span>
               </div>
 
               <div className="flex justify-between text-bauto-piedra">
                 <span>Envío nacional</span>
-                <span className="font-mono">
+                <span>
                   {shippingCost === 0 ? (
-                    <span className="text-bauto-terracota font-medium">De cortesía</span>
+                    <span className="text-bauto-carbon font-normal">De cortesía</span>
                   ) : (
                     formatCOP(shippingCost)
                   )}
                 </span>
               </div>
 
-              <div className="flex justify-between text-sm font-semibold text-bauto-carbon pt-2 border-t border-bauto-carbon/5">
+              <div className="flex justify-between text-sm font-medium text-bauto-carbon pt-3 border-t border-bauto-carbon/10">
                 <span>Total Estimado</span>
-                <span className="font-mono text-base text-bauto-terracota">
+                <span className="text-base text-bauto-carbon">
                   {formatCOP(total)}
                 </span>
               </div>
             </div>
 
-            {/* Botón Primario de Compra */}
+            {/* Botón Primario de Compra en Negro Carbón */}
             <button
               type="button"
               onClick={handleGoToCheckout}
-              className="btn-pill-primary w-full py-3.5 text-sm tracking-wide shadow-elevated"
+              className="w-full py-3.5 px-6 rounded-full bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs uppercase tracking-[0.2em] font-medium flex items-center justify-center gap-2"
             >
               <span>Continuar con el Pago</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
-            <p className="text-[10px] text-center text-bauto-piedra mt-2.5 flex items-center justify-center gap-1">
-              <span>Pagos seguros procesados por</span>
-              <strong className="font-semibold text-bauto-carbon">Wompi PCI-DSS</strong>
+            <p className="text-[10px] text-center text-bauto-piedra mt-3 flex items-center justify-center gap-1">
+              <span>Transacción protegida por</span>
+              <span className="font-medium text-bauto-carbon">Wompi PCI-DSS</span>
             </p>
           </div>
         )}

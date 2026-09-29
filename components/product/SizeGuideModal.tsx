@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import { X, Ruler, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 import { playHapticClick } from '../../lib/sound';
 
 interface SizeGuideModalProps {
@@ -44,18 +44,15 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
 
       {/* Modal Box */}
       <div
-        className="relative z-10 w-full max-w-lg bg-bauto-nube rounded-card p-6 sm:p-8 shadow-elevated border border-bauto-carbon/10 animate-slide-up max-h-[90dvh] overflow-y-auto"
+        className="relative z-10 w-full max-w-lg bg-bauto-nube rounded-sm p-6 sm:p-8 border border-bauto-carbon/15 shadow-2xl animate-slide-up max-h-[90dvh] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-label="Guía de Medidas BAUTO"
       >
         <div className="flex items-center justify-between pb-4 border-b border-bauto-carbon/10 mb-5">
-          <div className="flex items-center gap-2">
-            <Ruler className="w-5 h-5 text-bauto-terracota" />
-            <h3 className="font-title font-bold text-base sm:text-lg text-bauto-carbon">
-              Guía de Medidas en Centímetros
-            </h3>
-          </div>
+          <h3 className="font-title font-light text-lg sm:text-xl text-bauto-carbon">
+            Guía de Medidas (cm)
+          </h3>
 
           <button
             type="button"
@@ -63,29 +60,29 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
               playHapticClick();
               onClose();
             }}
-            className="w-11 h-11 flex items-center justify-center -mr-2 rounded-full text-bauto-piedra hover:text-bauto-carbon hover:bg-bauto-perla transition-colors"
+            className="w-10 h-10 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
             aria-label="Cerrar modal"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Tabla de Medidas */}
-        <div className="overflow-x-auto rounded-card-sm border border-bauto-carbon/10 bg-bauto-perla/60 mb-5">
+        <div className="overflow-x-auto border border-bauto-carbon/10 mb-5">
           <table className="w-full text-xs text-left">
-            <thead className="bg-bauto-perla text-[10px] uppercase font-semibold text-bauto-carbon border-b border-bauto-carbon/10">
+            <thead className="bg-bauto-perla/80 text-[10px] uppercase font-medium text-bauto-piedra border-b border-bauto-carbon/10">
               <tr>
-                <th className="px-3.5 py-3 font-mono">Talla</th>
-                <th className="px-3 py-3">Pecho</th>
-                <th className="px-3 py-3">Cintura</th>
-                <th className="px-3 py-3">Cadera</th>
-                <th className="px-3 py-3">Largo</th>
+                <th className="px-3.5 py-3 font-normal">Talla</th>
+                <th className="px-3 py-3 font-normal">Pecho</th>
+                <th className="px-3 py-3 font-normal">Cintura</th>
+                <th className="px-3 py-3 font-normal">Cadera</th>
+                <th className="px-3 py-3 font-normal">Largo</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-bauto-carbon/5 font-mono text-bauto-carbon">
+            <tbody className="divide-y divide-bauto-carbon/5 text-bauto-carbon font-body">
               {measurements.map((m) => (
-                <tr key={m.talla} className="hover:bg-bauto-nube/80 transition-colors">
-                  <td className="px-3.5 py-2.5 font-bold text-bauto-terracota">{m.talla}</td>
+                <tr key={m.talla} className="hover:bg-bauto-perla/30 transition-colors">
+                  <td className="px-3.5 py-2.5 font-medium text-bauto-carbon">{m.talla}</td>
                   <td className="px-3 py-2.5">{m.pecho} cm</td>
                   <td className="px-3 py-2.5">{m.cintura} cm</td>
                   <td className="px-3 py-2.5">{m.cadera} cm</td>
@@ -97,12 +94,10 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
         </div>
 
         {/* Nota Editorial de Calce */}
-        <div className="p-4 rounded-card-sm bg-[#FAF6F0] border border-[#E8DEC8] flex items-start gap-2.5 text-xs text-bauto-carbon">
-          <Sparkles className="w-4 h-4 text-bauto-terracota shrink-0 mt-0.5" />
+        <div className="pt-4 border-t border-bauto-carbon/[0.08] text-xs">
           <p className="font-editorial italic leading-relaxed text-[11px] text-bauto-piedra">
             Nuestras siluetas están concebidas para el movimiento libre y la brisa del Caribe. 
-            El corte es naturalmente holgado (Relaxed Fit). Si buscas una silueta más clásica, 
-            te sugerimos elegir una talla menor.
+            El corte es holgado y relajado (Relaxed Fit). Para una silueta más entallada, te sugerimos seleccionar una talla menor.
           </p>
         </div>
       </div>

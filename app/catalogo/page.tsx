@@ -32,15 +32,15 @@ export default async function CatalogoPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
       
       {/* Encabezado Editorial */}
-      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-terracota font-semibold block mb-2">
+      <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
           Colección Permanente
         </span>
-        <h1 className="font-title font-bold text-3xl sm:text-4xl tracking-tight text-bauto-carbon mb-3">
-          El Catálogo BAUTO
+        <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3">
+          Colección BAUTO
         </h1>
         <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
-          Prendas creadas con nobleza y holgura para disfrutar la brisa, el mar y la luz del Caribe.
+          Prendas concebidas para habitar el Caribe con calma, nobleza y libertad de movimiento.
         </p>
       </div>
 

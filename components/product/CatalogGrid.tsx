@@ -9,7 +9,7 @@
  */
 
 import React, { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal, Compass, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { Product } from '../../types/catalog';
 import { ProductCard } from './ProductCard';
 import { playHapticClick } from '../../lib/sound';
@@ -62,10 +62,10 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
     <div className="flex flex-col gap-8">
       
       {/* Barra de Filtros y Búsqueda */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-card bg-bauto-perla/60 border border-bauto-carbon/5">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 pb-6 border-b border-bauto-carbon/[0.08]">
         
-        {/* Selector de Categorías (Pills Horizontales) */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+        {/* Selector de Categorías (Tipográfico Plano) */}
+        <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
           {categories.map((cat) => {
             const isSelected = selectedCategory.toUpperCase() === cat.toUpperCase();
             return (
@@ -76,10 +76,10 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
                   playHapticClick();
                   setSelectedCategory(cat);
                 }}
-                className={`px-3.5 py-1.5 rounded-pill text-xs tracking-wide font-medium transition-colors shrink-0 ${
+                className={`text-xs uppercase tracking-[0.18em] transition-colors shrink-0 pb-1 ${
                   isSelected
-                    ? 'bg-bauto-terracota text-white shadow-sm'
-                    : 'bg-bauto-nube text-bauto-carbon hover:bg-bauto-perla border border-bauto-carbon/5'
+                    ? 'text-bauto-carbon font-medium border-b border-bauto-carbon'
+                    : 'text-bauto-piedra/60 hover:text-bauto-carbon'
                 }`}
               >
                 {cat === 'TODAS' ? 'Toda la Colección' : cat}
@@ -89,23 +89,23 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
         </div>
 
         {/* Búsqueda y Ordenamiento */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           
           {/* Input de Búsqueda Rápida */}
-          <div className="relative flex-1 sm:w-56">
-            <Search className="absolute left-3 w-3.5 h-3.5 text-bauto-piedra pointer-events-none" />
+          <div className="relative flex-1 sm:w-52">
+            <Search className="absolute left-0 top-2.5 w-3.5 h-3.5 text-bauto-piedra/50 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar prenda..."
-              className="w-full text-xs pl-8 pr-7 py-2 rounded-pill bg-bauto-nube border border-bauto-carbon/10 focus:border-bauto-terracota focus:outline-none transition-colors"
+              placeholder="Buscar pieza..."
+              className="w-full text-xs pl-6 pr-6 py-2 bg-transparent border-b border-bauto-carbon/20 text-bauto-carbon placeholder:text-bauto-piedra/50 focus:border-bauto-carbon focus:outline-none transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-2 text-bauto-piedra hover:text-bauto-carbon"
+                className="absolute right-0 top-2 text-bauto-piedra hover:text-bauto-carbon"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -116,7 +116,7 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value as any)}
-            className="text-xs py-2 px-3 rounded-pill bg-bauto-nube border border-bauto-carbon/10 text-bauto-carbon focus:border-bauto-terracota focus:outline-none cursor-pointer"
+            className="text-xs py-2 px-1 bg-transparent border-b border-bauto-carbon/20 text-bauto-carbon focus:border-bauto-carbon focus:outline-none cursor-pointer"
           >
             <option value="NEWEST">Novedades</option>
             <option value="PRICE_ASC">Precio: Menor a Mayor</option>
@@ -129,14 +129,14 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
 
       {/* Contador de Resultados */}
       <div className="flex items-center justify-between text-xs text-bauto-piedra px-1">
-        <span>Mostrando {filteredProducts.length} piezas de autor</span>
+        <span>{filteredProducts.length} siluetas disponibles</span>
         {selectedCategory !== 'TODAS' && (
           <button
             type="button"
             onClick={() => setSelectedCategory('TODAS')}
-            className="text-bauto-terracota hover:underline"
+            className="text-bauto-carbon border-b border-bauto-carbon/30 hover:border-bauto-carbon uppercase tracking-wider text-[11px] pb-0.5 transition-colors"
           >
-            Ver todas las tipologías
+            Ver toda la colección
           </button>
         )}
       </div>
@@ -149,13 +149,12 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
           ))}
         </div>
       ) : (
-        <div className="py-20 text-center text-xs text-bauto-piedra bg-bauto-perla/30 rounded-card p-12">
-          <Compass className="w-10 h-10 text-bauto-terracota mx-auto mb-3 opacity-50" />
-          <h3 className="font-title font-semibold text-sm text-bauto-carbon mb-1">
-            No encontramos prendas con este filtro
+        <div className="py-24 text-center text-xs text-bauto-piedra max-w-sm mx-auto">
+          <h3 className="font-title font-light text-base text-bauto-carbon mb-2">
+            Sin piezas coincidentes
           </h3>
-          <p className="font-editorial italic max-w-sm mx-auto mb-5">
-            Intenta seleccionar otra categoría o reiniciar los términos de búsqueda.
+          <p className="font-editorial italic mb-6 text-bauto-piedra leading-relaxed">
+            Explora otras siluetas de la colección o restablece los criterios de búsqueda.
           </p>
           <button
             type="button"
@@ -163,9 +162,9 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
               setSelectedCategory('TODAS');
               setSearchQuery('');
             }}
-            className="btn-pill-primary px-6 py-2.5 text-xs shadow-sm"
+            className="px-7 py-3 text-xs uppercase tracking-[0.2em] bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
           >
-            Restablecer Filtros
+            Restablecer Criterios
           </button>
         </div>
       )}

@@ -9,7 +9,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import { fetchStockProducts } from '../../../lib/sheets';
 import { CatalogGrid } from '../../../components/product/CatalogGrid';
 import { slugify } from '../../../lib/grammar';
@@ -27,8 +26,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const catName = decodeURIComponent(params.categoria).replace(/-/g, ' ');
   const capitalized = catName.charAt(0).toUpperCase() + catName.slice(1);
   return {
-    title: `${capitalized} de Lino | BAUTO Resort Wear`,
-    description: `Descubre nuestra selección de ${catName} en lino puro y fibras nobles diseñadas para el trópico.`,
+    title: `${capitalized} | BAUTO Resort Wear`,
+    description: `Descubre nuestra selección de ${catName} en fibras nobles y siluetas diseñadas para el trópico.`,
   };
 }
 
@@ -51,26 +50,25 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
       
       {/* Botón Volver al Catálogo */}
-      <div className="mb-6">
+      <div className="mb-8">
         <Link
           href="/catalogo"
-          className="inline-flex items-center gap-1.5 text-xs text-bauto-piedra hover:text-bauto-carbon transition-colors"
+          className="inline-flex items-center text-xs tracking-wider uppercase text-bauto-piedra hover:text-bauto-carbon transition-colors border-b border-transparent hover:border-bauto-carbon pb-0.5"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Volver a Toda la Colección</span>
+          <span>← Volver a la colección</span>
         </Link>
       </div>
 
       {/* Encabezado de la Tipología */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-terracota font-semibold block mb-2">
-          Tipología Oficial
+      <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
+          Siluetas de Autor
         </span>
-        <h1 className="font-title font-bold text-3xl sm:text-4xl tracking-tight text-bauto-carbon mb-3 capitalize">
+        <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
           {officialCategory}
         </h1>
         <p className="font-editorial italic text-sm text-bauto-piedra leading-relaxed">
-          Diseñadas bajo el concepto de cuerpo consciente y libertad de movimiento.
+          Concebidas bajo la atención al confort y la libertad de movimiento.
         </p>
       </div>
 

@@ -9,7 +9,6 @@
  */
 
 import React, { useState, useRef } from 'react';
-import { ZoomIn } from 'lucide-react';
 import { getOptimizedImageUrl } from '../../lib/images';
 
 interface TextureMagnifierProps {
@@ -39,7 +38,7 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
       onMouseEnter={() => setIsZooming(true)}
       onMouseLeave={() => setIsZooming(false)}
       onMouseMove={handleMouseMove}
-      className="relative w-full aspect-[3/4] rounded-card overflow-hidden bg-bauto-perla cursor-crosshair select-none border border-bauto-carbon/5 shadow-subtle group"
+      className="relative w-full aspect-[3/4] rounded-sm overflow-hidden bg-[#FAF6F0] cursor-crosshair select-none group"
     >
       {/* Imagen Estándar */}
       <img
@@ -62,9 +61,9 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
         />
       )}
 
-      {/* Indicador de Lupa en la esquina */}
-      <div className="absolute bottom-3 right-3 z-10 p-2 rounded-full bg-bauto-nube/80 backdrop-blur-sm text-bauto-piedra group-hover:text-bauto-terracota border border-bauto-carbon/5 transition-colors pointer-events-none">
-        <ZoomIn className="w-4 h-4" />
+      {/* Indicador Discreto */}
+      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[9px] uppercase tracking-[0.2em] text-bauto-piedra/80 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity border border-bauto-carbon/[0.06]">
+        Detalle Textil
       </div>
     </div>
   );
