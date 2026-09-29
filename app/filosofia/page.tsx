@@ -40,7 +40,7 @@ export default function FilosofiaPage() {
  ];
 
  return (
- <div className="max-w-4xl mx-auto px-6 lg:px-8 py-16 sm:py-24 animate-fade-in font-body">
+ <div className="max-w-4xl mx-auto px-6 lg:px-8 py-24 sm:py-32 animate-fade-in font-body">
  
  {/* Encabezado editorial */}
  <div className="text-center max-w-2xl mx-auto mb-20">
@@ -56,7 +56,7 @@ export default function FilosofiaPage() {
  </div>
 
  {/* Los tres pilares canónicos */}
- <div className="divide-y divide-bauto-carbon/10 border-t ">
+ <div className=" border-t ">
  {pillars.map((pillar) => (
  <article key={pillar.num} className="py-12 sm:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-start">
  <div className="md:col-span-3">

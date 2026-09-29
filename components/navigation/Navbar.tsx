@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ShoppingBag, Menu, X, Compass, MapPin, PackageCheck, BookOpen } from 'lucide-react';
 import { useCartStore } from '../../lib/cartStore';
-import { WeatherWidget } from './WeatherWidget';
+
 import { playHapticClick } from '../../lib/sound';
 
 export function Navbar() {
@@ -117,15 +117,12 @@ export function Navbar() {
  priority
  className="h-5 sm:h-6 w-auto object-contain transition-opacity group-hover:opacity-80"
  />
- <span className="text-[7.5px] sm:text-[8.5px] tracking-[0.35em] uppercase text-bauto-piedra mt-0.5">
- Resort Wear
- </span>
  </Link>
  </div>
 
  {/* Lado Derecho: Clima de Santa Marta & Botón Carrito */}
  <div className="flex items-center gap-3 sm:gap-4">
- <WeatherWidget />
+ 
 
  <button
  type="button"
@@ -135,10 +132,8 @@ export function Navbar() {
  >
  <ShoppingBag className="w-[18px] h-[18px] stroke-[1.5]" />
  {displayCount > 0 && (
- <span className="absolute top-1 right-0.5 flex items-center justify-center min-w-[15px] h-[15px] px-1 text-[8.5px] font-mono font-semibold text-white bg-bauto-carbon animate-fade-in">
- {displayCount}
- </span>
- )}
+                  <span className="absolute top-[8px] right-[6px] w-[6px] h-[6px] bg-bauto-carbon rounded-full animate-fade-in" aria-hidden="true"></span>
+                )}
  </button>
  </div>
 

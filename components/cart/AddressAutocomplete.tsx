@@ -109,7 +109,7 @@ export function AddressAutocomplete({
           }}
           placeholder={placeholder}
           required={required}
-          className="w-full text-xs pl-6 pr-8 py-2.5 bg-transparent border-b border-bauto-carbon/20 focus:border-bauto-carbon focus:outline-none transition-colors text-bauto-carbon placeholder:text-bauto-piedra/50 font-body rounded-none"
+          className="w-full text-xs pl-0 pr-8 py-2.5 bg-transparent border-b border-bauto-carbon/20 focus:border-bauto-carbon focus:outline-none transition-colors text-bauto-carbon placeholder:text-bauto-piedra/50 font-body rounded-none"
         />
         {loading && (
           <Loader2 className="absolute right-0 w-3.5 h-3.5 text-bauto-carbon/50 animate-spin" />

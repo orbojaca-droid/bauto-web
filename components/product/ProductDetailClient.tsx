@@ -202,7 +202,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  type="button"
  disabled={isOutOfStock}
  onClick={handleAddToCart}
- className={`w-full py-4 text-xs font-sans font-medium transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
+ className={`w-full py-3 text-[11px] uppercase tracking-[0.15em] font-sans font-light transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
  isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
  }`}
  >

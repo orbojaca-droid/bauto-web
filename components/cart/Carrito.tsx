@@ -13,7 +13,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { X, ArrowRight, Compass } from 'lucide-react';
 import { useCartStore } from '../../lib/cartStore';
-import { FreeShippingBar } from './FreeShippingBar';
 import { CartItemRow } from './CartItemRow';
 import { GiftCeremony } from './GiftCeremony';
 import { formatCOP } from '../../lib/grammar';
@@ -25,8 +24,7 @@ export function Carrito() {
  const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
  const items = useCartStore((state) => state.items);
  const getSubtotal = useCartStore((state) => state.getSubtotal);
- const getFreeShippingProgress = useCartStore((state) => state.getFreeShippingProgress);
- const isHydrated = useCartStore((state) => state.isHydrated);
+  const isHydrated = useCartStore((state) => state.isHydrated);
 
  // Bloqueo de scroll de fondo en iOS Safari y escritorio mientras el Drawer esté abierto
  useEffect(() => {
@@ -42,8 +40,7 @@ export function Carrito() {
  if (!isHydrated || !isOpen) return null;
 
  const subtotal = getSubtotal();
- const { isQualified } = getFreeShippingProgress();
- const shippingCost = isQualified || subtotal >= 300000 ? 0 : 15000;
+  const shippingCost = 15000;
  const total = subtotal + (items.length > 0 ? shippingCost : 0);
 
  const handleClose = () => {
@@ -107,7 +104,7 @@ export function Carrito() {
  </div>
 
  {/* Barra de Progreso de Envío de Cortesía */}
- {items.length > 0 && <FreeShippingBar />}
+ 
 
  {/* Cuerpo Principal del Carrito */}
  <div className="flex-1 overflow-y-auto px-6 py-2 overscroll-contain">
@@ -120,9 +117,7 @@ export function Carrito() {
  <h3 className="font-title font-light text-base text-bauto-carbon mb-2 tracking-wide">
  Tu bolsa aún está ligera
  </h3>
- <p className="font-editorial italic text-xs text-bauto-piedra leading-relaxed">
- Siluetas fluidas y fibras nobles inspiradas en el Caribe esperan ser descubiertas.
- </p>
+ 
  </div>
 
  <button
@@ -131,7 +126,7 @@ export function Carrito() {
  handleClose();
  router.push('/catalogo');
  }}
- className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] font-sans font-medium"
+ className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] uppercase tracking-widest font-light"
  >
  <span>Explorar colección</span>
  </button>
@@ -165,11 +160,7 @@ export function Carrito() {
  <div className="flex justify-between text-bauto-piedra">
  <span>Envío nacional</span>
  <span>
- {shippingCost === 0 ? (
- <span className="text-bauto-carbon font-normal">De cortesía</span>
- ) : (
- formatCOP(shippingCost)
- )}
+ {formatCOP(shippingCost)}
  </span>
  </div>
 
@@ -185,7 +176,7 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleGoToCheckout}
- className="w-full py-3.5 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-xs font-sans font-medium flex items-center justify-center gap-2"
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-[11px] uppercase tracking-widest font-light flex items-center justify-center gap-2"
  >
  <span>Continuar con el pago</span>
  <ArrowRight className="w-3.5 h-3.5" />

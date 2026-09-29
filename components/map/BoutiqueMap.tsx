@@ -172,14 +172,14 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  </svg>
 
  {/* Sello de coordenadas flotante en esquina superior izquierda */}
- <div className="absolute top-4 left-4 bg-bauto-nube/95 backdrop-blur-md px-3.5 py-1.5 ">
+ <div className="absolute top-6 left-6 bg-transparent ">
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-carbon font-mono">
  11°14′31″ N · 74°12′49″ W
  </span>
  </div>
 
  {/* Tarjeta de distancia al mar */}
- <div className="absolute bottom-4 left-4 bg-bauto-nube/95 backdrop-blur-md px-3.5 py-2 text-xs hidden sm:block">
+ <div className="absolute bottom-6 left-6 bg-transparent text-xs hidden sm:block">
  <p className="font-serif italic text-bauto-carbon text-[11px]">
  A 180 metros de la brisa marina del Caribe
  </p>
@@ -206,7 +206,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  <button
  onClick={() => handleToggleMode(viewMode === "artistic" ? "satellite" : "artistic")}
  type="button"
- className="px-3 py-1.5 bg-bauto-nube/95 hover:bg-bauto-nube backdrop-blur-md text-[11px] font-sans text-bauto-carbon transition-all duration-200 "
+ className="px-3 py-1.5 bg-transparent text-[11px] font-sans text-bauto-carbon transition-all duration-200 "
  aria-label="Alternar entre mapa de autor y mapa satelital"
  >
  {viewMode === "artistic" ? "Ver satélite" : "Ver mapa BAUTO"}
@@ -214,7 +214,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  </div>
 
  {/* Barra inferior de navegación GPS directa */}
- <div className=" bg-bauto-nube/95 backdrop-blur-md px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+ <div className=" bg-transparent px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
  <div className="flex items-center gap-2 text-bauto-carbon">
  <Navigation className="w-3.5 h-3.5 text-bauto-terracota" />
  <span className="font-medium">Abrir en tu app de navegación:</span>

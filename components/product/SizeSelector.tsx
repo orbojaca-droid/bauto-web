@@ -93,9 +93,9 @@ export function SizeSelector({
  {selectedSize && (
  <div className="text-[11px] text-bauto-piedra font-editorial italic mt-0.5">
  <span>
- {stockPorTalla[selectedSize] === 1
- ? 'Última pieza disponible en taller'
- : `${stockPorTalla[selectedSize]} piezas disponibles en esta talla`}
+ {stockPorTalla[selectedSize] <= 2
+ ? 'Últimas piezas en taller'
+                    : 'Disponible en taller'}
  </span>
  </div>
  )}

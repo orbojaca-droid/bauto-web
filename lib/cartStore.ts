@@ -32,14 +32,7 @@ export interface CartStoreState {
   // Selectores computados
   getSubtotal: () => number;
   getTotalItems: () => number;
-  getFreeShippingProgress: () => {
-    threshold: number;
-    subtotal: number;
-    amountNeeded: number;
-    isQualified: boolean;
-    percentage: number;
-  };
-}
+  }
 
 let broadcastChannel: BroadcastChannel | null = null;
 if (typeof window !== "undefined" && "BroadcastChannel" in window) {
@@ -159,22 +152,6 @@ export const useCartStore = create<CartStoreState>()(
 
       getTotalItems: () => {
         return get().items.reduce((sum, item) => sum + item.quantity, 0);
-      },
-
-      getFreeShippingProgress: () => {
-        const subtotal = get().getSubtotal();
-        const threshold = FREE_SHIPPING_THRESHOLD_COP;
-        const amountNeeded = Math.max(0, threshold - subtotal);
-        const isQualified = subtotal >= threshold;
-        const percentage = Math.min(100, Math.round((subtotal / threshold) * 100));
-
-        return {
-          threshold,
-          subtotal,
-          amountNeeded,
-          isQualified,
-          percentage,
-        };
       },
     }),
     {
