@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>BAUTO - El cuidado del lino puro</title>
+  
+  <!-- Tipografías Oficiales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Paged.js -->
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+  <style>
+    /* Configuración Paged Media (Según Skill paged_design) */
+    @page {
+      size: A4;
+      margin: 35mm 25mm 30mm 25mm;
+      
+      @bottom-center {
+        content: "— " counter(page) " —";
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        color: #777777;
+      }
+    }
+
+    @page :first {
+      margin: 0;
+      @bottom-center {
+        content: none;
+      }
+    }
+
+    /* Variables BAUTO */
+    :root {
+      --terracota: #C05621;
+      --carbon: #2C2C2C;
+      --piedra: #777777;
+      --papel: #FAF6F0;
+      --borde: #D1D5DB;
+    }
+
+    /* Estilos base */
+    body {
+      background-color: var(--papel);
+      color: var(--carbon);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      margin: 0;
+    }
+
+    /* Portada Editorial */
+    .cover {
+      height: 100vh;
+      page-break-after: always;
+      break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 40px;
+      position: relative;
+    }
+
+    .cover-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--carbon);
+      margin-bottom: 80px;
+    }
+
+    .cover h1 {
+      font-family: 'Lora', serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      color: var(--carbon);
+    }
+
+    .cover p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--piedra);
+      max-w: 400px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .cover-bottom {
+      position: absolute;
+      bottom: 60px;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--terracota);
+      font-size: 14px;
+    }
+
+    /* Tipografía interior */
+    h2, h3 {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      color: var(--carbon);
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: var(--terracota);
+      margin: 20px auto 0;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: var(--terracota);
+    }
+
+    p {
+      font-size: 11px;
+      margin-bottom: 20px;
+      orphans: 3;
+      widows: 3;
+      text-align: justify;
+    }
+
+    blockquote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--terracota);
+      margin: 40px 0;
+      padding-left: 25px;
+      border-left: 1px solid var(--terracota);
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Grilla de pilares */
+    .grid-pilares {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .pilar-card {
+      border: 1px solid var(--borde);
+      padding: 30px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      background: #FFFFFF;
+    }
+
+    .pilar-card h3 {
+      margin-top: 0;
+      font-size: 14px;
+    }
+    
+    .signature {
+      margin-top: 80px;
+      text-align: right;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--piedra);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <div class="cover-logo">BAUTO Studio</div>
+    <h1>El cuidado del<br>lino puro en el trópico</h1>
+    <p>Una guía de nuestro taller para preservar la nobleza, el color y la caída de las fibras naturales frente a la brisa y el sol del Caribe.</p>
+    <div class="cover-bottom">Documento de Conservación Textil</div>
+  </div>
+
+  <!-- PÁGINA 1: MANIFIESTO -->
+  <h2>Manifiesto Textil</h2>
+  <p>El lino es una fibra viva. A diferencia de los materiales sintéticos que intentan dominar el cuerpo y atrapar el calor, el lino puro respira con quien lo porta, adaptándose de forma natural a la temperatura y la humedad implacable del trópico.</p>
+  
+  <blockquote>
+    "Existe una profunda elegancia en la imperfección natural del lino. En BAUTO, creemos que la arruga no es un defecto que deba plancharse hasta el extremo, sino la firma de autenticidad de una fibra que no ha sido alterada químicamente."
+  </blockquote>
+
+  <p>Diseñamos cada silueta en Santa Marta con un propósito claro: permitir que el aire fluya. Sin embargo, la longevidad de estas prendas depende directamente de los rituales que se adopten en casa. El lavado, el secado y el almacenamiento no son meras rutinas de limpieza, sino actos de preservación patrimonial.</p>
+
+  <!-- PÁGINA 2: RITUALES (Con page-break implícito por la grilla) -->
+  <h2>Rituales de Preservación</h2>
+  
+  <div class="grid-pilares">
+    <div class="pilar-card">
+      <h3>I. El Lavado Consciente</h3>
+      <p>Recomendamos lavar nuestras prendas a mano con jabón neutro, o en un ciclo extremadamente delicado con agua fría. El agua caliente rompe las fibras estructurales del lino, debilita su caída natural y puede alterar los tonos extraídos de la tierra. Nunca utilices blanqueadores comerciales ni detergentes abrasivos.</p>
+    </div>
+
+    <div class="pilar-card">
+      <h3>II. El Secado al Viento</h3>
+      <p>El calor artificial de una secadora es el mayor enemigo de las fibras naturales. Seca tus prendas siempre a la sombra, colgándolas por los hombros o estirándolas sobre una superficie plana. Permite que la brisa haga el trabajo que las máquinas aceleran innecesariamente, manteniendo la integridad del tejido.</p>
+    </div>
+
+    <div class="pilar-card">
+      <h3>III. Almacenamiento y Espacio</h3>
+      <p>El lino necesita espacio para respirar. Evita a toda costa envolver las prendas en plástico. Utiliza fundas de algodón 100% transpirables si vas a guardar la prenda por temporadas largas. El trópico exige libertad de movimiento, y nuestras prendas también la exigen dentro de tu armario.</p>
+    </div>
+  </div>
+
+  <div class="signature">
+    BAUTO Studio, Santa Marta.
+  </div>
+
+</body>
+</html>
