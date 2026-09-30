@@ -137,7 +137,7 @@ export async function sendOrderConfirmationEmail(
                   <tr>
                     <td align="left" style="color: #6E6E6E;">Envío nacional:</td>
                     <td align="right" style="color: #2C2C2C; font-weight: 500;">
-                      ${data.shippingCost === 0 ? '<span style="color: #16A34A; font-weight: 600;">Cortesía</span>' : formatCOP(data.shippingCost)}
+                      ${formatCOP(data.shippingCost)}
                     </td>
                   </tr>
                   <tr style="border-top: 1px solid #E5E0D8;">

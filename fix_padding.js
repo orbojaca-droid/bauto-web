@@ -1,11 +1,16 @@
 const fs = require('fs');
-const files = ['app/page.tsx', 'app/journal/page.tsx', 'app/catalogo/page.tsx', 'app/tienda-santa-marta/page.tsx'];
+const { execSync } = require('child_process');
+
+const files = execSync('find app components -name "*.tsx" -type f').toString().trim().split('\n');
 
 files.forEach(file => {
   let content = fs.readFileSync(file, 'utf8');
-  // Use a temporary token to avoid overlapping replacements
-  content = content.replace(/\bpy-16\b/g, '__TMP_PAD__');
-  content = content.replace(/\bpy-24\b/g, '__TMP_PAD__');
-  content = content.replace(/__TMP_PAD__/g, 'py-20 sm:py-24 md:py-32');
-  fs.writeFileSync(file, content);
+  let original = content;
+  
+  // Update padding for outer containers
+  content = content.replace(/px-4 sm:px-6 lg:px-8/g, 'px-6 sm:px-8 lg:px-12');
+  
+  if (content !== original) {
+    fs.writeFileSync(file, content);
+  }
 });

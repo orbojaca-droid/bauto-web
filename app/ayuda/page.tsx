@@ -51,7 +51,7 @@ export default function AyudaPage() {
  • <strong className="text-bauto-carbon font-medium">Tiempos de entrega:</strong> Las órdenes se alistan en nuestro atelier de Santa Marta dentro de las 24 horas hábiles. La entrega toma de <strong>2 a 4 días hábiles</strong> en ciudades principales y de <strong>3 a 6 días hábiles</strong> en otros destinos nacionales.
  </p>
  <p>
- • <strong className="text-bauto-carbon font-medium">Entrega de cortesía:</strong> Disfrutas de entrega nacional sin costo en compras superiores a <strong>$300.000 COP</strong>. Para órdenes menores, la tarifa plana es de <strong>$15.000 COP</strong>.
+ • <strong className="text-bauto-carbon font-medium">Tarifa de envío nacional:</strong> Todos nuestros despachos nacionales tienen una tarifa plana de <strong>$15.000 COP</strong>.
  </p>
  <p>
  • <strong className="text-bauto-carbon font-medium">Seguimiento en línea:</strong> Puedes consultar el progreso de tu envío en cualquier momento desde nuestro{' '}

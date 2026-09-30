@@ -202,7 +202,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  type="button"
  disabled={isOutOfStock}
  onClick={handleAddToCart}
- className={`w-full py-3 text-[11px] uppercase tracking-[0.15em] font-sans font-light transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
+ className={`w-full py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
  isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
  }`}
  >
@@ -233,7 +233,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
  {/* Sellos de Confianza Rápidos */}
  <div className="pt-4 flex flex-col gap-1.5 text-[11px] font-editorial italic text-bauto-piedra">
- <p>· Entrega de cortesía nacional en compras superiores a $300.000 COP.</p>
+ 
  <p>· Primer cambio de talla asistido sin costo adicional de flete.</p>
  </div>
 

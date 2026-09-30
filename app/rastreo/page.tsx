@@ -63,7 +63,7 @@ function TrackingContent() {
  const whatsappUrl = `https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${whatsappMsg}`;
 
  return (
- <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 animate-fade-in font-body">
+ <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-16 animate-fade-in font-body">
  
  {/* Encabezado del portal */}
  <div className="text-center max-w-xl mx-auto mb-10">

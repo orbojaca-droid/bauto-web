@@ -44,7 +44,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
  {/* Badge Exclusivo Tienda Física */}
  {product.isExclusiveInStore && (
  <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 bg-white/95 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase ">
- <span>Boutique Santa Marta</span>
+ <span>Studio Santa Marta</span>
  </div>
  )}
 

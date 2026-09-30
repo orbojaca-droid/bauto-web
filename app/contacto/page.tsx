@@ -1,7 +1,7 @@
 /**
  * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Atención & Contacto
- * @Propósito: Página de contacto directo, concierge de WhatsApp y citas en boutique bajo estética Quiet Luxury y Sentence case.
+ * @Propósito: Página de contacto directo, concierge de WhatsApp y citas en Studio bajo estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Controlado
  */
@@ -29,7 +29,7 @@ export default function ContactoPage() {
  const asuntoLegible: Record<string, string> = {
  asesoria: 'Asesoría de talla y estilo',
  especial: 'Pedido especial o novios',
- visita: 'Cita en boutique Santa Marta',
+ visita: 'Cita en Studio Santa Marta',
  estado: 'Consulta sobre mi orden',
  otro: 'Consulta general',
  };
@@ -85,7 +85,7 @@ export default function ContactoPage() {
  </a>
  </div>
 
- {/* Boutique de Santa Marta */}
+ {/* Studio de Santa Marta */}
  <div className="py-6">
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
  Atelier físico
@@ -222,7 +222,7 @@ export default function ContactoPage() {
  >
  <option value="asesoria">Asesoría de talla y estilo</option>
  <option value="especial">Pedido especial / novios / evento</option>
- <option value="visita">Agendar visita en boutique Santa Marta</option>
+ <option value="visita">Agendar visita en Studio Santa Marta</option>
  <option value="estado">Estado de mi compra en línea</option>
  <option value="otro">Otra inquietud</option>
  </select>

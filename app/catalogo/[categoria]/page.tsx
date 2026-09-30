@@ -47,7 +47,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
  const officialCategory = matchingProduct ? matchingProduct.tipologia : rawCat;
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
+ <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-14 animate-fade-in">
  
  {/* Botón Volver al Catálogo */}
  <div className="mb-8">

@@ -1,7 +1,7 @@
 /**
  * @BAUTO_REFACTOR 2026-09-29
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Tienda Santa Marta
- * @Propósito: Página de la boutique y taller físico en Santa Marta bajo estética Quiet Luxury.
+ * @Propósito: Página de la Studio y taller físico en Santa Marta bajo estética Quiet Luxury.
  * Mapa cartográfico personalizado a medida y tipografía estricta en Sentence case.
  * @Capa: Estética / Funcional
  * @Riesgo_Evaluado: Controlado
@@ -11,12 +11,12 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { MessageCircle } from 'lucide-react';
 import { BAUTO_WHATSAPP_PHONE } from '../../lib/constants';
-import { BoutiqueMap } from '../../components/map/BoutiqueMap';
+import { StudioMap } from '../../components/map/StudioMap';
 
 export const metadata: Metadata = {
- title: 'Boutique Santa Marta | Calle 20 # 2-36 | BAUTO Resort Wear',
+ title: 'Studio Santa Marta | Calle 20 # 2-36 | BAUTO Resort Wear',
  description:
- 'Visita nuestra boutique y taller en el Centro Histórico de Santa Marta. Calle 20 # 2-36. Lino noble, confort del Caribe y atención personalizada.',
+ 'Visita nuestra Studio y taller en el Centro Histórico de Santa Marta. Calle 20 # 2-36. Lino noble, confort del Caribe y atención personalizada.',
 };
 
 export default function TiendaSantaMartaPage() {
@@ -26,7 +26,7 @@ export default function TiendaSantaMartaPage() {
  {/* Encabezado principal */}
  <div className="text-center max-w-2xl mx-auto mb-16">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
- Atelier y boutique · Santa Marta
+ Atelier y Studio · Santa Marta
  </span>
  <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
  Calle 20 # 2-36
@@ -42,7 +42,7 @@ export default function TiendaSantaMartaPage() {
  <div className="lg:col-span-7 flex flex-col gap-10">
 
  {/* Visor del mapa personalizado BAUTO */}
- <BoutiqueMap />
+ <StudioMap />
  
  {/* Información de dirección y horarios */}
  <div className=" pt-8 flex flex-col gap-8">
@@ -102,7 +102,7 @@ export default function TiendaSantaMartaPage() {
  Atención concierge
  </span>
  <h3 className="font-title font-light text-xl text-bauto-carbon tracking-wide">
- ¿Deseas apartar una pieza o agendar una cita en boutique?
+ ¿Deseas apartar una pieza o agendar una cita en Studio?
  </h3>
  </div>
 
@@ -111,7 +111,7 @@ export default function TiendaSantaMartaPage() {
  </p>
 
  <a
- href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, quisiera consultar disponibilidad en la boutique de Santa Marta.')}`}
+ href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, quisiera consultar disponibilidad en la Studio de Santa Marta.')}`}
  target="_blank"
  rel="noopener noreferrer"
  className="w-full py-3.5 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"

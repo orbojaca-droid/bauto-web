@@ -11,7 +11,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { X, ArrowRight, Compass } from 'lucide-react';
+import { X, Compass } from 'lucide-react';
 import { useCartStore } from '../../lib/cartStore';
 import { CartItemRow } from './CartItemRow';
 import { GiftCeremony } from './GiftCeremony';
@@ -75,7 +75,7 @@ export function Carrito() {
  }`}
  role="dialog"
  aria-modal="true"
- aria-label="Bolsa de compras BAUTO"
+ aria-label="Carrito de comprass BAUTO"
  >
  {/* Tirador Táctil (Drag Handle) solo visible en pantallas móviles */}
  <div className="sm:hidden pt-3 pb-1 flex justify-center">
@@ -86,7 +86,7 @@ export function Carrito() {
  <div className="flex items-center justify-between px-6 py-5 ">
  <div className="flex items-baseline gap-2">
  <h2 className="font-title font-light text-base tracking-wide text-bauto-carbon">
- Bolsa de compra
+ Carrito de compras
  </h2>
  <span className="font-body text-xs text-bauto-piedra">
  ({itemCount} {itemCount === 1 ? 'pieza' : 'piezas'})
@@ -97,7 +97,7 @@ export function Carrito() {
  type="button"
  onClick={handleClose}
  className="w-9 h-9 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
- aria-label="Cerrar bolsa"
+ aria-label="Cerrar carrito"
  >
  <X className="w-4 h-4 stroke-[1.5]" />
  </button>
@@ -115,7 +115,7 @@ export function Carrito() {
  
  <div className="max-w-xs">
  <h3 className="font-title font-light text-base text-bauto-carbon mb-2 tracking-wide">
- Tu bolsa aún está ligera
+ Tu carrito está vacío
  </h3>
  
  </div>
@@ -179,7 +179,7 @@ export function Carrito() {
  className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-[11px] uppercase tracking-widest font-light flex items-center justify-center gap-2"
  >
  <span>Continuar con el pago</span>
- <ArrowRight className="w-3.5 h-3.5" />
+ 
  </button>
 
  <p className="text-[10px] text-center text-bauto-piedra mt-3 flex items-center justify-center gap-1">

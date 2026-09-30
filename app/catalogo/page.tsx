@@ -30,7 +30,7 @@ export default async function CatalogoPage() {
  }
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 animate-fade-in">
+ <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-14 animate-fade-in">
  
  {/* Encabezado editorial */}
  <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">

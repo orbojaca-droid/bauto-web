@@ -29,7 +29,7 @@ export default function JournalPostPage({ params }: { params: { slug: string } }
  return (
  <article className="animate-fade-in pb-24">
  {/* Cabecera del artículo */}
- <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10">
+ <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-10">
  <Link href="/journal" className="inline-flex items-center text-xs uppercase tracking-[0.2em] text-bauto-piedra hover:text-bauto-carbon transition-colors mb-16">
  <ArrowLeft className="w-3.5 h-3.5 mr-3" />
  Volver al Journal
@@ -48,7 +48,7 @@ export default function JournalPostPage({ params }: { params: { slug: string } }
  </div>
 
  {/* Imagen Hero */}
- <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
+ <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24">
  <div className="relative aspect-[4/3] sm:aspect-[21/9] w-full overflow-hidden bg-bauto-perla">
  <img 
  src={post.coverImage} 
@@ -59,7 +59,7 @@ export default function JournalPostPage({ params }: { params: { slug: string } }
  </div>
 
  {/* Cuerpo del Artículo */}
- <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12">
  <div 
  className="prose prose-bauto prose-p:font-light prose-p:leading-[1.8] prose-p:text-bauto-carbon/80 prose-headings:font-title prose-headings:font-light prose-headings:text-bauto-carbon prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4 prose-a:text-bauto-terracota hover:prose-a:text-bauto-carbon transition-colors"
  dangerouslySetInnerHTML={{ __html: post.content }} 

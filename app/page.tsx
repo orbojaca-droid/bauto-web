@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+
 import { fetchStockProducts } from '../lib/sheets';
 import { ProductCard } from '../components/product/ProductCard';
 import { VideoHero } from '../components/media/VideoHero';
@@ -32,7 +32,7 @@ export default async function HomePage() {
  <div className="flex flex-col gap-20 sm:gap-32 pb-24">
  
  {/* 1. Hero editorial minimalista */}
- <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center">
+ <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 sm:py-24 md:py-32 text-center">
  <div className="max-w-4xl mx-auto flex flex-col items-center gap-7 animate-fade-in">
  
  <span className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-bauto-piedra font-normal block">
@@ -50,10 +50,10 @@ export default async function HomePage() {
  <div className="pt-3">
  <Link
  href="/catalogo"
- className="btn-primary active:scale-[0.97] transition-transform duration-150 ease-out px-8 py-3.5 text-xs font-sans font-normal "
+ className="btn-primary active:scale-[0.97] transition-transform duration-150 ease-out px-8 py-3.5 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light "
  >
  <span>Explorar colección</span>
- <ArrowRight className="w-3.5 h-3.5" />
+ 
  </Link>
  </div>
 
@@ -61,7 +61,7 @@ export default async function HomePage() {
  </section>
 
  {/* 2. Espacio audiovisual cinemático (Lookbook en movimiento) */}
- <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+ <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
  <VideoHero
  aspectRatio="cinematic"
  tagline="Atmósfera y movimiento"
@@ -71,7 +71,7 @@ export default async function HomePage() {
  </section>
 
  {/* 3. Curated Drops (Escaparate de temporada) */}
- <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+ <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
  <div>
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-1">
@@ -87,7 +87,7 @@ export default async function HomePage() {
  className="inline-flex items-center gap-2 text-xs font-normal text-bauto-carbon hover:text-bauto-terracota transition-colors  hover:border-bauto-terracota pb-0.5"
  >
  <span>Ver colección completa ({products.length})</span>
- <ArrowRight className="w-3.5 h-3.5" />
+ 
  </Link>
  </div>
 
@@ -105,7 +105,7 @@ export default async function HomePage() {
  </section>
 
  {/* 4. Manifiesto textil (Editorial spread) */}
- <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-20 ">
+ <section className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-12 sm:py-20 ">
  <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-4">
  Manifiesto
@@ -150,12 +150,12 @@ export default async function HomePage() {
  </div>
  </section>
 
- {/* 5. Boutique en Santa Marta */}
- <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+ {/* 5. Studio en Santa Marta */}
+ <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
  <div className=" bg-[#F2F0EB]/50 border-t py-12 sm:py-20 sm:py-24 md:py-32 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
  <div className="max-w-xl flex flex-col gap-2">
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
- Boutique y taller caribeño
+ Studio y taller caribeño
  </span>
  <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
  Habita el espacio en Calle 20 # 2-36
@@ -168,10 +168,10 @@ export default async function HomePage() {
  <div className="shrink-0">
  <Link
  href="/tienda-santa-marta"
- className="btn-glass px-7 py-3 text-xs font-sans text-bauto-carbon hover:bg-white transition-all shadow-none"
+ className="btn-glass px-7 py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon hover:bg-white transition-all shadow-none"
  >
- <span>Conoce la boutique</span>
- <ArrowRight className="w-3.5 h-3.5" />
+ <span>Conoce la Studio</span>
+ 
  </Link>
  </div>
  </div>

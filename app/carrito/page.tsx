@@ -24,7 +24,7 @@ export default function CartPage() {
  const isHydrated = useCartStore((state) => state.isHydrated);
  const items = useCartStore((state) => state.items);
  const getSubtotal = useCartStore((state) => state.getSubtotal);
- const getFreeShippingProgress = useCartStore((state) => state.getFreeShippingProgress);
+ 
  const isGiftPackaging = useCartStore((state) => state.isGiftPackaging);
  const giftDedicationNote = useCartStore((state) => state.giftDedicationNote);
 
@@ -42,8 +42,8 @@ export default function CartPage() {
  if (!isHydrated) return null;
 
  const subtotal = getSubtotal();
- const { isQualified } = getFreeShippingProgress();
- const shippingCost = isQualified || subtotal >= 300000 ? 0 : 15000;
+ 
+ const shippingCost = 15000;
  const total = subtotal + shippingCost;
 
  const handleCheckout = async (e: React.FormEvent) => {
@@ -138,7 +138,7 @@ export default function CartPage() {
  }
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 animate-fade-in">
+ <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-16 animate-fade-in">
  
  <div className="mb-10 sm:mb-12">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra block mb-1 font-light">
@@ -294,11 +294,7 @@ export default function CartPage() {
  <div className="flex justify-between text-bauto-piedra">
  <span>Envío nacional (MiPaquete)</span>
  <span className="font-body text-bauto-carbon">
- {shippingCost === 0 ? (
- <span className="text-bauto-carbon/80 font-normal">De cortesía</span>
- ) : (
- formatCOP(shippingCost)
- )}
+ {formatCOP(shippingCost)}
  </span>
  </div>
 

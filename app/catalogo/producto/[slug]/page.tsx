@@ -62,7 +62,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
  .slice(0, 4);
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 animate-fade-in">
+ <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 animate-fade-in">
  
  {/* Breadcrumbs de Navegación de Lujo */}
  <nav className="flex items-center gap-2 text-xs text-bauto-piedra mb-10 overflow-x-auto whitespace-nowrap scrollbar-none font-light">

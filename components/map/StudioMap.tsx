@@ -2,8 +2,8 @@
 
 /**
  * @BAUTO_ECOSYSTEM 2026-09-29
- * @Modulo: WEB (bauto.com.co) - BoutiqueMap
- * @Propósito: Visor cartográfico a medida en estética Quiet Luxury para la boutique de Santa Marta.
+ * @Modulo: WEB (bauto.com.co) - StudioMap
+ * @Propósito: Visor cartográfico a medida en estética Quiet Luxury para la Studio de Santa Marta.
  * Paleta sobria de la marca: Bahía en tono bruma, cuadrícula histórica en arena/lino,
  * pin en Terracota BAUTO con pulso sutil y enlaces directos a navegación GPS.
  */
@@ -12,11 +12,11 @@ import React, { useState } from "react";
 import { ExternalLink, Navigation } from "lucide-react";
 import { playClickSound } from "@/lib/sound";
 
-interface BoutiqueMapProps {
+interface StudioMapProps {
  className?: string;
 }
 
-export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
+export const StudioMap: React.FC<StudioMapProps> = ({ className = "" }) => {
  const [viewMode, setViewMode] = useState<"artistic" | "satellite">("artistic");
 
  const googleMapsUrl =
@@ -34,7 +34,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  <div
  className={`relative w-full overflow-hidden bg-[#F4F1EA] text-bauto-carbon select-none ${className}`}
  style={{ minHeight: "380px" }}
- aria-label="Mapa cartográfico de la Boutique BAUTO en Santa Marta"
+ aria-label="Mapa cartográfico de la Studio BAUTO en Santa Marta"
  >
  {viewMode === "artistic" ? (
  <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] flex items-center justify-center overflow-hidden">
@@ -93,7 +93,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  {/* Manzanas entre Cra 2 y Cra 3 (Ubicación BAUTO) */}
  <rect x="450" y="40" width="140" height="90" rx="2" />
  <rect x="445" y="160" width="140" height="90" rx="2" />
- {/* Manzana boutique Calle 20 # 2-36 */}
+ {/* Manzana Studio Calle 20 # 2-36 */}
  <rect x="435" y="280" width="140" height="90" rx="2" fill="#E4DDCF" stroke="#D1C7B7" />
  <rect x="425" y="400" width="140" height="90" rx="2" />
 
@@ -147,13 +147,13 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  Calle 19
  </text>
  <text x="820" y="260" fill="#1C1917" fontSize="11" fontFamily="sans-serif" fontWeight="500" letterSpacing="0.1em">
- Calle 20 (Eje peatonal y boutique)
+ Calle 20 (Eje peatonal y Studio)
  </text>
  <text x="820" y="380" fill="#9C9588" fontSize="10" fontFamily="sans-serif" letterSpacing="0.1em">
  Calle 21
  </text>
 
- {/* Pin Boutique BAUTO (Calle 20 entre Cra 2 y Cra 3) */}
+ {/* Pin Studio BAUTO (Calle 20 entre Cra 2 y Cra 3) */}
  <g transform="translate(490, 265)">
  {/* Halo de pulso */}
  <circle cx="0" cy="0" r="32" fill="url(#pinGlow)" className="animate-pulse" />
@@ -162,7 +162,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  <circle cx="0" cy="0" r="7" fill="#B85C38" stroke="#FAF9F6" strokeWidth="2.5" />
  </g>
 
- {/* Cartela de la Boutique */}
+ {/* Cartela de la Studio */}
  <g transform="translate(490, 230)">
  <rect x="-70" y="-28" width="140" height="26" rx="13" fill="#1C1917" />
  <text x="0" y="-11" fill="#FAF9F6" fontSize="10" fontFamily="sans-serif" fontWeight="500" letterSpacing="0.12em" textAnchor="middle">
@@ -189,7 +189,7 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  /* Vista satelital / callejera interactiva */
  <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px]">
  <iframe
- title="Ubicación satelital Boutique BAUTO Santa Marta"
+ title="Ubicación satelital Studio BAUTO Santa Marta"
  width="100%"
  height="100%"
  frameBorder="0"
@@ -259,4 +259,4 @@ export const BoutiqueMap: React.FC<BoutiqueMapProps> = ({ className = "" }) => {
  );
 };
 
-export default BoutiqueMap;
+export default StudioMap;

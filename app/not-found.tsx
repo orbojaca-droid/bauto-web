@@ -13,7 +13,7 @@ import { BAUTO_WHATSAPP_URL } from '../lib/constants';
 
 export default function NotFound() {
  return (
- <div className="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 animate-fade-in font-body">
+ <div className="min-h-[70vh] flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 animate-fade-in font-body">
  <div className="max-w-md w-full text-center">
  
  {/* Ícono de compás serena */}

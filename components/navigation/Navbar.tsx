@@ -51,7 +51,7 @@ export function Navbar() {
  const navLinks = [
  { href: '/catalogo', label: 'Colección', icon: Compass },
  { href: '/journal', label: 'Journal', icon: BookOpen },
- { href: '/tienda-santa-marta', label: 'Boutique', icon: MapPin },
+ { href: '/tienda-santa-marta', label: 'Studio', icon: MapPin },
  ];
 
  return (
@@ -63,7 +63,7 @@ export function Navbar() {
  : 'bg-bauto-nube/80 backdrop-blur-md py-4 sm:py-5 '
  }`}
  >
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
  <div className="flex items-center justify-between">
  
  {/* Lado Izquierdo: Menú Hamburguesa Móvil & Links Desktop */}
