@@ -10,6 +10,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Product } from '../../types/catalog';
 import { ProductCard } from './ProductCard';
 import { playHapticClick } from '../../lib/sound';
@@ -57,6 +58,17 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
         return 0; // Por defecto orden de aparición / novedad
       });
   }, [products, selectedCategory, sortOption, searchQuery]);
+
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col gap-8">
@@ -143,11 +155,24 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
 
       {/* Cuadrícula de Prendas */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id || product.reference} product={product} />
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+        >
+          {filteredProducts.map((product, i) => (
+            <motion.div 
+              key={product.id || product.reference}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.5 } }
+              }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       ) : (
         <div className="py-24 text-center text-xs text-bauto-piedra max-w-sm mx-auto">
           <h3 className="font-title font-light text-base text-bauto-carbon mb-2">

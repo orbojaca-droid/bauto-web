@@ -12,6 +12,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { X, Compass } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '../../lib/cartStore';
 import { CartItemRow } from './CartItemRow';
 import { GiftCeremony } from './GiftCeremony';
@@ -37,7 +38,7 @@ export function Carrito() {
  }
  }, [isOpen]);
 
- if (!isHydrated || !isOpen) return null;
+ if (!isHydrated) return null;
 
  const subtotal = getSubtotal();
   const shippingCost = 15000;
@@ -57,17 +58,21 @@ export function Carrito() {
  const itemCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
  return (
+ <AnimatePresence>
+ {isOpen && (
  <div className="fixed inset-0 z-50 flex justify-end">
  {/* Fondo Oscuro / Backdrop con Desenfoque */}
- <div
- className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
+ <motion.div
+ initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
+ className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm"
  onClick={handleClose}
  aria-hidden="true"
  />
 
  {/* Contenedor Adaptativo: Bottom Sheet en Móvil / Panel Lateral en Desktop */}
- <aside
- className={`relative z-10 w-full sm:max-w-md bg-bauto-nube flex flex-col transition-all duration-300 ${
+ <motion.aside
+ initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+ className={`relative z-10 w-full sm:max-w-md bg-bauto-nube flex flex-col ${
  /* Móvil: anclado al fondo, máximo 92dvh con esquinas suaves superiores */
  'max-sm:mt-auto max-sm:max-h-[92dvh] max-sm:rounded-t-2xl ' +
  /* Desktop: 100vh de altura completa, fijado a la derecha */
@@ -126,7 +131,7 @@ export function Carrito() {
  handleClose();
  router.push('/catalogo');
  }}
- className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-[11px] uppercase tracking-widest font-light"
+ className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-widest font-light"
  >
  <span>Explorar colección</span>
  </button>
@@ -176,7 +181,7 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleGoToCheckout}
- className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-200 text-[11px] uppercase tracking-widest font-light flex items-center justify-center gap-2"
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-widest font-light flex items-center justify-center gap-2"
  >
  <span>Continuar con el pago</span>
  
@@ -188,7 +193,9 @@ export function Carrito() {
  </p>
  </div>
  )}
- </aside>
+ </motion.aside>
  </div>
+ )}
+ </AnimatePresence>
  );
 }
