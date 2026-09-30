@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>BAUTO - Comprobante Muestra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <style>
+    @page {
+      size: A5 portrait;
+      margin: 15mm;
+    }
+    body {
+      background-color: #FAF6F0;
+      color: #2C2C2C;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #D1D5DB;
+      padding-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+    }
+    .header p { margin: 0; color: #777777; font-size: 9px; }
+    
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      border-bottom: 1px dashed #D1D5DB;
+      padding-bottom: 20px;
+    }
+    .meta div { display: flex; flex-direction: column; gap: 5px; }
+    .meta strong { font-weight: 500; font-size: 9px; color: #777; text-transform: uppercase; letter-spacing: 0.05em; }
+    .meta span { font-family: 'Lora', serif; font-size: 12px; }
+
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th { text-align: left; font-weight: 500; font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: #777; border-bottom: 1px solid #D1D5DB; padding-bottom: 10px; }
+    td { padding: 15px 0; border-bottom: 1px solid #E5E7EB; vertical-align: top; }
+    .item-name { font-family: 'Lora', serif; font-size: 12px; display: block; margin-bottom: 3px; }
+    .item-meta { font-size: 9px; color: #777; }
+    .price { text-align: right; }
+    
+    .totals { width: 100%; text-align: right; margin-top: 20px; }
+    .totals p { margin: 5px 0; display: flex; justify-content: flex-end; gap: 30px; }
+    .totals p span:first-child { color: #777; }
+    .totals .grand-total { font-family: 'Lora', serif; font-size: 16px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #2C2C2C; }
+    
+    .footer { text-align: center; margin-top: 50px; font-style: italic; font-family: 'Lora', serif; color: #C05621; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>BAUTO Studio</h1>
+    <p>Comprobante de Adquisición Oficial</p>
+    <p>NIT: 901.456.789-0 | Santa Marta, Colombia</p>
+  </div>
+  
+  <div class="meta">
+    <div>
+      <strong>Orden No.</strong>
+      <span>#BTO-8492</span>
+    </div>
+    <div>
+      <strong>Fecha</strong>
+      <span>29 Septiembre 2026</span>
+    </div>
+    <div style="text-align: right;">
+      <strong>Cliente</strong>
+      <span>Tomás Bautista</span>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pieza Textil</th>
+        <th class="price">Inversión</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="item-name">Camisa Lino Ceylán Blanca</span>
+          <span class="item-meta">Talla: L | 1 Unidad</span>
+        </td>
+        <td class="price">$ 240.000</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="item-name">Pantalón Lino Sartorial Océano</span>
+          <span class="item-meta">Talla: M | 1 Unidad</span>
+        </td>
+        <td class="price">$ 280.000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <p><span>Subtotal</span> <span>$ 520.000</span></p>
+    <p><span>Envío Nacional</span> <span>$ 15.000</span></p>
+    <p class="grand-total"><span>Total</span> <span>$ 535.000</span></p>
+  </div>
+
+  <div class="footer">
+    Gracias por honrar la fibra viva del trópico.
+  </div>
+</body>
+</html>
