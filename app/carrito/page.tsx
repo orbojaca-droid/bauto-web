@@ -16,6 +16,7 @@ import { useCartStore } from '../../lib/cartStore';
 import { CartItemRow } from '../../components/cart/CartItemRow';
 import { GiftCeremony } from '../../components/cart/GiftCeremony';
 import { AddressAutocomplete } from '../../components/cart/AddressAutocomplete';
+import { CityAutocomplete } from '../../components/cart/CityAutocomplete';
 import { formatCOP } from '../../lib/grammar';
 import { playHapticClick } from '../../lib/sound';
 
@@ -256,21 +257,20 @@ export default function CartPage() {
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
  Ciudad o municipio de entrega *
  </label>
- <div className="relative">
- <input
- type="text"
- required
+ <CityAutocomplete
  value={city}
- onChange={(e) => { setCity(e.target.value); if (errors.city) setErrors({...errors, city: ''}); }}
- placeholder="Ej: Santa Marta, Bogotá, Medellín"
- className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.city ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
+ onChange={(val) => {
+ setCity(val);
+ if (errors.city) setErrors({ ...errors, city: '' });
+ }}
+ onSelectCity={(selectedCity) => {
+ setCity(selectedCity);
+ if (errors.city) setErrors({ ...errors, city: '' });
+ }}
+ placeholder="Escribe o selecciona tu ciudad (ej: Santa Marta, Bogotá...)"
+ hasError={!!errors.city}
+ isLoading={isQuotingShipping}
  />
- {isQuotingShipping && (
- <div className="absolute right-0 top-1/2 -translate-y-1/2">
- <Loader2 className="w-4 h-4 animate-spin text-bauto-piedra" />
- </div>
- )}
- </div>
  {errors.city && <span className="text-xs text-bauto-danger mt-1 block">{errors.city}</span>}
  {shippingError && <span className="text-xs text-bauto-danger mt-1 block">{shippingError}</span>}
  </div>

@@ -96,11 +96,11 @@ export async function POST(req: NextRequest) {
     const randomSuffix = Math.random().toString(36).substring(2, 7).toUpperCase();
     const reference = `BAUTO-${timestamp}-${randomSuffix}`;
 
-    // 5. Llaves de Wompi (lectura de variables de entorno con fallback de producción BAUTO) @BAUTO_REFACTOR 2026-10-02
+    // 5. Llaves de Wompi (lectura de variables de entorno con fallback Sandbox BAUTO) @BAUTO_REFACTOR 2026-10-02
     const publicKey =
-      process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_prod_MYfdpyNrCni2KWTQ5SmEMWJR8SiKPUad";
+      process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_test_oZmlfe1Ze2vJE3qoZh0mclXPz05nectY";
     const integritySecret =
-      process.env.WOMPI_INTEGRITY_SECRET || "prod_integrity_HGmKUlkBtTKpxglIhfMqpprOMzZrMllU";
+      process.env.WOMPI_INTEGRITY_SECRET || "test_integrity_WJyAotiCVCNpFlqWOqorqfdE9fXJSPTN";
 
     // 6. Cadena de integridad oficial Wompi: `<referencia><monto_en_centavos><moneda><secreto_integridad>`
     const rawSignature = `${reference}${amountInCents}${currency}${integritySecret}`;
