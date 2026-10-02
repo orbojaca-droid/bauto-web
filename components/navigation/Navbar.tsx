@@ -49,8 +49,9 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-32">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
+          {/* @BAUTO_REFACTOR 2026-10-02: Centrado simétrico del logo con grid-cols-3 de 3 columnas iguales */}
+          <div className="grid grid-cols-3 items-center">
+            <div className="flex items-center justify-start gap-6">
               <button
                 type="button"
                 onClick={() => {
@@ -72,7 +73,7 @@ export function Navbar() {
                       href={link.href}
                       onClick={playHapticClick}
                       // @BAUTO_REFACTOR 2026-10-02
-                      className={`uppercase tracking-[0.15em] text-[11px] font-light transition-colors ${
+                      className={`uppercase tracking-[0.15em] text-[11px] font-light whitespace-nowrap transition-colors ${
                         isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/60 hover:text-bauto-carbon'
                       }`}
                     >
@@ -83,7 +84,7 @@ export function Navbar() {
               </nav>
             </div>
 
-            <div className="text-center">
+            <div className="flex items-center justify-center text-center">
               <Link 
                 href="/" 
                 onClick={playHapticClick}
@@ -101,7 +102,7 @@ export function Navbar() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex items-center justify-end gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={handleOpenCart}
