@@ -28,7 +28,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
  });
 
  return (
- <article className="group relative flex flex-col animate-fade-in">
+ <article className="group relative flex flex-col">
  {/* Contenedor de Imagen de Pasarela */}
  <Link
  href={`/catalogo/producto/${product.slug}`}
@@ -42,7 +42,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
  data-loaded={isLoaded}
  onLoad={() => setIsLoaded(true)}
  onError={() => setIsLoaded(true)}
- className="w-full h-full object-cover object-center transition-all duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] data-[loaded=false]:opacity-0 data-[loaded=false]:scale-95 data-[loaded=true]:opacity-100 data-[loaded=true]:scale-100"
+ className="w-full h-full object-cover object-center [transition-property:transform,opacity,filter] duration-[250ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] data-[loaded=false]:opacity-0 data-[loaded=false]:blur-sm data-[loaded=false]:scale-95 data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0 data-[loaded=true]:scale-100"
  />
 
 

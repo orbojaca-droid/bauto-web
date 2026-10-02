@@ -88,7 +88,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
  preload="metadata"
  onLoadedData={() => setIsLoaded(true)}
  data-loaded={isLoaded}
- className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out data-[loaded=false]:opacity-0 data-[loaded=false]:blur-sm data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0"
+ className="absolute inset-0 h-full w-full object-cover object-center [transition-property:opacity,filter] duration-500 ease-in-out data-[loaded=false]:opacity-0 data-[loaded=false]:blur-sm data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0"
  />
 
  {/* Contenido editorial superpuesto */}
@@ -103,7 +103,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
  </p>
  )}
  {title && (
- <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-light leading-tight tracking-tight text-bauto-nube">
+ <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-light leading-tight tracking-tight text-bauto-nube">
  {title}
  </h2>
  )}
@@ -120,7 +120,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
  <button
  onClick={togglePlay}
  type="button"
- className="px-3 py-1.5 bg-transparent text-bauto-nube/70 hover:text-bauto-nube border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-150 ease-out active:scale-[0.97] focus:outline-none"
+ className="px-3 py-1.5 bg-transparent text-bauto-nube/70 hover:text-bauto-nube border border-bauto-nube/20 text-bauto-nube text-xs font-sans [transition-property:color,transform] duration-150 ease-out active:scale-[0.97] focus:outline-none"
  aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
  >
  {isPlaying ? "Pausar" : "Reproducir"}
@@ -128,7 +128,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
  <button
  onClick={toggleMute}
  type="button"
- className="px-3 py-1.5 bg-transparent text-bauto-nube/70 hover:text-bauto-nube border border-bauto-nube/20 text-bauto-nube text-xs font-sans transition-all duration-150 ease-out active:scale-[0.97] focus:outline-none"
+ className="px-3 py-1.5 bg-transparent text-bauto-nube/70 hover:text-bauto-nube border border-bauto-nube/20 text-bauto-nube text-xs font-sans [transition-property:color,transform] duration-150 ease-out active:scale-[0.97] focus:outline-none"
  aria-label={isMuted ? "Activar audio" : "Silenciar audio"}
  >
  {isMuted ? "Sonido" : "Silencio"}

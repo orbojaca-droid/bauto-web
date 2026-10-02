@@ -72,7 +72,9 @@ export function Carrito() {
 
  {/* Contenedor Adaptativo: Bottom Sheet en Móvil / Panel Lateral en Desktop */}
  <motion.aside
- initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+ // @BAUTO_REFACTOR 2026-10-02
+ drag="y" dragConstraints={{ top: 0, bottom: 0 }} dragElastic={{ top: 0, bottom: 0.5 }} onDragEnd={(e, info) => { if (info.velocity.y > 0.11 || info.offset.y > 100) handleClose(); }}
+ initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.25 }}
  className={`relative z-10 w-full sm:max-w-md bg-bauto-nube flex flex-col ${
  /* Móvil: anclado al fondo, máximo 92dvh con esquinas suaves superiores */
  'max-sm:mt-auto max-sm:max-h-[92dvh] max-sm:rounded-t-2xl ' +
@@ -102,7 +104,8 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleClose}
- className="w-9 h-9 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-11 h-11 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
  aria-label="Cerrar carrito"
  >
  <X className="w-4 h-4 stroke-[1.5]" />
@@ -132,7 +135,8 @@ export function Carrito() {
  handleClose();
  router.push('/catalogo');
  }}
- className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color,color] duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light"
  >
  <span>Explorar colección</span>
  </button>
@@ -182,7 +186,8 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleGoToCheckout}
- className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light flex items-center justify-center gap-2"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color,color] duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light flex items-center justify-center gap-2"
  >
  <span>Continuar con el pago</span>
  

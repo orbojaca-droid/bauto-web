@@ -165,8 +165,8 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
             <motion.div 
               key={product.id || product.reference}
               variants={{
-                hidden: { opacity: 0, y: 20 },
-                show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.5 } }
+                hidden: { opacity: 0, y: 12 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.25 } }
               }}
             >
               <ProductCard product={product} />

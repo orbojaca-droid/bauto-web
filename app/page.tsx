@@ -168,7 +168,7 @@ export default async function HomePage() {
  <div className="shrink-0">
  <Link
  href="/tienda-santa-marta"
- className="btn-glass px-7 py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon hover:bg-white transition-all shadow-none"
+ className="btn-glass px-7 py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon hover:bg-white [transition-property:background-color,transform] duration-160 ease-out active:scale-[0.97] shadow-none"
  >
  <span>Conoce la Studio</span>
  

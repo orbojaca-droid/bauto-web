@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Lupa macro 4K para apreciar el tejido noble, gramaje y caída del lino
  * @Capa: Estética / Funcional
@@ -9,6 +9,7 @@
  */
 
 import React, { useState, useRef } from 'react';
+import { motion, useSpring, useTransform } from 'framer-motion';
 import { getOptimizedImageUrl } from '../../lib/images';
 
 interface TextureMagnifierProps {
@@ -18,8 +19,11 @@ interface TextureMagnifierProps {
 
 export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
  const [isZooming, setIsZooming] = useState(false);
- const [position, setPosition] = useState({ x: 50, y: 50 });
  const containerRef = useRef<HTMLDivElement>(null);
+ 
+ const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
+ const x = useSpring(50, springConfig);
+ const y = useSpring(50, springConfig);
 
  const highResUrl = getOptimizedImageUrl(src, { width: 1400, quality: 92 });
  const standardUrl = getOptimizedImageUrl(src, { width: 800, quality: 85 });
@@ -27,10 +31,12 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
  if (!containerRef.current) return;
  const rect = containerRef.current.getBoundingClientRect();
- const x = ((e.clientX - rect.left) / rect.width) * 100;
- const y = ((e.clientY - rect.top) / rect.height) * 100;
- setPosition({ x, y });
+ x.set(((e.clientX - rect.left) / rect.width) * 100);
+ y.set(((e.clientY - rect.top) / rect.height) * 100);
  };
+
+ const bgPositionX = useTransform(x, (val) => `${val}%`);
+ const bgPositionY = useTransform(y, (val) => `${val}%`);
 
  return (
  <div
@@ -51,11 +57,12 @@ export function TextureMagnifier({ src, alt }: TextureMagnifierProps) {
 
  {/* Imagen Macro Zoom 2.2x */}
  {isZooming && (
- <div
- className="absolute inset-0 bg-no-repeat transition-all duration-75 ease-out"
+ <motion.div
+ className="absolute inset-0 bg-no-repeat"
  style={{
  backgroundImage: `url(${highResUrl})`,
- backgroundPosition: `${position.x}% ${position.y}%`,
+ backgroundPositionX: bgPositionX,
+ backgroundPositionY: bgPositionY,
  backgroundSize: '240%',
  }}
  />

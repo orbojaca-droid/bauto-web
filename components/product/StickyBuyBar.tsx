@@ -9,6 +9,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Product, Talla } from '../../types/catalog';
 import { formatCOP } from '../../lib/grammar';
 import { getOptimizedImageUrl } from '../../lib/images';
@@ -41,15 +42,21 @@ export function StickyBuyBar({
  return () => window.removeEventListener('scroll', handleScroll);
  }, []);
 
- if (!visible) return null;
-
  const imageUrl = getOptimizedImageUrl(
  product.primaryImage || (product.images && product.images[0]) || '',
  { width: 120, quality: 75 }
  );
 
  return (
- <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-bauto-nube/95 backdrop-blur-md px-4 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] animate-slide-up">
+ <AnimatePresence>
+ {visible && (
+ <motion.div
+ initial={{ y: "100%", opacity: 0 }}
+ animate={{ y: 0, opacity: 1 }}
+ exit={{ y: "100%", opacity: 0 }}
+ transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.25 }}
+ className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-bauto-nube/95 backdrop-blur-md px-4 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+ >
  <div className="flex items-center justify-between gap-3">
  
  {/* Miniatura y Precio */}
@@ -87,12 +94,14 @@ export function StickyBuyBar({
  playHapticClick();
  onAddToCart();
  }}
- className="h-10 px-2 text-[10px] uppercase tracking-[0.25em] font-normal shrink-0 flex items-center justify-center border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 transition-colors bg-transparent"
+ className="h-10 px-2 text-[10px] uppercase tracking-[0.25em] font-normal shrink-0 flex items-center justify-center border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.97] transition-all bg-transparent"
  >
  <span>{selectedSize ? 'Añadir' : 'Elegir talla'}</span>
  </button>
 
  </div>
- </div>
+ </motion.div>
+ )}
+ </AnimatePresence>
  );
 }

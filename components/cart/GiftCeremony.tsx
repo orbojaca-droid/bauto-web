@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { Gift } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '../../lib/cartStore';
 import { playHapticClick } from '../../lib/sound';
 
@@ -50,7 +51,8 @@ export function GiftCeremony() {
           type="button"
           role="switch"
           aria-checked={isGiftPackaging}
-          className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer  border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+          // @BAUTO_REFACTOR 2026-10-02
+          className={`relative before:absolute before:-inset-3 before:content-[''] inline-flex h-5 w-9 shrink-0 cursor-pointer border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
             isGiftPackaging ? 'bg-bauto-carbon' : 'bg-[#EAE7DF]'
           }`}
         >
@@ -63,8 +65,15 @@ export function GiftCeremony() {
       </div>
 
       {/* Dedicatoria Personalizada Desplegable */}
+      <AnimatePresence>
       {isGiftPackaging && (
-        <div className="mt-3.5 pt-3 border-t border-[#EAE7DF] flex flex-col gap-2.5 animate-slide-up">
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.25 }}
+          className="mt-3.5 pt-3 border-t border-[#EAE7DF] flex flex-col gap-2.5 overflow-hidden"
+        >
           <div className="flex items-center justify-between text-[11px]">
             <label htmlFor="dedication" className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon">
               Dedicatoria de puño y letra:
@@ -95,8 +104,9 @@ export function GiftCeremony() {
               </p>
             </div>
           )}
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }

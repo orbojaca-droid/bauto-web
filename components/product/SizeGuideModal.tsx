@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Modal con tabla de medidas en centímetros para sastrería BAUTO Resort Wear
  * @Capa: Estética / Funcional
@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { playHapticClick } from '../../lib/sound';
 
 interface SizeGuideModalProps {
@@ -19,8 +20,6 @@ interface SizeGuideModalProps {
 }
 
 export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiores' }: SizeGuideModalProps) {
- if (!isOpen) return null;
-
  const measurements = [
  { talla: 'XS', pecho: '92 - 96', cintura: '74 - 78', cadera: '90 - 94', largo: '70' },
  { talla: 'S', pecho: '96 - 100', cintura: '78 - 82', cadera: '94 - 98', largo: '72' },
@@ -31,10 +30,16 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  ];
 
  return (
+ <AnimatePresence>
+ {isOpen && (
  <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
  {/* Backdrop con Desenfoque */}
- <div
- className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm animate-fade-in"
+ <motion.div
+ initial={{ opacity: 0 }}
+ animate={{ opacity: 1 }}
+ exit={{ opacity: 0 }}
+ transition={{ duration: 0.2 }}
+ className="fixed inset-0 bg-bauto-carbon/40 backdrop-blur-sm"
  onClick={() => {
  playHapticClick();
  onClose();
@@ -43,8 +48,12 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  />
 
  {/* Modal Box */}
- <div
- className="relative z-10 w-full max-w-lg bg-bauto-nube p-6 sm:p-8 animate-slide-up max-h-[90dvh] overflow-y-auto"
+ <motion.div
+ initial={{ opacity: 0, scale: 0.95 }}
+ animate={{ opacity: 1, scale: 1 }}
+ exit={{ opacity: 0, scale: 0.95 }}
+ transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+ className="relative z-10 w-full max-w-lg bg-bauto-nube p-6 sm:p-8 max-h-[90dvh] overflow-y-auto"
  role="dialog"
  aria-modal="true"
  aria-label="Guía de medidas BAUTO"
@@ -100,7 +109,9 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  El corte es holgado y relajado (Relaxed Fit). Para una silueta más entallada, te sugerimos seleccionar una talla menor.
  </p>
  </div>
+ </motion.div>
  </div>
- </div>
+ )}
+ </AnimatePresence>
  );
 }

@@ -42,19 +42,21 @@ export function Footer() {
  Confort consciente, movimiento libre y aprecio por la textura viva de las fibras nobles.
  </p>
 
- <div className="flex items-center gap-4 pt-2">
+ <div className="flex items-center gap-6 pt-2">
  <a 
  href="https://instagram.com/bauto.studio" 
  target="_blank" 
  rel="noopener noreferrer"
- className="text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="p-2.5 -m-2.5 text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
  aria-label="Instagram BAUTO"
  >
  <Instagram className="w-4 h-4 stroke-[1.5]" />
  </a>
  <a 
  href="mailto:hola@bauto.com.co" 
- className="text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="p-2.5 -m-2.5 text-bauto-carbon/60 hover:text-bauto-carbon transition-colors"
  aria-label="Correo BAUTO"
  >
  <Mail className="w-4 h-4 stroke-[1.5]" />

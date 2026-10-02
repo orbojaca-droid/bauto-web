@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * @BAUTO_ECOSYSTEM 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (bauto.com.co) - StudioMap
  * @Propósito: Visor cartográfico a medida en estética Quiet Luxury para la Studio de Santa Marta.
  * Paleta sobria de la marca: Bahía en tono bruma, cuadrícula histórica en arena/lino,
@@ -206,7 +206,7 @@ export const StudioMap: React.FC<StudioMapProps> = ({ className = "" }) => {
  <button
  onClick={() => handleToggleMode(viewMode === "artistic" ? "satellite" : "artistic")}
  type="button"
- className="px-3 py-1.5 bg-transparent text-[11px] font-sans text-bauto-carbon transition-all duration-200 "
+ className="px-3 py-1.5 bg-transparent text-[11px] font-sans text-bauto-carbon transition-colors duration-200 ease-out "
  aria-label="Alternar entre mapa de autor y mapa satelital"
  >
  {viewMode === "artistic" ? "Ver satélite" : "Ver mapa BAUTO"}

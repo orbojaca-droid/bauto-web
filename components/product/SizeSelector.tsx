@@ -80,7 +80,7 @@ export function SizeSelector({
  isSelected
  ? 'text-[#1C1917] border-b border-[#1C1917]'
  : isAvailable
- ? 'text-[#1C1917] hover:opacity-70'
+ ? 'text-[#1C1917] hover:opacity-70 active:scale-[0.92] transition-transform duration-100 ease-out'
  : 'text-gray-400 opacity-50 cursor-not-allowed'
  }`}
  >

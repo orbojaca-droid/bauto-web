@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Centro de Ayuda & Legal
  * @Propósito: Políticas de atención, envíos, cambios y derecho de retracto (Ley 1480 de 2011) bajo estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
@@ -55,7 +55,7 @@ export default function AyudaPage() {
  </p>
  <p>
  • <strong className="text-bauto-carbon font-medium">Seguimiento en línea:</strong> Puedes consultar el progreso de tu envío en cualquier momento desde nuestro{' '}
- <Link href="/rastreo" className="text-bauto-carbon underline underline-offset-4 hover:text-bauto-piedra transition-colors">
+ <Link href="/rastreo" className="text-bauto-carbon underline underline-offset-4 hover:text-bauto-piedra transition-opacity hover:opacity-80 active:scale-[0.97]">
  portal de rastreo
  </Link>.
  </p>
@@ -139,7 +139,7 @@ export default function AyudaPage() {
  href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, tengo una consulta sobre políticas o mi pedido.')}`}
  target="_blank"
  rel="noopener noreferrer"
- className="inline-flex items-center gap-2 px-8 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
+ className="inline-flex items-center gap-2 px-8 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans font-medium"
  >
  <MessageCircle className="w-4 h-4 stroke-[1.5]" />
  <span>Atención concierge de taller</span>

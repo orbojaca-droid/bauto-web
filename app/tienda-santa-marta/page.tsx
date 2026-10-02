@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Tienda Santa Marta
  * @Propósito: Página de la Studio y taller físico en Santa Marta bajo estética Quiet Luxury.
  * Mapa cartográfico personalizado a medida y tipografía estricta en Sentence case.
@@ -114,7 +114,7 @@ export default function TiendaSantaMartaPage() {
  href={`https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${encodeURIComponent('Hola BAUTO, quisiera consultar disponibilidad en la Studio de Santa Marta.')}`}
  target="_blank"
  rel="noopener noreferrer"
- className="w-full py-3.5 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+ className="w-full py-3.5 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
  >
  <MessageCircle className="w-4 h-4 stroke-[1.5]" />
  <span>Contactar concierge</span>

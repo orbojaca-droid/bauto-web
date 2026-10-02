@@ -95,7 +95,8 @@ function ConfirmationContent() {
  <Link
  href={`/rastreo?guia=${encodeURIComponent(reference)}`}
  onClick={playHapticClick}
- className="w-full sm:w-auto px-7 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-full sm:w-auto px-7 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-transform active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
  >
  <PackageCheck className="w-4 h-4 stroke-[1.5]" />
  <span>Consultar portal de rastreo</span>
@@ -106,7 +107,8 @@ function ConfirmationContent() {
  target="_blank"
  rel="noopener noreferrer"
  onClick={playHapticClick}
- className="w-full sm:w-auto px-6 py-3.5  text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans flex items-center justify-center gap-2 font-normal"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-full sm:w-auto px-6 py-3.5  text-bauto-carbon hover:bg-bauto-perla transition-transform active:scale-[0.97] text-xs font-sans flex items-center justify-center gap-2 font-normal"
  >
  <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
  <span>Atención concierge</span>
@@ -115,7 +117,8 @@ function ConfirmationContent() {
  <Link
  href="/catalogo"
  onClick={playHapticClick}
- className="w-full sm:w-auto px-5 py-3.5 text-xs font-sans text-bauto-piedra hover:text-bauto-carbon transition-colors"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-full sm:w-auto px-5 py-3.5 text-xs font-sans text-bauto-piedra hover:text-bauto-carbon transition-transform active:scale-[0.97]"
  >
  <span>Volver al catálogo</span>
  </Link>

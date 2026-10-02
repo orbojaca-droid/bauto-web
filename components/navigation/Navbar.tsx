@@ -44,7 +44,7 @@ export function Navbar() {
     <>
       <header 
         // @BAUTO_REFACTOR 2026-10-02
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-[background-color,border-color] duration-200 ease-out ${
           scrolled ? 'py-3.5 bg-bauto-nube border-b border-bauto-carbon/10' : 'bg-transparent py-4 sm:py-5'
         }`}
       >
@@ -106,7 +106,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={handleOpenCart}
-                className="relative flex items-center justify-center w-10 h-10 text-bauto-carbon hover:text-bauto-terracota transition-all duration-150 ease-out active:scale-95"
+                className="relative flex items-center justify-center w-11 h-11 text-bauto-carbon hover:text-bauto-terracota transition-all duration-150 ease-out active:scale-[0.97]"
                 aria-label={`Ver bolsa de compras con ${displayCount} prendas`}
               >
                 <ShoppingBag className="w-[18px] h-[18px] stroke-[1.5]" />
@@ -127,7 +127,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
           >
             <motion.div 
-              initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+              initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.25 }}
               className="absolute top-[65px] left-0 right-0 bg-bauto-nube p-6"
               onClick={(e) => e.stopPropagation()}
             >

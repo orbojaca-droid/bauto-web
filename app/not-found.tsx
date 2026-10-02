@@ -35,7 +35,7 @@ export default function NotFound() {
  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
  <Link
  href="/catalogo"
- className="w-full sm:w-auto px-7 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-medium"
+ className="w-full sm:w-auto px-7 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans inline-flex items-center justify-center gap-2 font-medium"
  >
  <span>Ver catálogo</span>
  <ArrowRight className="w-3.5 h-3.5" />
@@ -43,7 +43,7 @@ export default function NotFound() {
 
  <Link
  href="/"
- className="w-full sm:w-auto px-7 py-3  text-bauto-carbon hover:bg-bauto-perla transition-colors text-xs font-sans inline-flex items-center justify-center gap-2 font-normal"
+ className="w-full sm:w-auto px-7 py-3  text-bauto-carbon hover:bg-bauto-perla transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans inline-flex items-center justify-center gap-2 font-normal"
  >
  <span>Volver al inicio</span>
  </Link>
@@ -56,7 +56,7 @@ export default function NotFound() {
  href={`${BAUTO_WHATSAPP_URL}?text=${encodeURIComponent('Hola BAUTO, buscaba una prenda y no la encontré en la web.')}`}
  target="_blank"
  rel="noopener noreferrer"
- className="text-bauto-carbon font-medium hover:text-bauto-terracota inline-flex items-center gap-1  pb-0.5 ml-1 transition-colors"
+ className="text-bauto-carbon font-medium hover:text-bauto-terracota inline-flex items-center gap-1  pb-0.5 ml-1 transition-opacity hover:opacity-80 active:scale-[0.97]"
  >
  <MessageCircle className="w-3.5 h-3.5 text-bauto-terracota" />
  <span>Asistencia concierge</span>

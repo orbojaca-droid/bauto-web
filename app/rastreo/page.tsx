@@ -95,7 +95,7 @@ function TrackingContent() {
  <button
  type="submit"
  disabled={loading}
- className="px-2 py-3 text-[10px] uppercase tracking-[0.25em] font-normal border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 transition-colors disabled:opacity-50 bg-transparent"
+ className="px-2 py-3 text-[10px] uppercase tracking-[0.25em] font-normal border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 transition-opacity hover:opacity-80 active:scale-[0.97] disabled:opacity-50 bg-transparent"
  >
  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Rastrear</span>}
  </button>
@@ -181,7 +181,7 @@ function TrackingContent() {
  target="_blank"
  rel="noopener noreferrer"
  onClick={playHapticClick}
- className="px-5 py-2.5  text-bauto-carbon hover:bg-bauto-nube transition-colors flex items-center gap-2 text-xs font-sans"
+ className="px-5 py-2.5  text-bauto-carbon hover:bg-bauto-nube transition-opacity hover:opacity-80 active:scale-[0.97] flex items-center gap-2 text-xs font-sans"
  >
  <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
  <span>Contactar al asesor</span>

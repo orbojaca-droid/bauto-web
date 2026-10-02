@@ -128,7 +128,8 @@ export default function CartPage() {
  <Link
  href="/catalogo"
  onClick={playHapticClick}
- className="px-8 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans inline-flex items-center gap-2 font-medium"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="px-8 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-transform active:scale-[0.97] text-xs font-sans inline-flex items-center gap-2 font-medium"
  >
  <span>Explorar la colección</span>
  <ArrowRight className="w-3.5 h-3.5" />
@@ -319,7 +320,8 @@ export default function CartPage() {
  type="submit"
  form="checkout-form"
  disabled={loading}
- className="w-full py-4 text-[11px] uppercase tracking-[0.25em] font-light bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-full py-4 text-[11px] uppercase tracking-[0.25em] font-light bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
  >
  {loading ? (
  <span className="inline-flex items-center gap-2">

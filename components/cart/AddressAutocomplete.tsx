@@ -125,7 +125,8 @@ export function AddressAutocomplete({
               key={p.placeId}
               type="button"
               onClick={() => handleSelectPrediction(p)}
-              className="w-full text-left px-4 py-3 flex items-start gap-3 hover:bg-[#EAE7DF]/50 border-b border-[#EAE7DF] last:border-none transition-colors"
+              // @BAUTO_REFACTOR 2026-10-02
+              className="w-full text-left px-4 py-3 flex items-start gap-3 hover:bg-[#EAE7DF]/50 border-b border-[#EAE7DF] last:border-none transition-transform active:scale-[0.97]"
             >
               <MapPin className="w-3 h-3 text-bauto-carbon/40 shrink-0 mt-0.5" />
               <div className="min-w-0 flex-1">

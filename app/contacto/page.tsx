@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Atención & Contacto
  * @Propósito: Página de contacto directo, concierge de WhatsApp y citas en Studio bajo estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
@@ -78,7 +78,7 @@ export default function ContactoPage() {
  target="_blank"
  rel="noopener noreferrer"
  onClick={() => playHapticFeedback()}
- className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
  >
  <MessageCircle className="w-3.5 h-3.5 stroke-[1.5]" />
  <span>Escribir por WhatsApp</span>
@@ -98,7 +98,7 @@ export default function ContactoPage() {
  </p>
  <Link
  href="/tienda-santa-marta"
- className="text-xs text-bauto-carbon hover:text-bauto-piedra underline underline-offset-4 inline-flex items-center gap-1 transition-colors"
+ className="text-xs text-bauto-carbon hover:text-bauto-piedra underline underline-offset-4 inline-flex items-center gap-1 transition-opacity hover:opacity-80 active:scale-[0.97]"
  >
  <span>Ver mapa e indicaciones GPS</span>
  <span>→</span>
@@ -123,7 +123,7 @@ export default function ContactoPage() {
  </span>
  <a
  href="mailto:hola@bauto.com.co"
- className="text-xs text-bauto-carbon hover:text-bauto-piedra transition-colors"
+ className="text-xs text-bauto-carbon hover:text-bauto-piedra transition-opacity hover:opacity-80 active:scale-[0.97]"
  >
  hola@bauto.com.co
  </a>
@@ -245,7 +245,7 @@ export default function ContactoPage() {
  <div className="pt-4">
  <button
  type="submit"
- className="w-full py-4 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium flex items-center justify-center gap-2"
+ className="w-full py-4 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
  >
  <span>Enviar al concierge</span>
  <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />

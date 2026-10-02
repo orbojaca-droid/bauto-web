@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Filosofía de Marca
  * @Propósito: Manifiesto editorial sobre Cuerpo consciente, Movimiento del trópico y Tejido de reciprocidad bajo estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
@@ -84,7 +84,7 @@ export default function FilosofiaPage() {
  <div className="mt-20 text-center">
  <Link
  href="/catalogo"
- className="inline-flex items-center gap-3 px-8 py-4 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors text-xs font-sans font-medium"
+ className="inline-flex items-center gap-3 px-8 py-4 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-opacity hover:opacity-80 active:scale-[0.97] text-xs font-sans font-medium"
  >
  <span>Explorar siluetas de autor</span>
  <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />

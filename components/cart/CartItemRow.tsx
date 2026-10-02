@@ -77,7 +77,8 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  <button
  type="button"
  onClick={handleRemove}
- className="w-8 h-8 flex items-center justify-center -mr-1 text-bauto-piedra/60 hover:text-bauto-carbon transition-colors"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-11 h-11 flex items-center justify-center -mr-2 text-bauto-piedra/60 hover:text-bauto-carbon transition-[transform,color] active:scale-[0.97]"
  title="Quitar de la bolsa"
  aria-label="Quitar de la bolsa"
  >
@@ -106,7 +107,8 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  <button
  type="button"
  onClick={handleDecrease}
- className="w-7 h-7 flex items-center justify-center text-bauto-carbon hover:text-bauto-piedra active:scale-95 transition-transform"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-11 h-11 flex items-center justify-center text-bauto-carbon hover:text-bauto-piedra active:scale-[0.97] transition-transform"
  aria-label="Disminuir cantidad"
  >
  <Minus className="w-3 h-3 stroke-[1.5]" />
@@ -119,7 +121,8 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  <button
  type="button"
  onClick={handleIncrease}
- className="w-7 h-7 flex items-center justify-center text-bauto-carbon hover:text-bauto-piedra active:scale-95 transition-transform"
+ // @BAUTO_REFACTOR 2026-10-02
+ className="w-11 h-11 flex items-center justify-center text-bauto-carbon hover:text-bauto-piedra active:scale-[0.97] transition-transform"
  aria-label="Aumentar cantidad"
  >
  <Plus className="w-3 h-3 stroke-[1.5]" />
