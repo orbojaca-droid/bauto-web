@@ -20,12 +20,15 @@ export async function POST(req: NextRequest) {
       customerEmail,
       customerName,
       customerPhone,
+      customerCedula,
+      customerBarrio,
       shippingAddress,
       shippingCity,
       notes,
       giftPackaging,
       giftNote,
       shippingCost = 0,
+      shippingDays,
       sessionId,
     } = body;
 
@@ -73,12 +76,8 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 2. Regla de negocio de envío: cortesía si subtotal >= $300.000 COP, o flete estándar mínimo ($15.000 COP)
-    const DEFAULT_SHIPPING_COP = 15000;
-    const cleanShippingCost =
-      verifiedSubtotal >= 300000
-        ? 0
-        : Math.max(DEFAULT_SHIPPING_COP, parseInt(shippingCost, 10) || DEFAULT_SHIPPING_COP);
+    // 2. Regla de negocio de envío: flete dinámico (sin umbral falso gratis) @BAUTO_REFACTOR 2026-10-02
+    const cleanShippingCost = Math.max(0, parseInt(shippingCost, 10) || 16500);
 
     const totalCOP = verifiedSubtotal + cleanShippingCost;
     if (totalCOP <= 0) {
@@ -97,22 +96,22 @@ export async function POST(req: NextRequest) {
     const randomSuffix = Math.random().toString(36).substring(2, 7).toUpperCase();
     const reference = `BAUTO-${timestamp}-${randomSuffix}`;
 
-    // 5. Llaves de Wompi (lectura de variables de entorno con fallback de sandbox)
+    // 5. Llaves de Wompi (lectura de variables de entorno con fallback de producción BAUTO) @BAUTO_REFACTOR 2026-10-02
     const publicKey =
-      process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_test_Q5yDA9xoKdePzhSGeVe9HAez7HgGObCi";
+      process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_prod_MYfdpyNrCni2KWTQ5SmEMWJR8SiKPUad";
     const integritySecret =
-      process.env.WOMPI_INTEGRITY_SECRET || "test_integrity_g2N6lA4bL1oD3p5wR7s9";
+      process.env.WOMPI_INTEGRITY_SECRET || "prod_integrity_HGmKUlkBtTKpxglIhfMqpprOMzZrMllU";
 
     // 6. Cadena de integridad oficial Wompi: `<referencia><monto_en_centavos><moneda><secreto_integridad>`
     const rawSignature = `${reference}${amountInCents}${currency}${integritySecret}`;
     const integrityHash = crypto.createHash("sha256").update(rawSignature).digest("hex");
 
-    // 7. URL de retorno tras finalizar el pago en Wompi (Ruta canónica BAUTO)
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bauto.com.co";
+    // 7. URL de retorno tras finalizar el pago en Wompi (Ruta canónica BAUTO) @BAUTO_REFACTOR 2026-10-02
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bauto-web.vercel.app";
     const redirectUrl = `${siteUrl}/checkout/confirmacion?reference=${encodeURIComponent(reference)}&session=${encodeURIComponent(sessionId || "")}`;
 
-    // Construcción oficial de checkoutUrl para Wompi Web Checkout
-    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}`;
+    // Construcción oficial de checkoutUrl para Wompi Web Checkout @BAUTO_REFACTOR 2026-10-02
+    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}${customerCedula ? `&customer-data:legal-id=${encodeURIComponent(customerCedula)}&customer-data:legal-id-type=CC` : ""}`;
 
     // 8. Registrar Two-Phase Soft Hold en Redis (12 min) para asegurar inventario físico
     if (sessionId) {
@@ -125,7 +124,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 9. Guardar borrador verificado en Redis para posterior despacho desde el Webhook
+    // 9. Guardar borrador verificado en Redis para posterior despacho desde el Webhook @BAUTO_REFACTOR 2026-10-02
     await saveOrderDraft(reference, {
       items: verifiedItems,
       customerEmail: customerEmail || "",
@@ -134,10 +133,14 @@ export async function POST(req: NextRequest) {
       clientName: customerName || "",
       customerPhone: customerPhone || "",
       telefono: customerPhone || "",
-      shippingAddress: shippingAddress || "",
-      direccion: shippingAddress || "",
+      customerCedula: customerCedula || "",
+      shippingAddress: `${shippingAddress || ""}${customerBarrio ? ` (Barrio: ${customerBarrio})` : ""}`,
+      direccion: `${shippingAddress || ""}${customerBarrio ? ` (Barrio: ${customerBarrio})` : ""}`,
       shippingCity: shippingCity || "",
       ciudad: shippingCity || "",
+      barrio: customerBarrio || "",
+      carrier: "Servientrega",
+      shippingDays: shippingDays || "",
       notes: notes || "",
       giftPackaging: !!giftPackaging,
       giftNote: giftNote || "",

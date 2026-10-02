@@ -8,7 +8,7 @@
  * @Riesgo_Evaluado: Medio - Manejo del formulario de envío e inicio de checkout bancario
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, Loader2 } from 'lucide-react';
@@ -35,18 +35,67 @@ export default function CartPage() {
  const [address, setAddress] = useState('');
  const [city, setCity] = useState('');
  const [notes, setNotes] = useState('');
+ 
+ // @BAUTO_REFACTOR 2026-10-02
+ const [cedula, setCedula] = useState('');
+ const [barrio, setBarrio] = useState('');
+ const [shippingCost, setShippingCost] = useState<number | null>(null);
+ const [shippingDays, setShippingDays] = useState<string>('');
+ const [isQuotingShipping, setIsQuotingShipping] = useState(false);
+ const [shippingError, setShippingError] = useState('');
 
  const [errors, setErrors] = useState<Record<string, string>>({});
 
  const [loading, setLoading] = useState(false);
  const [errorMessage, setErrorMessage] = useState('');
 
- if (!isHydrated) return null;
+ const subtotal = isHydrated ? getSubtotal() : 0;
+ const total = subtotal + (shippingCost || 0);
 
- const subtotal = getSubtotal();
- 
- const shippingCost = 15000;
- const total = subtotal + shippingCost;
+ // @BAUTO_REFACTOR 2026-10-02 Cotizador dinámico
+ useEffect(() => {
+   if (!isHydrated) return;
+   const delayDebounceFn = setTimeout(async () => {
+     if (city.trim().length >= 3) {
+       setIsQuotingShipping(true);
+       setShippingError('');
+       try {
+         const res = await fetch('/api/shipping/quote', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({
+             city: city.trim(),
+             subtotal,
+             itemsCount: items.reduce((acc, i) => acc + i.quantity, 0)
+           })
+         });
+         const data = await res.json();
+         if (res.ok && data.cost !== undefined) {
+           setShippingCost(data.cost);
+           setShippingDays(data.deliveryDays || "2 a 3 días hábiles");
+         } else {
+           setShippingError(data.error || 'No se pudo cotizar el envío para esta ciudad.');
+           setShippingCost(null);
+           setShippingDays('');
+         }
+       } catch (err) {
+         setShippingError('Error al conectar con el cotizador de envíos.');
+         setShippingCost(null);
+         setShippingDays('');
+       } finally {
+         setIsQuotingShipping(false);
+       }
+     } else {
+       setShippingCost(null);
+       setShippingDays('');
+       setShippingError('');
+     }
+   }, 500);
+
+   return () => clearTimeout(delayDebounceFn);
+ }, [city, subtotal, items, isHydrated]);
+
+ if (!isHydrated) return null;
 
  const handleCheckout = async (e: React.FormEvent) => {
  e.preventDefault();
@@ -58,12 +107,15 @@ export default function CartPage() {
  return;
  }
 
+ // @BAUTO_REFACTOR 2026-10-02
  const newErrors: Record<string, string> = {};
- if (!name.trim()) newErrors.name = 'El nombre es obligatorio.';
+ if (!city.trim()) newErrors.city = 'La ciudad o municipio es obligatoria.';
+ if (!cedula.trim() || !/^\d{6,}$/.test(cedula.trim())) newErrors.cedula = 'La cédula es obligatoria (mínimo 6 dígitos).';
+ if (!name.trim()) newErrors.name = 'El nombre completo es obligatorio.';
  if (!phone.trim()) newErrors.phone = 'El celular / WhatsApp es obligatorio.';
- if (!email.trim()) newErrors.email = 'El correo es obligatorio.';
- if (!address.trim()) newErrors.address = 'La dirección es obligatoria.';
- if (!city.trim()) newErrors.city = 'La ciudad es obligatoria.';
+ if (!email.trim()) newErrors.email = 'El correo electrónico es obligatorio.';
+ if (!barrio.trim()) newErrors.barrio = 'El barrio o sector es obligatorio.';
+ if (!address.trim()) newErrors.address = 'La dirección exacta es obligatoria.';
 
  if (Object.keys(newErrors).length > 0) {
  setErrors(newErrors);
@@ -93,11 +145,15 @@ export default function CartPage() {
  size: item.selectedSize,
  quantity: item.quantity,
  })),
+ customerCedula: cedula.trim(),
+ customerBarrio: barrio.trim(),
  customerEmail: email.trim(),
  customerName: name.trim(),
  customerPhone: phone.trim(),
  shippingAddress: `${address.trim()}${city ? `, ${city.trim()}` : ''}`,
  shippingCity: city.trim() || 'Colombia',
+ shippingCost: shippingCost,
+ shippingDays: shippingDays,
  notes: notes.trim(),
  giftPackaging: isGiftPackaging,
  giftNote: giftDedicationNote.trim(),
@@ -187,12 +243,70 @@ export default function CartPage() {
  </div>
 
  {/* Formulario de entrega */}
- <form id="checkout-form" onSubmit={handleCheckout} className="flex flex-col gap-5 pt-2">
+ <form id="checkout-form" onSubmit={handleCheckout} className="flex flex-col gap-8 pt-2">
+ 
+ {/* @BAUTO_REFACTOR 2026-10-02 */}
+ {/* FASE 1: Destino y Flete Servientrega */}
+ <div className="flex flex-col gap-5">
  <h2 className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon mb-1">
- Datos para el envío nacional
+ Fase 1: Destino y Flete Servientrega
+ </h2>
+ 
+ <div>
+ <label className="block text-xs font-normal text-bauto-piedra mb-1">
+ Ciudad o municipio de entrega *
+ </label>
+ <div className="relative">
+ <input
+ type="text"
+ required
+ value={city}
+ onChange={(e) => { setCity(e.target.value); if (errors.city) setErrors({...errors, city: ''}); }}
+ placeholder="Ej: Santa Marta, Bogotá, Medellín"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.city ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
+ />
+ {isQuotingShipping && (
+ <div className="absolute right-0 top-1/2 -translate-y-1/2">
+ <Loader2 className="w-4 h-4 animate-spin text-bauto-piedra" />
+ </div>
+ )}
+ </div>
+ {errors.city && <span className="text-xs text-bauto-danger mt-1 block">{errors.city}</span>}
+ {shippingError && <span className="text-xs text-bauto-danger mt-1 block">{shippingError}</span>}
+ </div>
+
+ {shippingCost !== null && !isQuotingShipping && (
+ <div className="mt-2 border border-[#EAE7DF] p-3.5 flex items-center justify-between text-xs bg-transparent">
+ <span className="text-bauto-carbon font-light">
+ Servientrega Nacional · <span className="text-bauto-terracota font-light tracking-[0.15em]">{formatCOP(shippingCost)}</span> · Entrega estimada: {shippingDays}
+ </span>
+ <span className="text-[10px] text-bauto-piedra/80 uppercase tracking-widest bg-bauto-carbon/5 px-2 py-1">Envío asegurado</span>
+ </div>
+ )}
+ </div>
+
+ {/* FASE 2: Datos de Entrega y Facturación */}
+ <div className="flex flex-col gap-5 pt-4 border-t border-[#EAE7DF]">
+ <h2 className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon mb-1">
+ Fase 2: Datos de Entrega y Facturación
  </h2>
 
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+ <div>
+ <label className="block text-xs font-normal text-bauto-piedra mb-1">
+ Cédula de identidad *
+ </label>
+ <input
+ type="text"
+ required
+ value={cedula}
+ onChange={(e) => { setCedula(e.target.value); if (errors.cedula) setErrors({...errors, cedula: ''}); }}
+ placeholder="Solo números"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.cedula ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
+ />
+ {errors.cedula && <span className="text-xs text-bauto-danger mt-1 block">{errors.cedula}</span>}
+ </div>
+
  <div>
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
  Nombre completo *
@@ -207,7 +321,9 @@ export default function CartPage() {
  />
  {errors.name && <span className="text-xs text-bauto-danger mt-1 block">{errors.name}</span>}
  </div>
+ </div>
 
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
  <div>
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
  Celular / WhatsApp *
@@ -222,7 +338,6 @@ export default function CartPage() {
  />
  {errors.phone && <span className="text-xs text-bauto-danger mt-1 block">{errors.phone}</span>}
  </div>
- </div>
 
  <div>
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
@@ -236,38 +351,39 @@ export default function CartPage() {
  placeholder="correo@ejemplo.com"
  className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.email ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
- <span className="text-[11px] text-bauto-piedra mt-1 block">(para guía de envío y recibo)</span>
  {errors.email && <span className="text-xs text-bauto-danger mt-1 block">{errors.email}</span>}
  </div>
-
- <div>
- <label className="block text-xs font-normal text-bauto-piedra mb-1">
- Dirección de entrega *
- </label>
- <AddressAutocomplete
- value={address}
- onChange={(val) => { setAddress(val); if (errors.address) setErrors({...errors, address: ''}); }}
- onSelectCity={setCity}
- placeholder="Busca tu dirección o ingrésala manualmente"
- hasError={!!errors.address}
- />
- {errors.address && <span className="text-xs text-bauto-danger mt-1 block">{errors.address}</span>}
  </div>
 
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
  <div>
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
- Ciudad / municipio *
+ Barrio o sector *
  </label>
  <input
  type="text"
  required
- value={city}
- onChange={(e) => { setCity(e.target.value); if (errors.city) setErrors({...errors, city: ''}); }}
- placeholder="Ej: Santa Marta, Bogotá, Medellín"
- className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.city ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
+ value={barrio}
+ onChange={(e) => { setBarrio(e.target.value); if (errors.barrio) setErrors({...errors, barrio: ''}); }}
+ placeholder="Nombre del barrio"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.barrio ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
- {errors.city && <span className="text-xs text-bauto-danger mt-1 block">{errors.city}</span>}
+ {errors.barrio && <span className="text-xs text-bauto-danger mt-1 block">{errors.barrio}</span>}
+ </div>
+
+ <div>
+ <label className="block text-xs font-normal text-bauto-piedra mb-1">
+ Dirección exacta *
+ </label>
+ <AddressAutocomplete
+ value={address}
+ onChange={(val) => { setAddress(val); if (errors.address) setErrors({...errors, address: ''}); }}
+ onSelectCity={() => {}}
+ placeholder="Busca tu dirección o ingrésala manualmente"
+ hasError={!!errors.address}
+ />
+ {errors.address && <span className="text-xs text-bauto-danger mt-1 block">{errors.address}</span>}
+ </div>
  </div>
 
  <div>
@@ -310,9 +426,10 @@ export default function CartPage() {
  </div>
 
  <div className="flex justify-between text-bauto-piedra">
- <span>Envío nacional (MiPaquete)</span>
+ {/* @BAUTO_REFACTOR 2026-10-02 */}
+ <span>Envío con Servientrega</span>
  <span className="text-[11px] font-light tracking-[0.15em] text-bauto-terracota">
- {formatCOP(shippingCost)}
+ {shippingCost === null ? 'Calculado según ciudad' : formatCOP(shippingCost)}
  </span>
  </div>
 
@@ -336,15 +453,17 @@ export default function CartPage() {
  <button
  type="submit"
  form="checkout-form"
- disabled={loading}
+ disabled={loading || isQuotingShipping || shippingCost === null}
  // @BAUTO_REFACTOR 2026-10-02
- className="w-full py-4 text-[11px] uppercase tracking-[0.25em] font-light bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
+ className="w-full py-4 text-[11px] uppercase tracking-[0.25em] font-light bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
  >
- {loading ? (
- <span className="inline-flex items-center gap-2">
+ {loading || isQuotingShipping ? (
+ <span className="inline-flex items-center justify-center gap-2">
  <Loader2 className="w-4 h-4 animate-spin" />
- <span>Procesando sesión...</span>
+ <span>{isQuotingShipping ? 'Cotizando envío...' : 'Procesando sesión...'}</span>
  </span>
+ ) : shippingCost === null ? (
+ <span>Ingresa tu ciudad para cotizar envío</span>
  ) : (
  <span>Proceder al pago seguro · {formatCOP(total)}</span>
  )}
@@ -359,7 +478,7 @@ export default function CartPage() {
  Aceptamos PSE, Bancolombia, Nequi, Tarjetas Débito/Crédito y Addi. Fondos procesados bajo certificación bancaria PCI-DSS.
  </p>
  <p className="text-[10px] text-bauto-carbon/80 font-normal">
- Cambios y devoluciones fáciles por 15 días · Envío asegurado con MiPaquete
+ Cambios y devoluciones fáciles por 15 días · Envío asegurado con Servientrega
  </p>
  </div>
 
