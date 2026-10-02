@@ -42,17 +42,17 @@ export default function ContactoPage() {
  };
 
  return (
- <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16 sm:py-24 animate-fade-in font-body">
+ <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16 sm:py-24 animate-fade-in">
  
  {/* Encabezado editorial */}
  <div className="text-center max-w-xl mx-auto mb-16">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
  Concierge y atelier
  </span>
- <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
+ <h1 className="font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
  Atención de autor
  </h1>
- <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
+ <p className="italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
  Cada silueta tiene su propia resonancia. Estamos a tu disposición para orientarte en caídas, fibras y ocasiones especiales.
  </p>
  </div>
@@ -67,10 +67,10 @@ export default function ContactoPage() {
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
  Canal prioritario
  </span>
- <h2 className="font-title font-light text-lg text-bauto-carbon mb-2">
+ <h2 className="font-light text-lg text-bauto-carbon mb-2">
  Concierge WhatsApp
  </h2>
- <p className="text-xs text-bauto-piedra font-body leading-relaxed mb-4">
+ <p className="text-xs text-bauto-piedra leading-relaxed mb-4">
  Atención directa con nuestro equipo de atelier para consultas textiles y de disponibilidad en tiempo real.
  </p>
  <a
@@ -90,10 +90,10 @@ export default function ContactoPage() {
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
  Atelier físico
  </span>
- <h3 className="font-title font-light text-base text-bauto-carbon mb-1">
+ <h3 className="font-light text-base text-bauto-carbon mb-1">
  Santa Marta, Colombia
  </h3>
- <p className="text-xs text-bauto-piedra font-body leading-relaxed mb-3">
+ <p className="text-xs text-bauto-piedra leading-relaxed mb-3">
  Calle 20 # 2-36, Centro Histórico
  </p>
  <Link
@@ -110,7 +110,7 @@ export default function ContactoPage() {
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
  Horarios
  </span>
- <div className="text-xs text-bauto-carbon space-y-1 font-body">
+ <div className="text-xs text-bauto-carbon space-y-1">
  <p><span className="text-bauto-piedra">Lunes a sábado:</span> 10:00 AM – 8:00 PM</p>
  <p><span className="text-bauto-piedra">Domingos y festivos:</span> 11:00 AM – 6:00 PM</p>
  </div>
@@ -138,10 +138,10 @@ export default function ContactoPage() {
  <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-piedra block mb-2 font-normal">
  Correspondencia
  </span>
- <h2 className="font-title font-light text-2xl text-bauto-carbon tracking-wide">
+ <h2 className="font-light text-2xl text-bauto-carbon tracking-wide">
  Envíanos un mensaje
  </h2>
- <p className="text-xs text-bauto-piedra font-body mt-1">
+ <p className="text-xs text-bauto-piedra mt-1">
  Nos pondremos en contacto contigo a la brevedad posible.
  </p>
  </div>
@@ -151,10 +151,10 @@ export default function ContactoPage() {
  <div className="w-10 h-10  mx-auto flex items-center justify-center text-bauto-carbon mb-4">
  <Check className="w-4 h-4 stroke-[1.5]" />
  </div>
- <h3 className="font-title font-light text-lg text-bauto-carbon mb-2 tracking-wide">
+ <h3 className="font-light text-lg text-bauto-carbon mb-2 tracking-wide">
  Solicitud redirigida
  </h3>
- <p className="text-xs text-bauto-piedra font-body max-w-sm mx-auto leading-relaxed mb-6">
+ <p className="text-xs text-bauto-piedra max-w-sm mx-auto leading-relaxed mb-6">
  Hemos preparado tu mensaje directamente en el canal Concierge de WhatsApp.
  </p>
  <button

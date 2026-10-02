@@ -42,7 +42,7 @@ function ConfirmationContent() {
  ];
 
  return (
- <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24 text-center animate-fade-in font-body">
+ <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24 text-center animate-fade-in">
  
  {/* Sello editorial sutil */}
  <div className="w-12 h-12  mx-auto flex items-center justify-center text-bauto-carbon mb-6">
@@ -53,11 +53,11 @@ function ConfirmationContent() {
  Pedido confirmado · Taller Santa Marta
  </span>
 
- <h1 className="font-title font-light text-3xl sm:text-4xl tracking-wide text-bauto-carbon mb-3">
+ <h1 className="font-light text-3xl sm:text-4xl tracking-wide text-bauto-carbon mb-3">
  Gracias por vestir BAUTO
  </h1>
 
- <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra max-w-md mx-auto mb-6">
+ <p className="italic text-sm sm:text-base text-bauto-piedra max-w-md mx-auto mb-6">
  Tus prendas están siendo seleccionadas con dedicación bajo la brisa y la luz de nuestro atelier en Santa Marta.
  </p>
 
@@ -76,7 +76,7 @@ function ConfirmationContent() {
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
  {stages.map((stage) => (
  <div key={stage.num} className="flex items-start gap-3">
- <span className={`text-xs font-title tracking-wider ${stage.current ? 'text-bauto-carbon font-medium' : 'text-bauto-piedra/60'}`}>
+ <span className={`text-xs tracking-wider ${stage.current ? 'text-bauto-carbon font-medium' : 'text-bauto-piedra/60'}`}>
  {stage.num}
  </span>
  <div>

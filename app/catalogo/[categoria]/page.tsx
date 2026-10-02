@@ -64,10 +64,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
  <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
  Siluetas de autor
  </span>
- <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
+ <h1 className="font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3 capitalize">
  {officialCategory}
  </h1>
- <p className="font-editorial italic text-sm text-bauto-piedra leading-relaxed">
+ <p className="italic text-sm text-bauto-piedra leading-relaxed">
  Concebidas bajo la atención al confort y la libertad de movimiento.
  </p>
  </div>

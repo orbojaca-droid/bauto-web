@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Home Cinemática
  * @Propósito: Página de inicio cinemática con VideoHero ambiental, curated drops y pilares de marca.
  * Tipografía estricta en Sentence case.
@@ -32,18 +32,18 @@ export default async function HomePage() {
  <div className="flex flex-col gap-20 sm:gap-32 pb-24">
  
  {/* 1. Hero editorial minimalista */}
- <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 sm:py-24 md:py-32 text-center">
+ <section className="relative min-h-[calc(85vh-80px)] min-h-[calc(85dvh-80px)] flex items-center justify-center px-6 md:px-16 lg:px-32 py-20 sm:py-24 md:py-32 text-center">
  <div className="max-w-4xl mx-auto flex flex-col items-center gap-7 animate-fade-in">
  
  <span className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-bauto-piedra font-normal block">
  Santa Marta • Caribe colombiano
  </span>
 
- <h1 className="font-title font-light text-4xl sm:text-6xl lg:text-7xl tracking-[-0.03em] text-bauto-carbon max-w-3xl leading-[1.08]">
+ <h1 className="font-light uppercase tracking-[0.1em] text-4xl sm:text-6xl lg:text-7xl text-bauto-carbon max-w-3xl leading-[1.08]">
  El silencio y el confort del lino noble
  </h1>
 
- <p className="font-editorial italic text-base sm:text-xl text-bauto-piedra max-w-xl font-normal leading-relaxed">
+ <p className="italic text-base sm:text-xl text-bauto-piedra max-w-xl font-normal leading-relaxed">
  Prendas de autor concebidas para habitar el trópico con calma, ligereza y aprecio por la arruga noble.
  </p>
 
@@ -61,7 +61,7 @@ export default async function HomePage() {
  </section>
 
  {/* 2. Espacio audiovisual cinemático (Lookbook en movimiento) */}
- <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+ <section className="px-6 md:px-16 lg:px-32 w-full">
  <VideoHero
  aspectRatio="cinematic"
  tagline="Atmósfera y movimiento"
@@ -71,13 +71,13 @@ export default async function HomePage() {
  </section>
 
  {/* 3. Curated Drops (Escaparate de temporada) */}
- <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+ <section className="px-6 md:px-16 lg:px-32 w-full">
  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
  <div>
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-1">
  Selección
  </span>
- <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
+ <h2 className="uppercase tracking-[0.1em] font-light text-2xl sm:text-3xl text-bauto-carbon">
  Edición de temporada
  </h2>
  </div>
@@ -99,18 +99,18 @@ export default async function HomePage() {
  </div>
  ) : (
  <div className="py-20 text-center text-xs text-bauto-piedra">
- <p className="font-editorial italic">Cargando las últimas prendas del taller...</p>
+ <p className="italic">Cargando las últimas prendas del taller...</p>
  </div>
  )}
  </section>
 
  {/* 4. Manifiesto textil (Editorial spread) */}
- <section className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-12 sm:py-20 ">
+ <section className="px-6 md:px-16 lg:px-32 w-full py-12 sm:py-20 ">
  <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80 block mb-4">
  Manifiesto
  </span>
- <blockquote className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon leading-snug font-normal">
+ <blockquote className="italic text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon leading-snug font-normal">
  «Diseñamos prendas para habitar el Caribe con calma, ligereza y aprecio por la arruga noble.»
  </blockquote>
  </div>
@@ -118,8 +118,8 @@ export default async function HomePage() {
  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 text-left">
  
  <div className="flex flex-col gap-2.5">
- <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">01</span>
- <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+ <span className="text-[10px] text-bauto-piedra/50 tracking-wider">01</span>
+ <h3 className="uppercase tracking-[0.1em] font-light text-sm sm:text-base text-bauto-carbon">
  Cuerpo consciente
  </h3>
  <p className="text-xs text-bauto-piedra leading-relaxed font-light">
@@ -128,8 +128,8 @@ export default async function HomePage() {
  </div>
 
  <div className="flex flex-col gap-2.5">
- <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">02</span>
- <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+ <span className="text-[10px] text-bauto-piedra/50 tracking-wider">02</span>
+ <h3 className="uppercase tracking-[0.1em] font-light text-sm sm:text-base text-bauto-carbon">
  Movimiento del trópico
  </h3>
  <p className="text-xs text-bauto-piedra leading-relaxed font-light">
@@ -138,8 +138,8 @@ export default async function HomePage() {
  </div>
 
  <div className="flex flex-col gap-2.5">
- <span className="font-mono text-[10px] text-bauto-piedra/50 tracking-wider">03</span>
- <h3 className="font-title font-medium text-sm sm:text-base text-bauto-carbon tracking-wide">
+ <span className="text-[10px] text-bauto-piedra/50 tracking-wider">03</span>
+ <h3 className="uppercase tracking-[0.1em] font-light text-sm sm:text-base text-bauto-carbon">
  Tejido de reciprocidad
  </h3>
  <p className="text-xs text-bauto-piedra leading-relaxed font-light">
@@ -151,16 +151,16 @@ export default async function HomePage() {
  </section>
 
  {/* 5. Studio en Santa Marta */}
- <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+ <section className="px-6 md:px-16 lg:px-32 w-full">
  <div className=" bg-[#F2F0EB]/50 border-t py-12 sm:py-20 sm:py-24 md:py-32 px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
  <div className="max-w-xl flex flex-col gap-2">
  <span className="text-[9px] tracking-[0.35em] uppercase text-bauto-piedra/80">
  Studio y taller caribeño
  </span>
- <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon tracking-tight">
+ <h2 className="uppercase tracking-[0.1em] font-light text-2xl sm:text-3xl text-bauto-carbon">
  Habita el espacio en Calle 20 # 2-36
  </h2>
- <p className="font-editorial italic text-xs sm:text-sm text-bauto-piedra leading-relaxed">
+ <p className="italic text-xs sm:text-sm text-bauto-piedra leading-relaxed">
  En pleno Centro Histórico de Santa Marta, a dos cuadras del mar. Descubre la textura real del lino y vive una atención personalizada y sosegada.
  </p>
  </div>

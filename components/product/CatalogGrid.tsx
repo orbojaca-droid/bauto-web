@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Cuadrícula interactiva del catálogo con filtros facetados por tipología, orden y búsqueda
  * @Capa: Estética / Funcional
@@ -74,7 +74,7 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
     <div className="flex flex-col gap-8">
       
       {/* Barra de Filtros y Búsqueda */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 pb-6 border-b border-bauto-carbon/[0.08]">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 pb-6">
         
         {/* Selector de Categorías (Tipográfico Plano) */}
         <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
@@ -175,10 +175,10 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
         </motion.div>
       ) : (
         <div className="py-24 text-center text-xs text-bauto-piedra max-w-sm mx-auto">
-          <h3 className="font-title font-light text-base text-bauto-carbon mb-2">
+          <h3 className="font-light text-base text-bauto-carbon mb-2">
             Sin piezas coincidentes
           </h3>
-          <p className="font-editorial italic mb-6 text-bauto-piedra leading-relaxed">
+          <p className="italic mb-6 text-bauto-piedra leading-relaxed">
             Explora otras siluetas de la colección o restablece los criterios de búsqueda.
           </p>
           <button
@@ -187,7 +187,7 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
               setSelectedCategory('TODAS');
               setSearchQuery('');
             }}
-            className="px-7 py-3 text-xs uppercase tracking-[0.2em] bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
+            className="inline-block border-b border-bauto-carbon uppercase tracking-[0.25em] text-[10px] bg-transparent text-bauto-carbon pb-0.5 transition-colors hover:text-bauto-terracota hover:border-bauto-terracota"
           >
             Restablecer criterios
           </button>

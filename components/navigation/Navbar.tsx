@@ -43,11 +43,12 @@ export function Navbar() {
   return (
     <>
       <header 
+        // @BAUTO_REFACTOR 2026-10-02
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled ? 'glass-nav py-3.5' : 'bg-bauto-nube/80 backdrop-blur-md py-4 sm:py-5'
+          scrolled ? 'py-3.5 bg-bauto-nube border-b border-bauto-carbon/10' : 'bg-transparent py-4 sm:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-32">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <button
@@ -70,8 +71,9 @@ export function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={playHapticClick}
-                      className={`text-[13px] tracking-wide transition-colors ${
-                        isActive ? 'text-bauto-terracota font-semibold' : 'text-bauto-carbon/80 hover:text-bauto-terracota'
+                      // @BAUTO_REFACTOR 2026-10-02
+                      className={`uppercase tracking-[0.15em] text-[11px] font-light transition-colors ${
+                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/60 hover:text-bauto-carbon'
                       }`}
                     >
                       {link.label}
@@ -128,7 +130,7 @@ export function Navbar() {
               className="absolute top-[65px] left-0 right-0 bg-bauto-nube p-6"
               onClick={(e) => e.stopPropagation()}
             >
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-4 mt-8">
                 {navLinks.map((link) => {
                   const Icon = link.icon;
                   const isActive = pathname === link.href;
@@ -140,11 +142,11 @@ export function Navbar() {
                         playHapticClick();
                         setMobileMenuOpen(false);
                       }}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded-card-sm text-sm tracking-wide transition-colors ${
-                        isActive ? 'bg-bauto-perla text-bauto-terracota font-semibold' : 'text-bauto-carbon hover:bg-bauto-perla/50'
+                      // @BAUTO_REFACTOR 2026-10-02
+                      className={`flex items-center gap-4 py-2 text-3xl font-light uppercase tracking-[0.1em] transition-colors ${
+                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/60'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-bauto-terracota' : 'text-bauto-piedra'}`} />
                       <span>{link.label}</span>
                     </Link>
                   );

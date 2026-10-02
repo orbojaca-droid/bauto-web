@@ -37,10 +37,10 @@ export default async function CatalogoPage() {
  <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
  Colección permanente
  </span>
- <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3">
+ <h1 className="font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl tracking-wide text-bauto-carbon mb-3">
  Colección BAUTO
  </h1>
- <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
+ <p className="italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
  Prendas concebidas para habitar el Caribe con calma, nobleza y libertad de movimiento.
  </p>
  </div>

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * @BAUTO_ECOSYSTEM 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (bauto.com.co) - VideoHero
  * @Propósito: Contenedor cinematográfico de video ambiental en loop silencioso.
  * Estética Quiet Luxury: sin adornos estridentes, controles sutiles,
@@ -91,11 +91,11 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
  className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out data-[loaded=false]:opacity-0 data-[loaded=false]:blur-sm data-[loaded=true]:opacity-100 data-[loaded=true]:blur-0"
  />
 
- {/* Velo cálido de protección visual y contraste editorial */}
- <div className="absolute inset-0 bg-gradient-to-t from-bauto-carbon/60 via-bauto-carbon/25 to-transparent pointer-events-none" />
-
  {/* Contenido editorial superpuesto */}
- <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 md:p-16 text-bauto-nube">
+ <div 
+ className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 md:p-16 text-bauto-nube"
+ style={{ textShadow: '0 1px 8px rgba(28,25,23,0.3)' }}
+ >
  <div className="max-w-2xl space-y-3">
  {tagline && (
  <p className="text-xs font-sans tracking-[0.2em] uppercase text-bauto-nube/80 font-medium">

@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless)
  * @Propósito: Configuración de Tailwind CSS con tokens oficiales de BAUTO Resort Wear
  * @Capa: Estética / Técnica
@@ -19,10 +19,7 @@ module.exports = {
         xs: '375px',
       },
       fontFamily: {
-        title: ['var(--font-sora)', 'sans-serif'],
-        body: ['var(--font-plus-jakarta)', 'sans-serif'],
-        mono: ['var(--font-rajdhani)', 'sans-serif'],
-        editorial: ['var(--font-lora)', 'serif'],
+        sans: ['var(--font-jost)', 'sans-serif'],
       },
       colors: {
         bauto: {
@@ -39,6 +36,8 @@ module.exports = {
           'piedra-light': '#D7D7D7',
           nube: '#FAF9F6',
           perla: '#F2F0EB',
+          caliza: '#EAE7DF',
+          lino: '#E8D5B5',
           vidrio: 'rgba(255, 255, 255, 0.55)',
           'vidrio-border': 'rgba(255, 255, 255, 0.40)',
           success: '#16A34A',
@@ -53,8 +52,6 @@ module.exports = {
       },
       boxShadow: {
         subtle: '0 4px 20px -2px rgba(28, 25, 23, 0.05)',
-        elevated: '0 12px 32px -4px rgba(28, 25, 23, 0.08)',
-        glass: '0 8px 32px 0 rgba(28, 25, 23, 0.06)',
       },
       animation: {
         'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',

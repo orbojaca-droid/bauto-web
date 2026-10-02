@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 4: Portal de Rastreo
  * @Propósito: Portal canónico de rastreo de envíos MiPaquete con storytelling caribeño y Sentence case.
  * @Capa: Estética / Funcional
@@ -63,17 +63,17 @@ function TrackingContent() {
  const whatsappUrl = `https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${whatsappMsg}`;
 
  return (
- <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-16 animate-fade-in font-body">
+ <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-16 animate-fade-in">
  
  {/* Encabezado del portal */}
  <div className="text-center max-w-xl mx-auto mb-10">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-2">
  Logística y despacho
  </span>
- <h1 className="font-title font-light sm:font-normal text-3xl sm:text-4xl text-bauto-carbon mb-3">
+ <h1 className="font-light uppercase tracking-[0.1em] text-3xl sm:text-4xl text-[#1C1917] mb-3">
  Rastreo de tu pedido
  </h1>
- <p className="font-editorial italic text-sm text-bauto-piedra leading-relaxed">
+ <p className="font-light tracking-[0.03em] leading-[2.2] text-sm text-bauto-piedra">
  Consulta en tiempo real el viaje de tus prendas desde nuestro taller en Santa Marta hasta tu puerta.
  </p>
  </div>
@@ -88,14 +88,14 @@ function TrackingContent() {
  onChange={(e) => setGuia(e.target.value)}
  placeholder="Ingresa tu número de guía o referencia..."
  required
- className="w-full text-xs pl-10 pr-4 py-3 rounded-none bg-bauto-perla/60 focus:border-bauto-carbon focus:outline-none transition-colors font-mono"
+ className="w-full text-xs pl-10 pr-4 py-3 rounded-none bg-bauto-perla/60 focus:border-[#1C1917] focus:outline-none transition-colors"
  />
  </div>
 
  <button
  type="submit"
  disabled={loading}
- className="px-6 py-3 text-xs uppercase tracking-[0.2em] font-medium bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-75"
+ className="px-2 py-3 text-[10px] uppercase tracking-[0.25em] font-normal border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 transition-colors disabled:opacity-50 bg-transparent"
  >
  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Rastrear</span>}
  </button>
@@ -118,7 +118,7 @@ function TrackingContent() {
  <span className="text-[10px] tracking-wider uppercase text-bauto-piedra block">
  Guía oficial MiPaquete
  </span>
- <strong className="font-mono text-base text-bauto-carbon">
+ <strong className="text-base text-bauto-carbon">
  {trackingData.guia || guia}
  </strong>
  </div>
@@ -132,7 +132,7 @@ function TrackingContent() {
  {/* Mensaje editorial */}
  {trackingData.mensajeEditorial && (
  <div className="p-4 bg-bauto-nube mb-8">
- <p className="font-editorial italic text-xs text-bauto-carbon leading-relaxed">
+ <p className="italic text-xs text-bauto-carbon leading-relaxed">
  "{trackingData.mensajeEditorial}"
  </p>
  </div>
@@ -145,7 +145,7 @@ function TrackingContent() {
  <div key={idx} className="flex items-start gap-4">
  <div className="flex flex-col items-center">
  <div
- className={`w-7 h-7 flex items-center justify-center text-xs font-mono font-medium ${
+ className={`w-7 h-7 flex items-center justify-center text-xs font-medium ${
  m.completed
  ? 'bg-bauto-carbon text-white'
  : m.current

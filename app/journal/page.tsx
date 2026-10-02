@@ -23,10 +23,10 @@ export default function JournalIndexPage() {
  <span className="text-[11px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-4">
  Nuestra visión
  </span>
- <h1 className="font-title text-4xl sm:text-5xl lg:text-6xl font-light text-bauto-carbon mb-6">
+ <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-bauto-carbon mb-6">
  Journal
  </h1>
- <p className="font-editorial italic text-bauto-piedra text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+ <p className="italic text-bauto-piedra text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
  Reflexiones desde Santa Marta sobre diseño consciente, fibras nobles y la elegancia del trópico.
  </p>
  </header>
@@ -46,7 +46,7 @@ export default function JournalIndexPage() {
  <time className="text-[11px] uppercase tracking-widest text-bauto-piedra mb-3 block">
  {new Date(post.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
  </time>
- <h2 className="font-title text-2xl font-light text-bauto-carbon mb-3 group-hover:text-bauto-terracota transition-colors">
+ <h2 className="text-2xl font-light text-bauto-carbon mb-3 group-hover:text-bauto-terracota transition-colors">
  {post.title}
  </h2>
  <p className="text-sm text-bauto-carbon/70 leading-relaxed font-light">

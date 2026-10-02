@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Barra flotante inferior de compra para iPhone móvil con respeto a safe-area
  * @Capa: Estética / Funcional
@@ -63,11 +63,11 @@ export function StickyBuyBar({
  </div>
 
  <div className="min-w-0">
- <h4 className="text-xs font-normal text-bauto-carbon truncate max-w-[120px]">
+ <h4 className="text-xs font-light tracking-[0.1em] uppercase text-bauto-carbon truncate max-w-[120px]">
  {product.name}
  </h4>
  <div className="flex items-center gap-1.5">
- <span className="font-body font-normal text-xs text-bauto-carbon">
+ <span className="font-light tracking-[0.15em] text-[#B85C38] text-xs">
  {formatCOP(product.price)}
  </span>
  {selectedSize && (
@@ -87,7 +87,7 @@ export function StickyBuyBar({
  playHapticClick();
  onAddToCart();
  }}
- className="h-10 px-5 text-[11px] uppercase tracking-[0.2em] font-medium shrink-0 flex items-center justify-center bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors"
+ className="h-10 px-2 text-[10px] uppercase tracking-[0.25em] font-normal shrink-0 flex items-center justify-center border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 transition-colors bg-transparent"
  >
  <span>{selectedSize ? 'Añadir' : 'Elegir talla'}</span>
  </button>

@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
  <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra block mb-1 font-light">
  Complementa tu atuendo
  </span>
- <h2 className="font-title font-light sm:font-normal text-xl sm:text-2xl text-bauto-carbon">
+ <h2 className="font-light sm:font-normal text-xl sm:text-2xl text-bauto-carbon">
  Otras piezas de la colección
  </h2>
  </div>

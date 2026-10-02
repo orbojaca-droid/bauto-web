@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Ficha de producto interactiva (PDP) con galería 4K, selector de tallas y compra táctil
  * @Capa: Estética / Funcional
@@ -90,8 +90,8 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  }}
  className={`relative w-16 h-20 sm:w-20 sm:h-24 overflow-hidden bg-[#FAF6F0] shrink-0 transition-all ${
  isCurrent
- ? 'border border-bauto-carbon opacity-100'
- : 'border border-transparent opacity-50 hover:opacity-100'
+ ? 'opacity-100'
+ : 'opacity-50 hover:opacity-100'
  }`}
  >
  <img
@@ -122,17 +122,17 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  {product.tipologia || 'Resort Wear'}
  </span>
  <span className="text-bauto-piedra/30">•</span>
- <span className="font-body text-[10px] text-bauto-piedra/70">
+ <span className="text-[10px] text-bauto-piedra/70">
  {product.reference}
  </span>
  </div>
 
- <h1 className="font-title font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon mb-2">
+ <h1 className="uppercase tracking-[0.1em] font-light text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon mb-2">
  {product.name}
  </h1>
 
  <div className="flex items-baseline gap-3">
- <span className="font-body text-xl sm:text-2xl text-bauto-carbon font-normal">
+ <span className="font-light tracking-[0.15em] text-[#B85C38] text-xl sm:text-2xl">
  {formatCOP(product.price)}
  </span>
  <span className="text-[10px] text-bauto-piedra/70 uppercase tracking-widest">IVA incluido</span>
@@ -202,7 +202,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  type="button"
  disabled={isOutOfStock}
  onClick={handleAddToCart}
- className={`w-full py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-light transition-colors bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft active:scale-[0.99] ${
+ className={`w-full py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-normal transition-colors border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.99] ${
  isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
  }`}
  >
@@ -232,7 +232,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  </div>
 
  {/* Sellos de Confianza Rápidos */}
- <div className="pt-4 flex flex-col gap-1.5 text-[11px] font-editorial italic text-bauto-piedra">
+ <div className="pt-4 flex flex-col gap-1.5 text-[11px] italic text-bauto-piedra">
  
  <p>· Primer cambio de talla asistido sin costo adicional de flete.</p>
  </div>

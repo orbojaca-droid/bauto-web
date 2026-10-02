@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless)
  * @Propósito: Estilos globales y tokens CSS raíz de BAUTO Resort Wear
  * @Capa: Estética / Técnica
@@ -43,7 +43,7 @@
 html {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-jost), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -84,17 +84,18 @@ input, textarea, select {
 }
 
 /* Botones Oficiales BAUTO */
-.btn-primary {
-  background-color: var(--color-carbon);
-  color: #FFFFFF;
-  border-radius: 0;
-  font-family: var(--font-sora);
-  font-weight: 400;
-  letter-spacing: 0.1em;
+.btn-primary, .btn-pill-primary {
+  font-family: var(--font-jost);
   text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  border-bottom: 1px solid #1C1917;
+  background: transparent;
+  color: var(--text-primary);
   font-size: 0.8125rem;
-  padding: 1rem 2rem;
-  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms ease;
+  padding: 0.5rem 0;
+  border-radius: 0;
+  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1), opacity 150ms ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +117,7 @@ input, textarea, select {
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   border-radius: 0;
-  font-family: var(--font-sora);
+  font-family: var(--font-jost);
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -138,7 +139,7 @@ input, textarea, select {
   border: 1px solid rgba(28, 25, 23, 0.15);
   color: var(--text-primary);
   border-radius: 0;
-  font-family: var(--font-sora);
+  font-family: var(--font-jost);
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;

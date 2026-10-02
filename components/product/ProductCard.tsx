@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Tarjeta de prenda de lujo con miniatura WebP optimizada, badges y hover sutil
  * @Capa: Estética / Funcional
@@ -45,19 +45,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
  className="w-full h-full object-cover object-center transition-all duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03] data-[loaded=false]:opacity-0 data-[loaded=false]:scale-95 data-[loaded=true]:opacity-100 data-[loaded=true]:scale-100"
  />
 
- {/* Badge Exclusivo Tienda Física */}
- {product.isExclusiveInStore && (
- <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 bg-white/95 backdrop-blur-sm text-bauto-carbon text-[9px] font-medium tracking-[0.15em] uppercase ">
- <span>Studio Santa Marta</span>
- </div>
- )}
 
- {/* Badge de Stock Bajo */}
- {!product.isExclusiveInStore && product.totalStock > 0 && product.totalStock <= 2 && (
- <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 bg-white/95 backdrop-blur-sm text-bauto-piedra text-[9px] font-medium tracking-[0.15em] uppercase ">
- Últimas piezas
- </div>
- )}
 
  {/* Agotado */}
  {product.totalStock === 0 && (
@@ -75,14 +63,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
  {product.tipologia || 'Resort Wear'}
  </span>
 
- <h3 className="font-title font-normal text-xs sm:text-sm text-bauto-carbon group-hover:opacity-75 transition-opacity line-clamp-1">
+ <h3 className="uppercase tracking-[0.1em] font-light text-xs sm:text-sm text-bauto-carbon group-hover:opacity-75 transition-opacity line-clamp-1">
  <Link href={`/catalogo/producto/${product.slug}`} onClick={playHapticClick}>
  {product.name}
  </Link>
  </h3>
 
  <div className="pt-0.5">
- <span className="font-body text-xs sm:text-sm text-bauto-carbon font-normal">
+ <span className="tracking-[0.15em] text-bauto-terracota font-light text-xs sm:text-sm">
  {formatCOP(product.price)}
  </span>
  </div>

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Selector interactivo de tallas con disponibilidad en vivo de Master DB
  * @Capa: Estética / Funcional
@@ -76,21 +76,14 @@ export function SizeSelector({
  onSelectSize(size);
  }
  }}
- className={`relative h-10 min-w-[46px] px-3.5 text-xs font-body font-normal transition-colors flex items-center justify-center active:scale-95 ${
+ className={`text-[11px] uppercase tracking-[0.15em] pb-1 transition-colors ${
  isSelected
- ? 'text-white'
+ ? 'text-[#1C1917] border-b border-[#1C1917]'
  : isAvailable
- ? 'text-bauto-carbon hover:bg-bauto-carbon/5'
- : 'text-bauto-piedra/30 cursor-not-allowed opacity-40'
+ ? 'text-[#1C1917] hover:opacity-70'
+ : 'text-gray-400 opacity-50 cursor-not-allowed'
  }`}
  >
- {isSelected && (
-   <motion.div
-     layoutId="activeSize"
-     className="absolute inset-0 bg-bauto-carbon"
-     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-   />
- )}
  <span className="relative z-10">{size}</span>
  </button>
  );
@@ -99,7 +92,7 @@ export function SizeSelector({
 
  {/* Mensaje de Disponibilidad */}
  {selectedSize && (
- <div className="text-[11px] text-bauto-piedra font-editorial italic mt-0.5">
+ <div className="text-[11px] text-bauto-piedra italic mt-0.5">
  <span>
  {stockPorTalla[selectedSize] <= 2
  ? 'Últimas piezas en taller'

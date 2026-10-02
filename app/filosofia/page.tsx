@@ -40,17 +40,17 @@ export default function FilosofiaPage() {
  ];
 
  return (
- <div className="max-w-4xl mx-auto px-6 lg:px-8 py-24 sm:py-32 animate-fade-in font-body">
+ <div className="max-w-4xl mx-auto px-6 lg:px-8 py-24 sm:py-32 animate-fade-in">
  
  {/* Encabezado editorial */}
  <div className="text-center max-w-2xl mx-auto mb-20">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
  Manifiesto BAUTO
  </span>
- <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-6 tracking-wide leading-tight">
+ <h1 className="font-light text-3xl sm:text-5xl text-bauto-carbon mb-6 tracking-wide leading-tight">
  Cuerpo consciente y el movimiento del trópico
  </h1>
- <p className="font-editorial italic text-base sm:text-lg text-bauto-piedra leading-relaxed">
+ <p className="italic text-base sm:text-lg text-bauto-piedra leading-relaxed">
  Prendas creadas para habitar el Caribe sin prisas, con holgura serena y en íntima sintonía con la brisa.
  </p>
  </div>
@@ -60,7 +60,7 @@ export default function FilosofiaPage() {
  {pillars.map((pillar) => (
  <article key={pillar.num} className="py-12 sm:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-start">
  <div className="md:col-span-3">
- <span className="font-title font-light text-4xl sm:text-5xl text-bauto-piedra/40 block mb-2">
+ <span className="font-light text-4xl sm:text-5xl text-bauto-piedra/40 block mb-2">
  {pillar.num}
  </span>
  <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block font-normal">
@@ -69,10 +69,10 @@ export default function FilosofiaPage() {
  </div>
 
  <div className="md:col-span-9">
- <h2 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-4 tracking-wide">
+ <h2 className="font-light text-2xl sm:text-3xl text-bauto-carbon mb-4 tracking-wide">
  {pillar.title}
  </h2>
- <p className="text-sm text-bauto-piedra leading-relaxed font-body">
+ <p className="text-sm text-bauto-piedra leading-relaxed">
  {pillar.desc}
  </p>
  </div>

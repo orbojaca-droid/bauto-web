@@ -50,7 +50,7 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  aria-label="Guía de medidas BAUTO"
  >
  <div className="flex items-center justify-between pb-4 mb-5">
- <h3 className="font-title font-light text-lg sm:text-xl text-bauto-carbon">
+ <h3 className="font-light text-lg sm:text-xl text-bauto-carbon">
  Guía de medidas (cm)
  </h3>
 
@@ -79,7 +79,7 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  <th className="px-3 py-3 font-normal">Largo</th>
  </tr>
  </thead>
- <tbody className="divide-y divide-bauto-carbon/5 text-bauto-carbon font-body">
+ <tbody className="divide-y divide-[#EAE7DF] text-bauto-carbon">
  {measurements.map((m) => (
  <tr key={m.talla} className="hover:bg-bauto-perla/30 transition-colors">
  <td className="px-3.5 py-2.5 font-medium text-bauto-carbon">{m.talla}</td>
@@ -95,7 +95,7 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
 
  {/* Nota Editorial de Calce */}
  <div className="pt-4 text-xs">
- <p className="font-editorial italic leading-relaxed text-[11px] text-bauto-piedra">
+ <p className="italic leading-relaxed text-[11px] text-bauto-piedra">
  Nuestras siluetas están concebidas para el movimiento libre y la brisa del Caribe. 
  El corte es holgado y relajado (Relaxed Fit). Para una silueta más entallada, te sugerimos seleccionar una talla menor.
  </p>

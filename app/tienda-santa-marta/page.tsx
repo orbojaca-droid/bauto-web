@@ -21,17 +21,17 @@ export const metadata: Metadata = {
 
 export default function TiendaSantaMartaPage() {
  return (
- <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 sm:py-20 animate-fade-in font-body">
+ <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 sm:py-20 animate-fade-in">
  
  {/* Encabezado principal */}
  <div className="text-center max-w-2xl mx-auto mb-16">
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra font-normal block mb-3">
  Atelier y Studio · Santa Marta
  </span>
- <h1 className="font-title font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
+ <h1 className="font-light text-3xl sm:text-5xl text-bauto-carbon mb-4 tracking-wide">
  Calle 20 # 2-36
  </h1>
- <p className="font-editorial italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
+ <p className="italic text-sm sm:text-base text-bauto-piedra leading-relaxed">
  Un santuario de frescura, lino puro y fibras nobles a dos cuadras de la bahía histórica.
  </p>
  </div>
@@ -101,12 +101,12 @@ export default function TiendaSantaMartaPage() {
  <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra font-normal block mb-2">
  Atención concierge
  </span>
- <h3 className="font-title font-light text-xl text-bauto-carbon tracking-wide">
+ <h3 className="font-light text-xl text-bauto-carbon tracking-wide">
  ¿Deseas apartar una pieza o agendar una cita en Studio?
  </h3>
  </div>
 
- <p className="text-xs text-bauto-piedra leading-relaxed font-body">
+ <p className="text-xs text-bauto-piedra leading-relaxed">
  Nuestro taller puede reservar tus siluetas predilectas en tu talla exacta para que estén listas al momento de tu llegada.
  </p>
 
@@ -125,7 +125,7 @@ export default function TiendaSantaMartaPage() {
  <h4 className="font-medium text-bauto-carbon mb-1">
  Atención a huéspedes y viajeros
  </h4>
- <p className="font-editorial italic text-xs text-bauto-piedra leading-relaxed">
+ <p className="italic text-xs text-bauto-piedra leading-relaxed">
  Si estás de paso por Santa Marta, Tayrona o Minca, coordinamos entregas directas en tu hotel o despacho prioritario nacional e internacional.
  </p>
  </div>

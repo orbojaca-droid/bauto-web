@@ -19,6 +19,7 @@ import { GiftCeremony } from './GiftCeremony';
 import { formatCOP } from '../../lib/grammar';
 import { playHapticClick } from '../../lib/sound';
 
+ // @BAUTO_REFACTOR 2026-10-02
 export function Carrito() {
  const router = useRouter();
  const isOpen = useCartStore((state) => state.isOpen);
@@ -84,16 +85,16 @@ export function Carrito() {
  >
  {/* Tirador Táctil (Drag Handle) solo visible en pantallas móviles */}
  <div className="sm:hidden pt-3 pb-1 flex justify-center">
- <div className="w-10 h-1 bg-bauto-carbon/20 " />
+ <div className="w-10 h-1 bg-bauto-carbon/20" />
  </div>
 
  {/* Cabecera del Carrito */}
- <div className="flex items-center justify-between px-6 py-5 ">
+ <div className="flex items-center justify-between px-6 py-5">
  <div className="flex items-baseline gap-2">
- <h2 className="font-title font-light text-base tracking-wide text-bauto-carbon">
+ <h2 className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon">
  Carrito de compras
  </h2>
- <span className="font-body text-xs text-bauto-piedra">
+ <span className="text-xs text-bauto-piedra">
  ({itemCount} {itemCount === 1 ? 'pieza' : 'piezas'})
  </span>
  </div>
@@ -119,7 +120,7 @@ export function Carrito() {
  <Compass className="w-8 h-8 text-bauto-carbon/40 stroke-[1.25]" />
  
  <div className="max-w-xs">
- <h3 className="font-title font-light text-base text-bauto-carbon mb-2 tracking-wide">
+ <h3 className="font-light text-base font-light tracking-[0.15em] text-bauto-terracota mb-2 tracking-wide">
  Tu carrito está vacío
  </h3>
  
@@ -131,7 +132,7 @@ export function Carrito() {
  handleClose();
  router.push('/catalogo');
  }}
- className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-widest font-light"
+ className="mt-2 px-6 py-3 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light"
  >
  <span>Explorar colección</span>
  </button>
@@ -139,7 +140,7 @@ export function Carrito() {
  ) : (
  /* Lista de Ítems del Carrito */
  <div>
- <div className="divide-y divide-bauto-carbon/5">
+ <div className="divide-y divide-[#EAE7DF]">
  {items.map((item) => (
  <CartItemRow key={item.id} item={item} />
  ))}
@@ -153,8 +154,8 @@ export function Carrito() {
 
  {/* Pie Transaccional Fijo con Desglose */}
  {items.length > 0 && (
- <div className="px-6 py-5 bg-bauto-nube/95 backdrop-blur-md pb-[max(1.25rem,env(safe-area-inset-bottom))]">
- <div className="flex flex-col gap-2 mb-4 text-xs font-body">
+ <div className="px-6 py-5 bg-bauto-nube border-t border-[#EAE7DF] pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+ <div className="flex flex-col gap-2 mb-4 text-xs">
  <div className="flex justify-between text-bauto-piedra">
  <span>Subtotal</span>
  <span className="text-bauto-carbon font-normal">
@@ -169,9 +170,9 @@ export function Carrito() {
  </span>
  </div>
 
- <div className="flex justify-between text-sm font-medium text-bauto-carbon pt-3 ">
+ <div className="flex justify-between text-sm font-medium text-bauto-carbon pt-3">
  <span>Total estimado</span>
- <span className="text-base text-bauto-carbon">
+ <span className="text-base font-light tracking-[0.15em] text-bauto-terracota">
  {formatCOP(total)}
  </span>
  </div>
@@ -181,7 +182,7 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleGoToCheckout}
- className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-widest font-light flex items-center justify-center gap-2"
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-all duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light flex items-center justify-center gap-2"
  >
  <span>Continuar con el pago</span>
  

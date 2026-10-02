@@ -1,45 +1,23 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless)
- * @Propósito: Raíz del layout global con fuentes oficiales de BAUTO (Sora, Plus Jakarta Sans, Rajdhani, Lora)
+ * @Propósito: Raíz del layout global con fuentes oficiales de BAUTO (Jost)
  * @Capa: Estética / Técnica
  * @Riesgo_Evaluado: Bajo - Plantilla maestra del App Router
  */
 
 import type { Metadata, Viewport } from 'next';
-import { Sora, Plus_Jakarta_Sans, Rajdhani, Lora } from 'next/font/google';
+import { Jost } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '../components/navigation/Navbar';
 import { Footer } from '../components/navigation/Footer';
 import { CartInitializer } from '../components/cart/CartInitializer';
 import { Carrito } from '../components/cart/Carrito';
 
-const sora = Sora({
+const jost = Jost({
  subsets: ['latin'],
- variable: '--font-sora',
- weight: ['400', '600', '700', '800'],
- display: 'swap',
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
- subsets: ['latin'],
- variable: '--font-plus-jakarta',
- weight: ['400', '500', '600', '700'],
- display: 'swap',
-});
-
-const rajdhani = Rajdhani({
- subsets: ['latin'],
- variable: '--font-rajdhani',
- weight: ['500', '600', '700'],
- display: 'swap',
-});
-
-const lora = Lora({
- subsets: ['latin'],
- variable: '--font-lora',
- weight: ['400', '600'],
- style: ['normal', 'italic'],
+ variable: '--font-jost',
+ weight: ['200', '300', '400', '500'],
  display: 'swap',
 });
 
@@ -89,7 +67,7 @@ export default function RootLayout({
  return (
  <html
  lang="es"
- className={`${sora.variable} ${plusJakarta.variable} ${rajdhani.variable} ${lora.variable}`}
+ className={`${jost.variable}`}
  >
  <body className="min-h-screen min-h-[100dvh] flex flex-col bg-bauto-nube text-bauto-carbon antialiased selection:bg-bauto-terracota/20 selection:text-bauto-terracota">
  <CartInitializer />

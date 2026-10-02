@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Error 404 Poético
  * @Propósito: Página personalizada de 'No Encontrado' con estética Quiet Luxury y Sentence case.
  * @Capa: Estética / Funcional
@@ -13,24 +13,21 @@ import { BAUTO_WHATSAPP_URL } from '../lib/constants';
 
 export default function NotFound() {
  return (
- <div className="min-h-[70vh] flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 animate-fade-in font-body">
+ <div className="min-h-[70vh] flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 animate-fade-in">
  <div className="max-w-md w-full text-center">
  
- {/* Ícono de compás serena */}
- <Compass className="w-8 h-8 text-bauto-terracota/80 stroke-[1.25] mx-auto mb-6" />
-
- {/* Indicador numérico discreto */}
- <span className="font-title text-[10px] font-medium uppercase tracking-[0.35em] text-bauto-piedra block mb-2">
- 404 — Fuera de rumbo
- </span>
-
- {/* Título principal */}
- <h1 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-3">
- Un rincón inexplorado
+ {/* 404 Tipográfico Gigante */}
+ <h1 className="text-[6rem] sm:text-[8rem] uppercase tracking-[0.15em] font-light text-[#1C1917] leading-none mb-6">
+ 404
  </h1>
 
+ {/* Título principal */}
+ <h2 className="font-light uppercase tracking-[0.1em] text-xl sm:text-2xl text-[#1C1917] mb-3">
+ Un rincón inexplorado
+ </h2>
+
  {/* Narrativa poética */}
- <p className="font-editorial italic text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-8 max-w-sm mx-auto">
+ <p className="italic text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-8 max-w-sm mx-auto">
  Como una brisa que cambia de rumbo sobre el mar de Santa Marta, la coordenada que buscas no existe en esta colección.
  </p>
 

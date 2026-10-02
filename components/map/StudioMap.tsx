@@ -173,7 +173,7 @@ export const StudioMap: React.FC<StudioMapProps> = ({ className = "" }) => {
 
  {/* Sello de coordenadas flotante en esquina superior izquierda */}
  <div className="absolute top-6 left-6 bg-transparent ">
- <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-carbon font-mono">
+ <span className="text-[10px] tracking-[0.2em] uppercase text-bauto-carbon">
  11°14′31″ N · 74°12′49″ W
  </span>
  </div>

@@ -116,13 +116,13 @@ export default function CartPage() {
  if (items.length === 0) {
  return (
  <div className="max-w-md mx-auto px-4 py-28 text-center animate-fade-in">
- <span className="font-title text-[10px] font-medium uppercase tracking-[0.35em] text-bauto-piedra block mb-2">
+ <span className="text-[10px] font-medium uppercase tracking-[0.35em] text-bauto-piedra block mb-2">
  Bolsa de viaje
  </span>
- <h1 className="font-title font-light text-2xl sm:text-3xl text-bauto-carbon mb-3">
+ <h1 className="font-light text-2xl sm:text-3xl text-bauto-carbon mb-3">
  Tu bolsa está vacía
  </h1>
- <p className="font-editorial italic text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-8">
+ <p className="italic text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-8">
  La brisa y la luz del Caribe esperan tus próximas elecciones de siluetas nobles.
  </p>
  <Link
@@ -144,7 +144,7 @@ export default function CartPage() {
  <span className="text-[10px] tracking-[0.3em] uppercase text-bauto-piedra block mb-1 font-light">
  Finalizar pedido
  </span>
- <h1 className="font-title font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-bauto-carbon">
+ <h1 className="font-light tracking-[0.15em] uppercase text-xl sm:text-2xl text-bauto-carbon">
  Tu bolsa y entrega
  </h1>
  </div>
@@ -155,29 +155,29 @@ export default function CartPage() {
  <div className="lg:col-span-7 flex flex-col gap-10">
  
  {/* Lista de prendas */}
- <div className=" pb-8">
- <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-5 flex items-center justify-between">
+ <div className="pb-8">
+ <h2 className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon mb-5 flex items-center justify-between">
  <span>Prendas seleccionadas</span>
  <span className="text-bauto-piedra/70 font-light lowercase">
  ({items.reduce((acc, i) => acc + i.quantity, 0)} piezas)
  </span>
  </h2>
 
- <div className="divide-y divide-bauto-carbon/[0.06]">
+ <div className="divide-y divide-[#EAE7DF]">
  {items.map((item) => (
  <CartItemRow key={item.id} item={item} />
  ))}
  </div>
 
  {/* Módulo de regalo */}
- <div className="mt-6 pt-4 ">
+ <div className="mt-6 pt-4">
  <GiftCeremony />
  </div>
  </div>
 
  {/* Formulario de entrega */}
  <form id="checkout-form" onSubmit={handleCheckout} className="flex flex-col gap-5 pt-2">
- <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-1">
+ <h2 className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon mb-1">
  Datos para el envío nacional
  </h2>
 
@@ -192,7 +192,7 @@ export default function CartPage() {
  value={name}
  onChange={(e) => setName(e.target.value)}
  placeholder="Tu nombre y apellido"
- className="w-full text-xs py-2.5 bg-transparent  text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors font-body"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
  />
  </div>
 
@@ -206,7 +206,7 @@ export default function CartPage() {
  value={phone}
  onChange={(e) => setPhone(e.target.value)}
  placeholder="Ej: 300 123 4567"
- className="w-full text-xs py-2.5 bg-transparent  text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors font-body"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
  />
  </div>
  </div>
@@ -221,7 +221,7 @@ export default function CartPage() {
  value={email}
  onChange={(e) => setEmail(e.target.value)}
  placeholder="correo@ejemplo.com"
- className="w-full text-xs py-2.5 bg-transparent  text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors font-body"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
  />
  </div>
 
@@ -248,7 +248,7 @@ export default function CartPage() {
  value={city}
  onChange={(e) => setCity(e.target.value)}
  placeholder="Ej: Santa Marta, Bogotá, Medellín"
- className="w-full text-xs py-2.5 bg-transparent  text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors font-body"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
  />
  </div>
 
@@ -261,13 +261,13 @@ export default function CartPage() {
  value={notes}
  onChange={(e) => setNotes(e.target.value)}
  placeholder="Apto, torre, portería..."
- className="w-full text-xs py-2.5 bg-transparent  text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors font-body"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
  />
  </div>
  </div>
 
  {errorMessage && (
- <div className="p-3 bg-bauto-danger/10 border border-bauto-danger/20 text-bauto-danger text-xs ">
+ <div className="p-3 bg-bauto-danger/10 border border-bauto-danger/20 text-bauto-danger text-xs">
  {errorMessage}
  </div>
  )}
@@ -277,23 +277,23 @@ export default function CartPage() {
 
  {/* Columna derecha: Resumen financiero y pago Wompi (5 columnas) */}
  <div className="lg:col-span-5 sticky top-24">
- <div className=" p-6 sm:p-8 bg-[#FAF6F0]/40 ">
+ <div className="p-6 sm:p-8 bg-transparent border border-[#EAE7DF]">
  
- <h2 className="text-xs uppercase tracking-[0.2em] font-medium text-bauto-carbon mb-5">
+ <h2 className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon mb-5">
  Resumen de la orden
  </h2>
 
  <div className="flex flex-col gap-3 text-xs pb-5">
  <div className="flex justify-between text-bauto-piedra">
  <span>Subtotal prendas</span>
- <span className="font-body text-bauto-carbon font-normal">
+ <span className="text-[11px] font-light tracking-[0.15em] text-bauto-terracota">
  {formatCOP(subtotal)}
  </span>
  </div>
 
  <div className="flex justify-between text-bauto-piedra">
  <span>Envío nacional (MiPaquete)</span>
- <span className="font-body text-bauto-carbon">
+ <span className="text-[11px] font-light tracking-[0.15em] text-bauto-terracota">
  {formatCOP(shippingCost)}
  </span>
  </div>
@@ -301,15 +301,15 @@ export default function CartPage() {
  {isGiftPackaging && (
  <div className="flex justify-between text-bauto-piedra">
  <span>Empaque y tarjeta de regalo</span>
- <span className="font-body text-bauto-carbon font-normal">Incluido</span>
+ <span className="text-[11px] font-light tracking-[0.15em] text-bauto-terracota">Incluido</span>
  </div>
  )}
  </div>
 
  {/* Total */}
  <div className="flex items-baseline justify-between pt-4 mb-6">
- <span className="text-xs uppercase tracking-wider text-bauto-carbon">Total</span>
- <span className="font-body text-xl sm:text-2xl font-normal text-bauto-carbon">
+ <span className="text-[11px] uppercase tracking-[0.15em] font-light text-bauto-carbon">Total</span>
+ <span className="text-xl sm:text-2xl font-light tracking-[0.15em] text-bauto-terracota">
  {formatCOP(total)}
  </span>
  </div>
@@ -319,7 +319,7 @@ export default function CartPage() {
  type="submit"
  form="checkout-form"
  disabled={loading}
- className="w-full py-4 text-xs font-sans font-medium bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+ className="w-full py-4 text-[11px] uppercase tracking-[0.25em] font-light bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
  >
  {loading ? (
  <span className="inline-flex items-center gap-2">

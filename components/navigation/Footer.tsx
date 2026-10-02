@@ -11,9 +11,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Mail, Instagram } from 'lucide-react';
 
+ // @BAUTO_REFACTOR 2026-10-02
 export function Footer() {
  return (
- <footer className="mt-auto bg-[#FAF9F6] text-bauto-carbon">
+ <footer className="mt-auto bg-bauto-nube text-bauto-carbon">
 
  {/* Cuerpo principal del footer */}
  <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-16">
@@ -31,12 +32,12 @@ export function Footer() {
  className="h-7 w-auto object-contain mb-1"
  />
  </Link>
- <span className="block text-[8.5px] tracking-[0.35em] uppercase text-bauto-piedra">
+ <span className="block text-[8.5px] tracking-[0.35em] uppercase text-bauto-carbon/60">
  Resort Wear • Santa Marta
  </span>
  </div>
  
- <p className="text-xs text-bauto-piedra leading-relaxed max-w-sm">
+ <p className="text-[11px] font-light tracking-[0.03em] text-bauto-carbon/60 leading-relaxed max-w-sm">
  Prendas creadas bajo la brisa y la luz del Caribe colombiano. 
  Confort consciente, movimiento libre y aprecio por la textura viva de las fibras nobles.
  </p>
@@ -63,10 +64,10 @@ export function Footer() {
 
  {/* Columna 3: Colección y tipologías */}
  <div>
- <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
+ <h3 className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon mb-4">
  Tipologías
  </h3>
- <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
+ <ul className="flex flex-col gap-2.5 text-[11px] font-light tracking-[0.03em] text-bauto-carbon/60">
  <li><Link href="/catalogo" className="hover:text-bauto-carbon transition-colors">Ver todo</Link></li>
  <li><Link href="/catalogo/camisa" className="hover:text-bauto-carbon transition-colors">Camisas</Link></li>
  <li><Link href="/catalogo/pantalon" className="hover:text-bauto-carbon transition-colors">Pantalones</Link></li>
@@ -79,10 +80,10 @@ export function Footer() {
 
  {/* Columna 4: Experiencia y ayuda */}
  <div>
- <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
+ <h3 className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon mb-4">
  Soporte
  </h3>
- <ul className="flex flex-col gap-2.5 text-xs text-bauto-piedra">
+ <ul className="flex flex-col gap-2.5 text-[11px] font-light tracking-[0.03em] text-bauto-carbon/60">
  <li><Link href="/rastreo" className="hover:text-bauto-carbon transition-colors">Rastreo</Link></li>
  <li><Link href="/filosofia" className="hover:text-bauto-carbon transition-colors">Manifiesto</Link></li>
  <li><Link href="/journal" className="hover:text-bauto-carbon transition-colors">Journal</Link></li>
@@ -93,10 +94,10 @@ export function Footer() {
 
  {/* Columna 5: Studio física */}
  <div>
- <h3 className="text-xs font-semibold tracking-wider uppercase text-bauto-carbon mb-4">
+ <h3 className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon mb-4">
  Studio taller
  </h3>
- <div className="flex flex-col gap-3 text-xs text-bauto-piedra">
+ <div className="flex flex-col gap-3 text-[11px] font-light tracking-[0.03em] text-bauto-carbon/60">
  <p className="flex items-start gap-2">
  <MapPin className="w-4 h-4 text-bauto-terracota shrink-0 mt-0.5" />
  <span>Calle 20 # 2-36, Centro Histórico, Santa Marta, Colombia</span>
@@ -112,7 +113,7 @@ export function Footer() {
  </div>
 
  {/* Línea divisoria inferior y derechos */}
- <div className="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-bauto-piedra">
+ <div className="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-light tracking-[0.03em] text-bauto-carbon/60">
  <p>© 2026 BAUTO Resort Wear. Todos los derechos reservados.</p>
  <div className="flex items-center gap-4">
  <Link href="/ayuda#terminos" className="hover:text-bauto-terracota transition-colors">Términos y condiciones</Link>

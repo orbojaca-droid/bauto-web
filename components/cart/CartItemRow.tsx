@@ -21,6 +21,7 @@ interface CartItemRowProps {
  compact?: boolean;
 }
 
+ // @BAUTO_REFACTOR 2026-10-02
 export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  const updateQuantity = useCartStore((state) => state.updateQuantity);
  const removeItem = useCartStore((state) => state.removeItem);
@@ -50,9 +51,9 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  };
 
  return (
- <div className={`flex gap-4 py-4 items-center font-body ${compact ? 'text-xs' : 'text-sm'}`}>
+ <div className={`flex gap-4 py-4 items-center  ${compact ? 'text-xs' : 'text-sm'}`}>
  {/* Miniatura de la Prenda con Proporción Limpia */}
- <div className="relative w-16 h-20 sm:w-20 sm:h-24 overflow-hidden bg-bauto-perla shrink-0">
+ <div className="relative w-16 h-20 sm:w-20 sm:h-24 overflow-hidden bg-transparent shrink-0">
  <img
  src={imageUrl}
  alt={item.product.name}
@@ -65,10 +66,10 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  <div className="flex-1 min-w-0 flex flex-col gap-1">
  <div className="flex items-start justify-between gap-2">
  <div>
- <span className="text-[10px] tracking-wider uppercase text-bauto-piedra block font-body">
+ <span className="text-[10px] tracking-wider uppercase text-bauto-piedra block">
  {item.product.tipologia || 'Silueta BAUTO'}
  </span>
- <h4 className="font-normal text-bauto-carbon text-xs sm:text-sm truncate max-w-[170px] sm:max-w-[220px]">
+ <h4 className="text-[11px] font-light tracking-[0.15em] uppercase text-bauto-carbon truncate max-w-[170px] sm:max-w-[220px]">
  {item.product.name}
  </h4>
  </div>
@@ -85,7 +86,7 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  </div>
 
  {/* Talla y Referencia */}
- <div className="flex items-center gap-2 text-[11px] text-bauto-piedra font-body">
+ <div className="flex items-center gap-2 text-[11px] text-bauto-piedra">
  <span className="text-bauto-carbon font-normal">
  Talla {item.selectedSize}
  </span>
@@ -97,7 +98,7 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
 
  {/* Precio y Controles de Cantidad */}
  <div className="flex items-center justify-between pt-1 mt-auto">
- <span className="font-normal text-xs sm:text-sm text-bauto-carbon font-body">
+ <span className="text-xs font-light tracking-[0.15em] text-bauto-terracota">
  {formatCOP(item.product.price * item.quantity)}
  </span>
 
@@ -111,7 +112,7 @@ export function CartItemRow({ item, compact = false }: CartItemRowProps) {
  <Minus className="w-3 h-3 stroke-[1.5]" />
  </button>
 
- <span className="font-body text-xs font-normal px-2 text-bauto-carbon select-none min-w-[18px] text-center">
+ <span className="text-xs font-normal px-2 text-bauto-carbon select-none min-w-[18px] text-center">
  {item.quantity}
  </span>
 
