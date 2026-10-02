@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless)
  * @Propósito: Pie de página institucional y legal de BAUTO Resort Wear con Sentence case estricto.
  * @Capa: Estética / Funcional
@@ -32,7 +32,7 @@ export function Footer() {
  className="h-7 w-auto object-contain mb-1"
  />
  </Link>
- <span className="block text-[8.5px] tracking-[0.35em] uppercase text-bauto-carbon/60">
+ <span className="block text-[11px] font-light tracking-[0.35em] uppercase text-bauto-carbon/60">
  Resort Wear • Santa Marta
  </span>
  </div>

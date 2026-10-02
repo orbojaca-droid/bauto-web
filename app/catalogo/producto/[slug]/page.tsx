@@ -1,5 +1,5 @@
 /**
- * @BAUTO_REFACTOR 2026-09-28
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 3: Escaparate Comercial
  * @Propósito: Ficha de producto (PDP) oficial de BAUTO Resort Wear
  * @Capa: Estética / Funcional
@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
  <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 animate-fade-in">
  
  {/* Breadcrumbs de Navegación de Lujo */}
- <nav className="flex items-center gap-2 text-xs text-bauto-piedra mb-10 overflow-x-auto whitespace-nowrap scrollbar-none font-light">
+ <nav className="flex flex-wrap items-center gap-2 text-xs text-bauto-piedra mb-10 font-light">
  <Link href="/" className="hover:text-bauto-carbon transition-colors">
  Inicio
  </Link>

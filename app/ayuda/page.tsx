@@ -36,17 +36,25 @@ export default function AyudaPage() {
  </div>
 
  {/* Secciones de políticas con divisores hairline */}
- <div className="divide-y divide-bauto-carbon/10 border-t ">
+ <div className="border-t border-bauto-carbon/10">
  
  {/* 1. Envíos nacionales */}
- <section id="envios" className="py-10 sm:py-12">
+ <details id="envios" className="group [&_summary::-webkit-details-marker]:hidden border-b border-bauto-carbon/10 py-6 sm:py-8" open>
+ <summary className="flex cursor-pointer items-center justify-between gap-4 outline-none">
+ <div>
  <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
  01 · Logística y entrega
  </span>
- <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
+ <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon tracking-wide">
  Envíos y despachos nacionales
  </h2>
- <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
+ </div>
+ <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+ <svg className="absolute h-4 w-4 opacity-100 transition-opacity group-open:opacity-0 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+ <svg className="absolute h-4 w-4 opacity-0 transition-opacity group-open:opacity-100 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+ </span>
+ </summary>
+ <div className="mt-6 text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
  <p>
  • <strong className="text-bauto-carbon font-medium">Tiempos de entrega:</strong> Las órdenes se alistan en nuestro atelier de Santa Marta dentro de las 24 horas hábiles. La entrega toma de <strong>2 a 4 días hábiles</strong> en ciudades principales y de <strong>3 a 6 días hábiles</strong> en otros destinos nacionales.
  </p>
@@ -60,17 +68,25 @@ export default function AyudaPage() {
  </Link>.
  </p>
  </div>
- </section>
+ </details>
 
  {/* 2. Cambios de talla */}
- <section id="cambios" className="py-10 sm:py-12">
+ <details id="cambios" className="group [&_summary::-webkit-details-marker]:hidden border-b border-bauto-carbon/10 py-6 sm:py-8">
+ <summary className="flex cursor-pointer items-center justify-between gap-4 outline-none">
+ <div>
  <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
  02 · Ajuste y talla
  </span>
- <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
+ <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon tracking-wide">
  Políticas de cambios y garantía
  </h2>
- <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
+ </div>
+ <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+ <svg className="absolute h-4 w-4 opacity-100 transition-opacity group-open:opacity-0 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+ <svg className="absolute h-4 w-4 opacity-0 transition-opacity group-open:opacity-100 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+ </span>
+ </summary>
+ <div className="mt-6 text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
  <p>
  • <strong className="text-bauto-carbon font-medium">Primer cambio sin costo:</strong> Queremos que cada silueta siente con perfecta holgura. El primer cambio de talla no tiene costo de transporte.
  </p>
@@ -81,17 +97,25 @@ export default function AyudaPage() {
  • <strong className="text-bauto-carbon font-medium">Condiciones:</strong> La prenda debe conservarse en estado original, sin uso ni alteraciones, con etiquetas y empaque intactos.
  </p>
  </div>
- </section>
+ </details>
 
  {/* 3. Derecho de retracto (Ley 1480 de 2011) */}
- <section id="retracto" className="py-10 sm:py-12">
+ <details id="retracto" className="group [&_summary::-webkit-details-marker]:hidden border-b border-bauto-carbon/10 py-6 sm:py-8">
+ <summary className="flex cursor-pointer items-center justify-between gap-4 outline-none">
+ <div>
  <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
  03 · Marco legal
  </span>
- <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
+ <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon tracking-wide">
  Derecho de retracto (Ley 1480 de 2011 - Colombia)
  </h2>
- <div className="text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
+ </div>
+ <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+ <svg className="absolute h-4 w-4 opacity-100 transition-opacity group-open:opacity-0 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+ <svg className="absolute h-4 w-4 opacity-0 transition-opacity group-open:opacity-100 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+ </span>
+ </summary>
+ <div className="mt-6 text-xs sm:text-sm text-bauto-piedra space-y-3 leading-relaxed">
  <p>
  De conformidad con el Artículo 47 del Estatuto del Consumidor en Colombia (Ley 1480 de 2011), en compras realizadas mediante canales no presenciales o electrónicos, el consumidor tiene derecho a retractarse dentro de los <strong>5 (cinco) días hábiles</strong> siguientes a la recepción de la prenda.
  </p>
@@ -102,16 +126,25 @@ export default function AyudaPage() {
  • BAUTO reintegrará la totalidad del valor cancelado en un plazo de <strong>15 a 30 días calendario</strong> mediante reversión en Wompi o transferencia bancaria a la cuenta del titular.
  </p>
  </div>
- </section>
+ </details>
 
  {/* 4. Medios de pago y seguridad */}
- <section id="pagos" className="py-10 sm:py-12">
+ <details id="pagos" className="group [&_summary::-webkit-details-marker]:hidden border-b border-bauto-carbon/10 py-6 sm:py-8">
+ <summary className="flex cursor-pointer items-center justify-between gap-4 outline-none">
+ <div>
  <span className="text-[10px] uppercase tracking-[0.2em] text-bauto-piedra block mb-2 font-normal">
  04 · Pasarela bancaria
  </span>
- <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon mb-4 tracking-wide">
+ <h2 className="font-light text-xl sm:text-2xl text-bauto-carbon tracking-wide">
  Medios de pago seguros
  </h2>
+ </div>
+ <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+ <svg className="absolute h-4 w-4 opacity-100 transition-opacity group-open:opacity-0 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+ <svg className="absolute h-4 w-4 opacity-0 transition-opacity group-open:opacity-100 text-bauto-carbon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+ </span>
+ </summary>
+ <div className="mt-6">
  <p className="text-xs sm:text-sm text-bauto-piedra leading-relaxed mb-4">
  Todas las transacciones son gestionadas a través de <strong className="text-bauto-carbon font-medium">Wompi</strong> (Bancolombia) bajo estándar internacional <strong className="text-bauto-carbon font-medium">PCI-DSS Nivel 1</strong> y validación criptográfica 3D Secure 2.0.
  </p>
@@ -126,7 +159,8 @@ export default function AyudaPage() {
  <span className="text-bauto-carbon/20">·</span>
  <span>Addi (financiamiento)</span>
  </div>
- </section>
+ </div>
+ </details>
 
  </div>
 

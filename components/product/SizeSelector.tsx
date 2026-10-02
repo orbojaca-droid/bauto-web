@@ -59,7 +59,7 @@ export function SizeSelector({
  </div>
 
  {/* Cuadrícula de Botones de Tallas */}
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Selección de talla">
  {displaySizes.map((size) => {
  const stock = stockPorTalla[size] || 0;
  const isAvailable = stock > 0;
@@ -69,6 +69,8 @@ export function SizeSelector({
  <button
  key={size}
  type="button"
+ role="radio"
+ aria-checked={isSelected}
  disabled={!isAvailable}
  onClick={() => {
  if (isAvailable) {

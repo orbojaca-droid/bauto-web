@@ -118,11 +118,11 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  {/* Cabecera de la Prenda */}
  <div>
  <div className="flex items-center gap-2 mb-1.5">
- <span className="text-[10px] tracking-[0.25em] uppercase text-bauto-piedra font-normal">
+ <span className="text-xs font-light tracking-[0.25em] uppercase text-bauto-piedra font-normal">
  {product.tipologia || 'Resort Wear'}
  </span>
  <span className="text-bauto-piedra/30">•</span>
- <span className="text-[10px] text-bauto-piedra/70">
+ <span className="text-xs font-light text-bauto-piedra/70">
  {product.reference}
  </span>
  </div>
@@ -135,7 +135,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  <span className="font-light tracking-[0.15em] text-[#B85C38] text-xl sm:text-2xl">
  {formatCOP(product.price)}
  </span>
- <span className="text-[10px] text-bauto-piedra/70 uppercase tracking-widest">IVA incluido</span>
+ <span className="text-xs font-light text-bauto-piedra/70 uppercase tracking-widest">IVA incluido</span>
  </div>
  </div>
 
@@ -202,7 +202,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
  type="button"
  disabled={isOutOfStock}
  onClick={handleAddToCart}
- className={`w-full py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-normal transition-colors border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.97] transition-transform duration-120 ease-out ${
+ className={`w-full py-3 text-xs font-light sm:text-[11px] uppercase tracking-[0.25em] font-normal transition-colors border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.97] transition-transform duration-120 ease-out ${
  isOutOfStock ? 'opacity-40 cursor-not-allowed' : ''
  }`}
  >

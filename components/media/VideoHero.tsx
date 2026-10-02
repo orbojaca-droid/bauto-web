@@ -93,7 +93,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
 
  {/* Contenido editorial superpuesto */}
  <div 
- className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 md:p-16 text-bauto-nube"
+ className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 md:p-16 text-bauto-nube bg-gradient-to-t from-black/50 via-black/20 to-transparent"
  style={{ textShadow: '0 1px 8px rgba(28,25,23,0.3)' }}
  >
  <div className="max-w-2xl space-y-3">

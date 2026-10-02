@@ -8,10 +8,10 @@
  * @Riesgo_Evaluado: Controlado - Preservación íntegra de Zustand y navegación
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { X, Compass } from 'lucide-react';
+import { X, Compass, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '../../lib/cartStore';
 import { CartItemRow } from './CartItemRow';
@@ -22,6 +22,7 @@ import { playHapticClick } from '../../lib/sound';
  // @BAUTO_REFACTOR 2026-10-02
 export function Carrito() {
  const router = useRouter();
+ const [isNavigating, setIsNavigating] = useState(false);
  const isOpen = useCartStore((state) => state.isOpen);
  const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
  const items = useCartStore((state) => state.items);
@@ -52,6 +53,7 @@ export function Carrito() {
 
  const handleGoToCheckout = () => {
  playHapticClick();
+ setIsNavigating(true);
  setDrawerOpen(false);
  router.push('/carrito');
  };
@@ -186,11 +188,12 @@ export function Carrito() {
  <button
  type="button"
  onClick={handleGoToCheckout}
+ disabled={isNavigating}
  // @BAUTO_REFACTOR 2026-10-02
- className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color,color] duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light flex items-center justify-center gap-2"
+ className="w-full py-3 px-6 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-[transform,background-color,color] duration-[160ms] ease-out active:scale-[0.97] text-[11px] uppercase tracking-[0.25em] font-light flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
  >
+ {isNavigating && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
  <span>Continuar con el pago</span>
- 
  </button>
 
  <p className="text-[10px] text-center text-bauto-piedra mt-3 flex items-center justify-center gap-1">

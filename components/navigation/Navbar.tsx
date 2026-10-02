@@ -74,7 +74,7 @@ export function Navbar() {
                       onClick={playHapticClick}
                       // @BAUTO_REFACTOR 2026-10-02
                       className={`uppercase tracking-[0.15em] text-[11px] font-light whitespace-nowrap transition-colors ${
-                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/60 hover:text-bauto-carbon'
+                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/80 hover:text-bauto-carbon'
                       }`}
                     >
                       {link.label}
@@ -145,7 +145,7 @@ export function Navbar() {
                       }}
                       // @BAUTO_REFACTOR 2026-10-02
                       className={`flex items-center gap-4 py-2 text-3xl font-light uppercase tracking-[0.1em] transition-colors ${
-                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/60'
+                        isActive ? 'text-bauto-carbon' : 'text-bauto-carbon/80'
                       }`}
                     >
                       <span>{link.label}</span>

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * @BAUTO_REFACTOR 2026-09-29
+ * @BAUTO_REFACTOR 2026-10-02
  * @Modulo: WEB (Vercel Headless) - Bloque 2: Carrito
  * @Propósito: Página canónica de revisión y checkout con pasarela Wompi y tipografía en Sentence case.
  * @Capa: Estética / Funcional
@@ -36,6 +36,8 @@ export default function CartPage() {
  const [city, setCity] = useState('');
  const [notes, setNotes] = useState('');
 
+ const [errors, setErrors] = useState<Record<string, string>>({});
+
  const [loading, setLoading] = useState(false);
  const [errorMessage, setErrorMessage] = useState('');
 
@@ -49,14 +51,22 @@ export default function CartPage() {
  const handleCheckout = async (e: React.FormEvent) => {
  e.preventDefault();
  setErrorMessage('');
+ setErrors({});
 
  if (items.length === 0) {
  setErrorMessage('Tu bolsa de compras está vacía.');
  return;
  }
 
- if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
- setErrorMessage('Por favor completa todos los campos de entrega obligatorios.');
+ const newErrors: Record<string, string> = {};
+ if (!name.trim()) newErrors.name = 'El nombre es obligatorio.';
+ if (!phone.trim()) newErrors.phone = 'El celular / WhatsApp es obligatorio.';
+ if (!email.trim()) newErrors.email = 'El correo es obligatorio.';
+ if (!address.trim()) newErrors.address = 'La dirección es obligatoria.';
+ if (!city.trim()) newErrors.city = 'La ciudad es obligatoria.';
+
+ if (Object.keys(newErrors).length > 0) {
+ setErrors(newErrors);
  return;
  }
 
@@ -191,10 +201,11 @@ export default function CartPage() {
  type="text"
  required
  value={name}
- onChange={(e) => setName(e.target.value)}
+ onChange={(e) => { setName(e.target.value); if (errors.name) setErrors({...errors, name: ''}); }}
  placeholder="Tu nombre y apellido"
- className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.name ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
+ {errors.name && <span className="text-xs text-bauto-danger mt-1 block">{errors.name}</span>}
  </div>
 
  <div>
@@ -205,25 +216,28 @@ export default function CartPage() {
  type="tel"
  required
  value={phone}
- onChange={(e) => setPhone(e.target.value)}
+ onChange={(e) => { setPhone(e.target.value); if (errors.phone) setErrors({...errors, phone: ''}); }}
  placeholder="Ej: 300 123 4567"
- className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.phone ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
+ {errors.phone && <span className="text-xs text-bauto-danger mt-1 block">{errors.phone}</span>}
  </div>
  </div>
 
  <div>
  <label className="block text-xs font-normal text-bauto-piedra mb-1">
- Correo electrónico (para guía y recibo) *
+ Correo electrónico *
  </label>
  <input
  type="email"
  required
  value={email}
- onChange={(e) => setEmail(e.target.value)}
+ onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors({...errors, email: ''}); }}
  placeholder="correo@ejemplo.com"
- className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.email ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
+ <span className="text-[11px] text-bauto-piedra mt-1 block">(para guía de envío y recibo)</span>
+ {errors.email && <span className="text-xs text-bauto-danger mt-1 block">{errors.email}</span>}
  </div>
 
  <div>
@@ -232,10 +246,12 @@ export default function CartPage() {
  </label>
  <AddressAutocomplete
  value={address}
- onChange={setAddress}
+ onChange={(val) => { setAddress(val); if (errors.address) setErrors({...errors, address: ''}); }}
  onSelectCity={setCity}
  placeholder="Busca tu dirección o ingrésala manualmente"
+ hasError={!!errors.address}
  />
+ {errors.address && <span className="text-xs text-bauto-danger mt-1 block">{errors.address}</span>}
  </div>
 
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -247,10 +263,11 @@ export default function CartPage() {
  type="text"
  required
  value={city}
- onChange={(e) => setCity(e.target.value)}
+ onChange={(e) => { setCity(e.target.value); if (errors.city) setErrors({...errors, city: ''}); }}
  placeholder="Ej: Santa Marta, Bogotá, Medellín"
- className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
+ className={`w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b ${errors.city ? 'border-bauto-danger' : 'border-[#EAE7DF]'}`}
  />
+ {errors.city && <span className="text-xs text-bauto-danger mt-1 block">{errors.city}</span>}
  </div>
 
  <div>
@@ -262,7 +279,7 @@ export default function CartPage() {
  value={notes}
  onChange={(e) => setNotes(e.target.value)}
  placeholder="Apto, torre, portería..."
- className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors"
+ className="w-full text-xs py-2.5 bg-transparent text-bauto-carbon placeholder:text-bauto-piedra/40 focus:border-bauto-carbon focus:outline-none transition-colors border-b border-[#EAE7DF]"
  />
  </div>
  </div>
@@ -338,8 +355,11 @@ export default function CartPage() {
  <p className="text-bauto-carbon font-normal mb-1">
  Procesamiento seguro y cifrado
  </p>
- <p className="text-[10px] text-bauto-piedra/80">
+ <p className="text-[10px] text-bauto-piedra/80 mb-2">
  Aceptamos PSE, Bancolombia, Nequi, Tarjetas Débito/Crédito y Addi. Fondos procesados bajo certificación bancaria PCI-DSS.
+ </p>
+ <p className="text-[10px] text-bauto-carbon/80 font-normal">
+ Cambios y devoluciones fáciles por 15 días · Envío asegurado con MiPaquete
  </p>
  </div>
 

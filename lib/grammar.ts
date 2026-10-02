@@ -1,5 +1,5 @@
 /**
- * @BAUTO_ECOSYSTEM 2026-09-28
+ * @BAUTO_ECOSYSTEM 2026-10-02
  * @Modulo: WEB (bauto.com.co) - Utilidades Gramaticales & Mensajes
  * @Propósito: Mapeo gramatical de artículos por tipología, generador de slugs SEO y
  *             formateador de mensajes para WhatsApp. AUDITORÍA: Corrige la colisión

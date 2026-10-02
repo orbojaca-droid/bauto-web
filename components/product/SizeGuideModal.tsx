@@ -69,7 +69,7 @@ export function SizeGuideModal({ isOpen, onClose, categoria = 'Prendas Superiore
  playHapticClick();
  onClose();
  }}
- className="w-10 h-10 flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
+ className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 text-bauto-piedra hover:text-bauto-carbon transition-colors"
  aria-label="Cerrar modal"
  >
  <X className="w-4 h-4" />

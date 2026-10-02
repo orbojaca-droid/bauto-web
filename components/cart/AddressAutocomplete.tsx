@@ -24,6 +24,7 @@ interface AddressAutocompleteProps {
   onSelectCity?: (city: string) => void;
   placeholder?: string;
   required?: boolean;
+  hasError?: boolean;
 }
 
  // @BAUTO_REFACTOR 2026-10-02
@@ -33,6 +34,7 @@ export function AddressAutocomplete({
   onSelectCity,
   placeholder = 'Ej: Carrera 1 # 18-22, Santa Marta',
   required = true,
+  hasError = false,
 }: AddressAutocompleteProps) {
   const [query, setQuery] = useState(value);
   const [predictions, setPredictions] = useState<Prediction[]>([]);
@@ -110,7 +112,7 @@ export function AddressAutocomplete({
           }}
           placeholder={placeholder}
           required={required}
-          className="font-light tracking-[0.03em] w-full text-xs pl-0 pr-8 py-2.5 bg-transparent border-b border-[#EAE7DF] focus:border-bauto-carbon focus:outline-none transition-colors text-bauto-carbon placeholder:text-bauto-piedra/50 rounded-none"
+          className={`font-light tracking-[0.03em] w-full text-xs pl-0 pr-8 py-2.5 bg-transparent border-b ${hasError ? 'border-bauto-danger' : 'border-[#EAE7DF]'} focus:border-bauto-carbon focus:outline-none transition-colors text-bauto-carbon placeholder:text-bauto-piedra/50 rounded-none`}
         />
         {loading && (
           <Loader2 className="absolute right-0 w-3.5 h-3.5 text-bauto-carbon/50 animate-spin" />

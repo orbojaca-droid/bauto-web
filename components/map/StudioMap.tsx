@@ -164,9 +164,12 @@ export const StudioMap: React.FC<StudioMapProps> = ({ className = "" }) => {
 
  {/* Cartela de la Studio */}
  <g transform="translate(490, 230)">
- <rect x="-70" y="-28" width="140" height="26" rx="13" fill="#1C1917" />
- <text x="0" y="-11" fill="#FAF9F6" fontSize="10" fontFamily="sans-serif" fontWeight="500" letterSpacing="0.12em" textAnchor="middle">
+ <rect x="-100" y="-38" width="200" height="42" rx="13" fill="#1C1917" />
+ <text x="0" y="-21" fill="#FAF9F6" fontSize="10" fontFamily="sans-serif" fontWeight="500" letterSpacing="0.12em" textAnchor="middle">
  BAUTO · Calle 20 # 2-36
+ </text>
+ <text x="0" y="-7" fill="#EAE7DF" fontSize="8" fontFamily="sans-serif" fontWeight="400" letterSpacing="0.05em" textAnchor="middle">
+ Lunes a sábado: 10:00 AM - 8:00 PM
  </text>
  </g>
  </svg>
@@ -206,7 +209,7 @@ export const StudioMap: React.FC<StudioMapProps> = ({ className = "" }) => {
  <button
  onClick={() => handleToggleMode(viewMode === "artistic" ? "satellite" : "artistic")}
  type="button"
- className="px-3 py-1.5 bg-transparent text-[11px] font-sans text-bauto-carbon transition-colors duration-200 ease-out "
+ className="bg-white/90 backdrop-blur-sm shadow-sm px-2 py-1 text-[11px] font-sans text-bauto-carbon transition-colors duration-200 ease-out "
  aria-label="Alternar entre mapa de autor y mapa satelital"
  >
  {viewMode === "artistic" ? "Ver satélite" : "Ver mapa BAUTO"}

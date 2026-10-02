@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { Product } from '../../types/catalog';
 import { ProductCard } from './ProductCard';
 import { playHapticClick } from '../../lib/sound';
+import { ARTICULO_POR_TIPOLOGIA } from '../../lib/grammar';
 
 interface CatalogGridProps {
   products: Product[];
@@ -31,7 +32,17 @@ export function CatalogGrid({ products, initialCategory = 'TODAS' }: CatalogGrid
     products.forEach((p) => {
       if (p.tipologia) set.add(p.tipologia);
     });
-    return ['TODAS', ...Array.from(set)];
+    
+    const sorted = Array.from(set).sort((a, b) => {
+      const keys = Object.keys(ARTICULO_POR_TIPOLOGIA).map(k => k.toUpperCase());
+      const indexA = keys.indexOf(a.toUpperCase());
+      const indexB = keys.indexOf(b.toUpperCase());
+      const orderA = indexA === -1 ? 999 : indexA;
+      const orderB = indexB === -1 ? 999 : indexB;
+      return orderA - orderB;
+    });
+    
+    return ['TODAS', ...sorted];
   }, [products]);
 
   // Filtrado y ordenamiento reactivo

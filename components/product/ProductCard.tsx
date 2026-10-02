@@ -59,7 +59,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
  {/* Información de la Prenda */}
  <div className="flex flex-col gap-1 text-left">
- <span className="text-[9px] tracking-[0.25em] uppercase text-bauto-piedra/80 block font-normal">
+ <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-bauto-piedra block font-normal">
  {product.tipologia || 'Resort Wear'}
  </span>
 

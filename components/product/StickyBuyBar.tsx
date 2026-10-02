@@ -94,7 +94,7 @@ export function StickyBuyBar({
  playHapticClick();
  onAddToCart();
  }}
- className="h-10 px-2 text-[10px] uppercase tracking-[0.25em] font-normal shrink-0 flex items-center justify-center border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.97] transition-all bg-transparent"
+ className="h-11 min-h-[44px] px-4 text-[10px] uppercase tracking-[0.25em] font-normal shrink-0 flex items-center justify-center border-b border-[#1C1917] text-[#1C1917] hover:opacity-70 active:scale-[0.97] transition-all bg-transparent"
  >
  <span>{selectedSize ? 'Añadir' : 'Elegir talla'}</span>
  </button>
