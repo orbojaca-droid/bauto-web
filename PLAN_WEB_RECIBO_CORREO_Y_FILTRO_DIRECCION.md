@@ -2,7 +2,7 @@
 
 **Módulo:** WEB (`bauto.com.co` / Next.js 14 en Vercel)  
 **Fecha:** 2026-10-03  
-**Estado:** PENDIENTE DE APROBACIÓN POR EL USUARIO  
+**Estado:** COMPLETADO Y DESPLEGADO EN PRODUCCIÓN (Commit 4a1a8aa)  
 **Normativa:** Cumplimiento estricto de `.antigravityrules` (Fase 1 - Planificación con Archivo, Línea, Cambio, Riesgos y Mitigación)  
 
 ---
