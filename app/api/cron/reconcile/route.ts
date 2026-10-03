@@ -20,7 +20,6 @@ import {
   getAllOrderDraftReferences,
 } from "../../../../lib/redis";
 import { APPBAUTO_PROD_URL } from "@/lib/constants";
-import { sendOrderConfirmationEmail } from "../../../../lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -105,7 +104,7 @@ export async function GET(req: NextRequest) {
                 barrio: tx.shipping_address?.region || "",
                 ciudad: tx.shipping_address?.city || draft.ciudad || "Santa Marta",
                 telefono: tx.customer_data?.phone_number || "",
-                enviarEmail: false,
+                enviarEmail: true,
                 envio: draft.shippingCost || 0,
                 notas: `[AUTO-RECONCILIADO CRON] Wompi: ${tx.id} | Ref: ${ref}`,
               },
@@ -125,26 +124,7 @@ export async function GET(req: NextRequest) {
                 await releaseSoftHold(item.reference, item.size, draft.sessionId);
               }
 
-              // Disparar correo
-              if (tx.customer_email || draft.customerEmail) {
-                await sendOrderConfirmationEmail({
-                  to: tx.customer_email || draft.customerEmail,
-                  clientName: tx.customer_data?.full_name || draft.clientName || "Cliente BAUTO",
-                  orderReference: ref,
-                  ventaId: gasJson.ventaId,
-                  items: draft.items || [],
-                  subtotal: draft.subtotal || tx.amount_in_cents / 100,
-                  shippingCost: draft.shippingCost || 0,
-                  totalCOP: draft.totalCOP || tx.amount_in_cents / 100,
-                  paymentMethod: tx.payment_method_type,
-                  shippingAddress: {
-                    direccion: tx.shipping_address?.address_line_1 || draft.direccion || "Dirección web",
-                    ciudad: tx.shipping_address?.city || draft.ciudad || "Santa Marta",
-                    telefono: tx.customer_data?.phone_number || "",
-                  },
-                  trackingGuide: ref,
-                });
-              }
+              // Apps Script Platform.generarRecibo() envía el correo editorial oficial con el PDF adjunto
 
               await markEventDone(tx.id, "APPROVED");
               reconciledCount++;

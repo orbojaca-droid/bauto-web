@@ -19,8 +19,7 @@ import {
   deleteEventLock,
   releaseSoftHold,
 } from "../../../../lib/redis";
-import { sendOrderConfirmationEmail } from "../../../../lib/email";
-import { APPBAUTO_PROD_URL, WEB_GAS_URL } from "@/lib/constants";
+import { APPBAUTO_PROD_URL } from "@/lib/constants";
 
 /**
  * Resuelve una propiedad anidada usando notación de puntos (ej: "transaction.id")
@@ -159,7 +158,14 @@ export async function POST(req: NextRequest) {
         barrio: region,
         ciudad: city,
         telefono: clientPhone,
-        enviarEmail: false,
+        /**
+         * @BAUTO_REFACTOR 2026-10-03
+         * @Modulo: WEB (Wompi Webhook)
+         * @Propósito: Activar generación y envío de recibo editorial oficial con PDF desde Apps Script
+         * @Capa: Capa 2 (Funcional)
+         * @Riesgo_Evaluado: Bajo
+         */
+        enviarEmail: true,
         envio: draft?.shippingCost || 0,
         notas: `Wompi: ${transactionId} | Ref: ${reference}`,
       },
@@ -171,39 +177,21 @@ export async function POST(req: NextRequest) {
         let gasJson: any = null;
         let gasSuccess = false;
 
-        // Intento 1: Servidor soberano WEB (Google Apps Script)
-        try {
-          const webGasPayload = {
-            accion: "registrarVentaWeb",
-            secreto: process.env.SECRETO_VENTA_SERVICIO || "SECRETO_VENTA_SERVICIO",
-            payload: gasPayload.payload,
-          };
-          const webRes = await fetch(WEB_GAS_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(webGasPayload),
-          });
-          if (webRes.ok) {
-            const parsed = await webRes.json();
-            if (parsed.success) {
-              gasJson = parsed;
-              gasSuccess = true;
-            }
-          }
-        } catch (webErr) {
-          console.warn("Aviso: Despacho a WEB_GAS_URL falló, probando fallback APPBAUTO:", webErr);
-        }
-
-        // Intento 2: Fallback hacia APPBAUTO
-        if (!gasSuccess) {
-          const gasResponse = await fetch(APPBAUTO_PROD_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(gasPayload),
-          });
-          gasJson = await gasResponse.json();
-          gasSuccess = gasResponse.ok && gasJson.success;
-        }
+        /**
+         * @BAUTO_REFACTOR 2026-10-03
+         * @Modulo: WEB (Wompi Webhook)
+         * @Propósito: Despacho directo al Core Transaccional APPBAUTO_PROD_URL (registrarVentaServicioExterno)
+         *             eliminando intento obsoleto a WEB_GAS_URL.
+         * @Capa: Capa 1 (Técnica) & Capa 2 (Funcional)
+         * @Riesgo_Evaluado: Bajo
+         */
+        const gasResponse = await fetch(APPBAUTO_PROD_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(gasPayload),
+        });
+        gasJson = await gasResponse.json();
+        gasSuccess = gasResponse.ok && gasJson.success;
 
         if (gasSuccess && gasJson) {
           // Solo cuando Google Apps Script confirmó la persistencia definitiva en Sheets:
@@ -214,28 +202,18 @@ export async function POST(req: NextRequest) {
             }
           }
 
-          // B) Disparar correo de confirmación de lujo
-          if (clientEmail) {
-            await sendOrderConfirmationEmail({
-              to: clientEmail,
-              clientName,
-              orderReference: reference,
-              ventaId: gasJson.ventaId,
-              items: draft?.items || [],
-              subtotal: draft?.subtotal || transaction.amount_in_cents / 100,
-              shippingCost: draft?.shippingCost || 0,
-              totalCOP: draft?.totalCOP || transaction.amount_in_cents / 100,
-              paymentMethod: transaction.payment_method_type,
-              shippingAddress: {
-                direccion: addressLine1,
-                complemento: addressLine2,
-                barrio: region,
-                ciudad: city,
-                telefono: clientPhone,
-              },
-              trackingGuide: reference,
-            });
-          }
+          // B) Correo transaccional oficial asumido por Apps Script
+          /**
+           * @BAUTO_REFACTOR 2026-10-03
+           * @Modulo: WEB (Wompi Webhook)
+           * @Propósito: Silenciar envío aislado por Resend para no duplicar correos al cliente.
+           *             Apps Script (Platform.generarRecibo) envía el correo editorial oficial con el PDF canónico.
+           * @Capa: Capa 2 (Funcional)
+           * @Riesgo_Evaluado: Bajo
+           */
+          console.info(
+            `[WOMPI WEBHOOK] Venta registrada en Apps Script (Venta #${gasJson.ventaId}). Recibo editorial enviado por Platform.`
+          );
 
           // C) Marcar definitivamente como DONE en Redis
           await markEventDone(transactionId, status);

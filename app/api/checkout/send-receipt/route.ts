@@ -1,16 +1,18 @@
 /**
  * @BAUTO_REFACTOR 2026-10-03
- * @Modulo: WEB (bauto.com.co) - Despacho de Recibo Post-Pago
+ * @Modulo: WEB (bauto.com.co) - Despacho y Sincronización de Recibo Post-Pago
  * @Ruta: POST /api/checkout/send-receipt
- * @Propósito: Envío seguro del recibo de compra por correo (Resend) desde la pantalla de confirmación,
- *             con deduplicación atómica en memoria por referencia y verificación de estado en Wompi.
+ * @Propósito: Sincronización y garantía de despacho del comprobante oficial vía APPBAUTO_PROD_URL (registrarVentaServicioExterno).
+ *             Si es invocado desde la confirmación web, verifica si la orden ya fue procesada previamente (Redis/Memoria);
+ *             si no ha sido procesada, invoca APPBAUTO con enviarEmail: true para asentar la venta y despachar el PDF editorial.
+ *             Elimina el despacho por Resend para consolidar en la fuente única de verdad.
  * @Capa: Capa 1 (Técnica) & Capa 2 (Funcional)
  * @Riesgo_Evaluado: Bajo
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getOrderDraft } from "@/lib/redis";
-import { sendOrderConfirmationEmail } from "@/lib/email";
+import { getOrderDraft, isEventProcessed, markEventDone, releaseSoftHold } from "@/lib/redis";
+import { APPBAUTO_PROD_URL } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +32,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verificar si el recibo ya fue despachado previamente
+    // 1. Verificar si el recibo ya fue despachado previamente en memoria
     if (sentReceipts.has(reference)) {
       return NextResponse.json({
         success: true,
@@ -39,10 +41,23 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 1. Intentar recuperar borrador desde Redis
+    // 2. Si hay transactionId, verificar si ya fue procesado por el webhook en Redis
+    if (transactionId) {
+      const alreadyDone = await isEventProcessed(transactionId, "APPROVED");
+      if (alreadyDone) {
+        sentReceipts.add(reference);
+        return NextResponse.json({
+          success: true,
+          alreadySent: true,
+          message: `La orden ${reference} ya fue procesada por el webhook oficial.`,
+        });
+      }
+    }
+
+    // 3. Intentar recuperar borrador desde Redis
     const draft = await getOrderDraft(reference);
 
-    // 2. Si hay transactionId, consultar y verificar con la API oficial de Wompi
+    // 4. Si hay transactionId, consultar y verificar con la API oficial de Wompi
     let wompiTx: any = null;
     if (transactionId) {
       try {
@@ -70,7 +85,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. Consolidar datos de destinatario, dirección y prendas
+    // 5. Consolidar datos de destinatario, dirección y prendas
     const clientEmail =
       draft?.customerEmail ||
       wompiTx?.customer_email ||
@@ -88,6 +103,11 @@ export async function POST(req: NextRequest) {
       wompiTx?.customer_data?.full_name ||
       "Cliente BAUTO";
 
+    const clientDi =
+      draft?.clientDi ||
+      wompiTx?.customer_data?.legal_id ||
+      "";
+
     const clientPhone =
       draft?.customerPhone ||
       wompiTx?.customer_data?.phone_number ||
@@ -98,6 +118,10 @@ export async function POST(req: NextRequest) {
       draft?.direccion ||
       wompiTx?.shipping_address?.address_line_1 ||
       "Dirección suministrada en pasarela";
+
+    const addressLine2 =
+      draft?.complemento ||
+      "";
 
     const city =
       draft?.ciudad ||
@@ -116,52 +140,84 @@ export async function POST(req: NextRequest) {
     const shippingCost = draft?.shippingCost || 0;
     const subtotal = draft?.subtotal || Math.max(0, totalCOP - shippingCost);
 
-    // Items de compra (si draft no los conservó, modelar fila informativa)
-    const items =
+    // Items de compra (si draft no los conservó, modelar item informativo)
+    const cart =
       draft?.items && Array.isArray(draft.items) && draft.items.length > 0
-        ? draft.items
+        ? draft.items.map((i: any) => ({
+            ref: i.reference,
+            name: i.name,
+            talla: i.size,
+            price: i.unitPrice || i.totalPrice,
+          }))
         : [
             {
+              ref: reference,
               name: "Prendas BAUTO Resort Wear",
-              reference: reference,
-              size: "Orden confirmada",
-              quantity: 1,
-              totalPrice: subtotal,
+              talla: "UNICA",
+              price: subtotal,
             },
           ];
 
-    // 4. Despacho seguro vía Resend
-    const emailResult = await sendOrderConfirmationEmail({
-      to: clientEmail,
-      clientName,
-      orderReference: reference,
-      items,
-      subtotal,
-      shippingCost,
-      totalCOP,
-      paymentMethod: wompiTx?.payment_method_type || "WOMPI",
-      shippingAddress: {
+    // 6. Construir payload para Google Apps Script (APPBAUTO)
+    const gasPayload = {
+      accion: "registrarVentaServicioExterno",
+      secreto: process.env.SECRETO_VENTA_SERVICIO || "SECRETO_VENTA_SERVICIO",
+      payload: {
+        cart,
+        clientName,
+        clientDi,
+        clientEmail,
+        paymentMethod: wompiTx?.payment_method_type || "WOMPI",
+        descuento: 0,
+        tipoVenta: "ON-LINE",
+        ubicacion: "tienda",
         direccion: addressLine1,
+        complemento: addressLine2,
         barrio: barrio,
         ciudad: city,
         telefono: clientPhone,
+        enviarEmail: true,
+        envio: shippingCost,
+        notas: `Wompi: ${transactionId} | Ref: ${reference} (Confirmación Web)`,
       },
+    };
+
+    // 7. Despacho directo hacia APPBAUTO_PROD_URL
+    const gasResponse = await fetch(APPBAUTO_PROD_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(gasPayload),
     });
 
-    if (emailResult.success) {
+    const gasJson = await gasResponse.json();
+
+    if (gasResponse.ok && gasJson.success) {
       sentReceipts.add(reference);
       // Auto-limpieza en memoria a los 60 minutos
       setTimeout(() => sentReceipts.delete(reference), 60 * 60 * 1000);
 
+      if (transactionId) {
+        await markEventDone(transactionId, "APPROVED");
+      }
+
+      // Liberar soft holds si aún existen
+      if (draft && draft.items && Array.isArray(draft.items)) {
+        for (const item of draft.items) {
+          await releaseSoftHold(item.reference, item.size, draft.sessionId);
+        }
+      }
+
       return NextResponse.json({
         success: true,
         reference,
-        emailId: emailResult.id,
+        ventaId: gasJson.ventaId,
         recipient: clientEmail,
+        message: "Comprobante oficial generado y enviado exitosamente vía Platform Apps Script",
       });
     } else {
+      console.error("[SendReceipt] Apps Script rechazó el registro:", gasJson);
       return NextResponse.json(
-        { success: false, error: emailResult.error || "Fallo en envío Resend" },
+        { success: false, error: gasJson?.error || "Error al procesar recibo en Apps Script" },
         { status: 500 }
       );
     }
