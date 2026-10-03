@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { fetchStockProducts } from "../../../../lib/sheets";
 import { saveOrderDraft, createSoftHold } from "../../../../lib/redis";
+import { searchMunicipalities } from "../../../../lib/colombiaData";
 
 export async function POST(req: NextRequest) {
   try {
@@ -122,7 +123,11 @@ export async function POST(req: NextRequest) {
     const redirectUrl = `${siteUrl}/checkout/confirmacion?reference=${encodeURIComponent(reference)}&session=${encodeURIComponent(sessionId || "")}`;
 
     // Construcción oficial de checkoutUrl para Wompi Web Checkout con dirección inyectada @BAUTO_REFACTOR 2026-10-02
-    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}${customerCedula ? `&customer-data:legal-id=${encodeURIComponent(customerCedula)}&customer-data:legal-id-type=CC` : ""}${shippingAddress ? `&shipping-address:address-line-1=${encodeURIComponent(shippingAddress)}` : ""}${shippingCity ? `&shipping-address:city=${encodeURIComponent(shippingCity)}` : ""}${customerBarrio ? `&shipping-address:region=${encodeURIComponent(customerBarrio)}` : ""}&shipping-address:country=CO`;
+    const resolvedMun = shippingCity ? searchMunicipalities(shippingCity, 1)[0] : null;
+    const regionName = resolvedMun?.department || customerBarrio || shippingCity || "Colombia";
+    const fullShippingAddress = `${shippingAddress || ""}${customerBarrio ? ` (Barrio: ${customerBarrio})` : ""}`;
+
+    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}${customerCedula ? `&customer-data:legal-id=${encodeURIComponent(customerCedula)}&customer-data:legal-id-type=CC` : ""}${shippingAddress ? `&shipping-address:address-line-1=${encodeURIComponent(fullShippingAddress)}` : ""}${shippingCity ? `&shipping-address:city=${encodeURIComponent(shippingCity)}` : ""}&shipping-address:country=CO${regionName ? `&shipping-address:region=${encodeURIComponent(regionName)}` : ""}${customerPhone ? `&shipping-address:phone-number=${encodeURIComponent(customerPhone)}` : ""}`;
 
     // 8. Registrar Two-Phase Soft Hold en Redis (12 min) para asegurar inventario físico
     if (sessionId) {
