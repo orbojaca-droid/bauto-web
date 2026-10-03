@@ -167,6 +167,7 @@ export async function POST(req: NextRequest) {
          */
         enviarEmail: true,
         envio: draft?.shippingCost || 0,
+        referencia: reference,
         notas: `Wompi: ${transactionId} | Ref: ${reference}`,
       },
     };

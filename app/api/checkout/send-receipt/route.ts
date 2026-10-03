@@ -178,6 +178,7 @@ export async function POST(req: NextRequest) {
         telefono: clientPhone,
         enviarEmail: true,
         envio: shippingCost,
+        referencia: reference,
         notas: `Wompi: ${transactionId} | Ref: ${reference} (Confirmación Web)`,
       },
     };
