@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
 
     const gasPayload = {
       accion: "registrarVentaServicioExterno",
-      secreto: process.env.SECRETO_VENTA_SERVICIO || "SECRETO_VENTA_SERVICIO",
+      secreto: process.env.SECRETO_VENTA_SERVICIO || "bauto_web_b15b490814ebef00f1aeb5429a8760ce1cb6e9646ab04917",
       payload: {
         cart: itemsForGas,
         clientName,
