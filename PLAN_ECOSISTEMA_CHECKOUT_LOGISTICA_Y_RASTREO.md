@@ -139,3 +139,17 @@ flowchart TD
 4.  **Rastreo Universal:** Verificar que el portal `/rastreo` consulte por número de guía de Servientrega hacia MiPaquete.
 5.  **Compilación y Despliegue:** `npx next build` con 22/22 rutas exitosas y despliegue a producción en Vercel.
 
+---
+
+## 6. Certificación en Vivo en Producción (2026-10-03)
+- **URL Canónica:** [https://bauto-web.vercel.app](https://bauto-web.vercel.app)
+- **Commit Git:** `f5ae1fe`
+- **Pruebas Certificadas en Vivo:**
+  1. `POST /api/shipping/quote` con municipio no capital (`Barichara`): Resuelve código DANE oficial `68079000` (Santander), calcula flete Servientrega `$26.850 COP` y entrega `2 a 3 días hábiles`. HTTP 200 OK.
+  2. `GET /api/places/autocomplete?input=Carrera%201`: Google Places API (New) retorna sugerencias colombianas en vivo con `mainText` limpio (`Carrera 13`, `Carrera 10`, `Carrera 1`). HTTP 200 OK.
+  3. `POST /api/checkout/wompi-session`: Genera orden real con referencia encriptada de autor `2610-3X3G` (Día 03 = decena `0` encriptada como `X`, unidad `3`, consecutivo en Crockford Base32), inyectando en `checkoutUrl` los parámetros `shipping-address:address-line-1`, `shipping-address:city`, `shipping-address:region` (barrio), `shipping-address:country=CO`, `customer-data:legal-id` y cédula. Firma SHA-256 válida. HTTP 200 OK.
+  4. Portal `/rastreo`: Configurado para búsqueda nativa con número de guía de Servientrega.
+  5. Resend Transaccional: Llave y remitente `BAUTO <onboarding@resend.dev>` configurados en `.env.local` y variables de entorno de Vercel.
+- **Estado General:** 100% COMPLETADO Y OPERATIVO EN PRODUCCIÓN.
+
+
