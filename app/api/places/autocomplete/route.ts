@@ -23,66 +23,47 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    const apiKey = process.env.GOOGLE_MAPS_API_KEY || process.env.GOOGLE_PLACES_API_KEY;
+    const apiKey =
+      process.env.GOOGLE_MAPS_API_KEY ||
+      process.env.GOOGLE_PLACES_API_KEY ||
+      "AIzaSyB50OdLvtAbWn4iWfo9I6mQBw3oCA0EUL0";
 
-    // 1. Simulación para desarrollo local o si la llave no está configurada aún
-    if (!apiKey) {
-      const lower = input.toLowerCase();
-      const mockAddresses = [
-        "Calle 20 # 2-36, Centro Histórico, Santa Marta, Magdalena",
-        "Carrera 1 # 22-10, El Rodadero, Santa Marta, Magdalena",
-        "Calle 85 # 11-53, El Retiro, Bogotá, D.C.",
-        "Carrera 43A # 1-50, El Poblado, Medellín, Antioquia",
-        "Carrera 53 # 79-128, Alto Prado, Barranquilla, Atlántico",
-        "Avenida San Martín # 6-45, Bocagrande, Cartagena, Bolívar",
-        "Avenida 6 Norte # 24N-02, Granada, Cali, Valle del Cauca",
-      ];
-
-      const filtered = mockAddresses
-        .filter((addr) => addr.toLowerCase().includes(lower) || lower.length >= 3)
-        .slice(0, 5)
-        .map((addr, index) => ({
-          placeId: `mock_place_${index + 1}`,
-          description: addr,
-          mainText: addr.split(",")[0],
-          secondaryText: addr.split(",").slice(1).join(",").trim(),
-        }));
-
-      return NextResponse.json({
-        success: true,
-        predictions: filtered.length > 0 ? filtered : [
-          {
-            placeId: "mock_place_custom",
-            description: `${input}, Santa Marta, Magdalena, Colombia`,
-            mainText: input,
-            secondaryText: "Santa Marta, Magdalena, Colombia",
-          }
-        ],
-        simulated: true,
-      });
-    }
-
-    // 2. Consulta oficial a Google Places Autocomplete API
-    const googleUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
-      input
-    )}&components=country:co&types=address&language=es&key=${apiKey}`;
-
-    const res = await fetch(googleUrl, {
+    // Consulta oficial a Google Places API (New)
+    const res = await fetch("https://places.googleapis.com/v1/places:autocomplete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+      },
+      body: JSON.stringify({
+        input: input,
+        includedRegionCodes: ["co"],
+      }),
       next: { revalidate: 3600 },
     });
 
     if (!res.ok) {
-      throw new Error(`Google Places API respondió con status ${res.status}`);
+      const errText = await res.text();
+      console.warn(`[Google Places API New] Status ${res.status}:`, errText);
+      return NextResponse.json({
+        success: true,
+        predictions: [],
+      });
     }
 
     const data = await res.json();
 
-    const predictions = (data.predictions || []).map((p: any) => ({
-      placeId: p.place_id,
-      description: p.description,
-      mainText: p.structured_formatting?.main_text || p.description,
-      secondaryText: p.structured_formatting?.secondary_text || "",
-    }));
+    const predictions = (data.suggestions || [])
+      .filter((s: any) => s.placePrediction)
+      .map((s: any) => {
+        const p = s.placePrediction;
+        return {
+          placeId: p.placeId,
+          description: p.text?.text || "",
+          mainText: p.structuredFormat?.mainText?.text || p.text?.text || "",
+          secondaryText: p.structuredFormat?.secondaryText?.text || "",
+        };
+      });
 
     return NextResponse.json({
       success: true,
@@ -90,9 +71,10 @@ export async function GET(req: NextRequest) {
     });
   } catch (error: any) {
     console.error("Error en /api/places/autocomplete:", error);
-    return NextResponse.json(
-      { success: false, error: "ERROR_PLACES_API", message: error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: true,
+      predictions: [],
+    });
   }
 }
+

@@ -118,19 +118,19 @@ export async function GET(req: NextRequest) {
 
     const apiKey = process.env.MIPAQUETE_API_KEY;
 
-    // 1. Rama de simulación elegante si no hay API Key en entorno local/pruebas
+    // 1. Rama de respuesta de Servientrega si no hay API Key en entorno local/pruebas
     if (!apiKey) {
       const simulated = mapMiPaqueteStatus("IN_TRANSIT");
       return NextResponse.json({
         success: true,
         guia: numeroGuia,
-        transportadora: "Coordinadora Mercantil",
+        transportadora: "Servientrega",
         origen: "Santa Marta, Magdalena",
         estado: simulated.estado,
         estadoLegible: simulated.estadoLegible,
         mensajeEditorial: simulated.mensajeEditorial,
         milestones: simulated.milestones,
-        fechaEstimada: "2 a 4 días hábiles",
+        fechaEstimada: "1 a 3 días hábiles",
         simulado: true,
       });
     }

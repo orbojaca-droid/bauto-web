@@ -86,7 +86,7 @@ function TrackingContent() {
  type="text"
  value={guia}
  onChange={(e) => setGuia(e.target.value)}
- placeholder="Ingresa tu número de guía o referencia..."
+ placeholder="Ingresa tu número de guía de Servientrega..."
  required
  className="w-full text-xs pl-10 pr-4 py-3 rounded-none bg-bauto-perla/60 focus:border-[#1C1917] focus:outline-none transition-colors"
  />
@@ -100,6 +100,9 @@ function TrackingContent() {
  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Rastrear</span>}
  </button>
  </form>
+ <p className="text-[11px] text-bauto-piedra/80 text-center -mt-6 mb-10 font-light">
+ Válido para compras en tienda física, WhatsApp o tienda online (o tu código de orden web).
+ </p>
 
  {/* Error */}
  {error && (

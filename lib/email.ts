@@ -48,8 +48,8 @@ export async function sendOrderConfirmationEmail(
     return { success: true, id: `sim_${Date.now()}` };
   }
 
-  const fromEmail = process.env.EMAIL_FROM || "BAUTO Resort Wear <pedidos@bauto.com.co>";
-  const trackingUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.bauto.com.co"}/rastreo?guia=${encodeURIComponent(
+  const fromEmail = process.env.EMAIL_FROM || "BAUTO <onboarding@resend.dev>";
+  const trackingUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://bauto-web.vercel.app"}/rastreo?guia=${encodeURIComponent(
     data.trackingGuide || data.orderReference
   )}`;
 

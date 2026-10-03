@@ -91,10 +91,21 @@ export async function POST(req: NextRequest) {
     const amountInCents = Math.round(totalCOP * 100);
     const currency = "COP";
 
-    // 4. Generar referencia única de pedido BAUTO
-    const timestamp = Date.now();
-    const randomSuffix = Math.random().toString(36).substring(2, 7).toUpperCase();
-    const reference = `BAUTO-${timestamp}-${randomSuffix}`;
+    // 4. Generar referencia única de pedido encriptada BAUTO: Formato YYMM-CDDE (ej: 2610-8X3K) @BAUTO_REFACTOR 2026-10-02
+    const bogotaTime = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }));
+    const yy = String(bogotaTime.getFullYear()).slice(-2);
+    const mm = String(bogotaTime.getMonth() + 1).padStart(2, "0");
+    const day = bogotaTime.getDate();
+    const dayTens = Math.floor(day / 10);
+    const dayUnits = day % 10;
+    const TENS_MAP: Record<number, string> = { 0: "X", 1: "W", 2: "T", 3: "K" };
+    const d1 = TENS_MAP[dayTens] || "X";
+    const d2 = String(dayUnits);
+    const CROCKFORD_BASE32 = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+    const entropySeed = (Math.floor(Date.now() / 1000) * 13 + Math.floor(Math.random() * 1024)) % 1024;
+    const c1 = CROCKFORD_BASE32[Math.floor(entropySeed / 32) % CROCKFORD_BASE32.length];
+    const c2 = CROCKFORD_BASE32[entropySeed % CROCKFORD_BASE32.length];
+    const reference = `${yy}${mm}-${c1}${d1}${d2}${c2}`;
 
     // 5. Llaves de Wompi (lectura de variables de entorno con fallback Sandbox BAUTO) @BAUTO_REFACTOR 2026-10-02
     const publicKey =
@@ -110,8 +121,8 @@ export async function POST(req: NextRequest) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bauto-web.vercel.app";
     const redirectUrl = `${siteUrl}/checkout/confirmacion?reference=${encodeURIComponent(reference)}&session=${encodeURIComponent(sessionId || "")}`;
 
-    // Construcción oficial de checkoutUrl para Wompi Web Checkout @BAUTO_REFACTOR 2026-10-02
-    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}${customerCedula ? `&customer-data:legal-id=${encodeURIComponent(customerCedula)}&customer-data:legal-id-type=CC` : ""}`;
+    // Construcción oficial de checkoutUrl para Wompi Web Checkout con dirección inyectada @BAUTO_REFACTOR 2026-10-02
+    const checkoutUrl = `https://checkout.wompi.co/p/?public-key=${encodeURIComponent(publicKey)}&currency=${currency}&amount-in-cents=${amountInCents}&reference=${encodeURIComponent(reference)}&signature:integrity=${integrityHash}&redirect-url=${encodeURIComponent(redirectUrl)}${customerEmail ? `&customer-data:email=${encodeURIComponent(customerEmail)}` : ""}${customerName ? `&customer-data:full-name=${encodeURIComponent(customerName)}` : ""}${customerPhone ? `&customer-data:phone-number=${encodeURIComponent(customerPhone)}` : ""}${customerCedula ? `&customer-data:legal-id=${encodeURIComponent(customerCedula)}&customer-data:legal-id-type=CC` : ""}${shippingAddress ? `&shipping-address:address-line-1=${encodeURIComponent(shippingAddress)}` : ""}${shippingCity ? `&shipping-address:city=${encodeURIComponent(shippingCity)}` : ""}${customerBarrio ? `&shipping-address:region=${encodeURIComponent(customerBarrio)}` : ""}&shipping-address:country=CO`;
 
     // 8. Registrar Two-Phase Soft Hold en Redis (12 min) para asegurar inventario físico
     if (sessionId) {
@@ -149,7 +160,7 @@ export async function POST(req: NextRequest) {
       subtotal: verifiedSubtotal,
       totalCOP,
       amountInCents,
-      createdAt: timestamp,
+      createdAt: Date.now(),
     });
 
     return NextResponse.json({

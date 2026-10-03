@@ -87,11 +87,8 @@ export function AddressAutocomplete({
   }, []);
 
   const handleSelectPrediction = (p: Prediction) => {
-    onChange(p.description);
-    if (onSelectCity && p.secondaryText) {
-      const cityPart = p.secondaryText.split(',')[0]?.trim();
-      if (cityPart) onSelectCity(cityPart);
-    }
+    // Inserta estrictamente la vía limpia (mainText, ej: Carrera 15 # 85-20) sin arrastrar ciudad
+    onChange(p.mainText || p.description);
     setShowDropdown(false);
   };
 

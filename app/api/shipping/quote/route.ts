@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { resolveDaneCode as resolveOfficialDane } from "../../../../lib/colombiaData";
 
 /**
  * @BAUTO_REFACTOR 2026-10-02
@@ -52,10 +53,13 @@ function normalizeCity(city: string): string {
 
 /**
  * @BAUTO_REFACTOR 2026-10-02
- * Resuelve el código DANE de una ciudad.
- * Si no está en el diccionario exacto, retorna un fallback "00000000" para manejarlo luego.
+ * Resuelve el código DANE de una ciudad consultando primero el directorio nacional de 1.122 municipios.
  */
 function resolveDaneCode(normalizedCity: string): string {
+  const official = resolveOfficialDane(normalizedCity);
+  if (official && official !== "00000000" && official !== "11001000") {
+    return official;
+  }
   if (DANE_CODES[normalizedCity]) {
     return DANE_CODES[normalizedCity];
   }
@@ -64,7 +68,7 @@ function resolveDaneCode(normalizedCity: string): string {
       return code;
     }
   }
-  return "00000000";
+  return official || "11001000";
 }
 
 /**
