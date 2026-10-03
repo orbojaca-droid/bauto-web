@@ -379,6 +379,7 @@ export default function CartPage() {
  value={address}
  onChange={(val) => { setAddress(val); if (errors.address) setErrors({...errors, address: ''}); }}
  onSelectCity={() => {}}
+ city={city}
  placeholder="Busca tu dirección o ingrésala manualmente"
  hasError={!!errors.address}
  />

@@ -43,8 +43,8 @@ export function Carrito() {
  if (!isHydrated) return null;
 
  const subtotal = getSubtotal();
-  const shippingCost = 15000;
- const total = subtotal + (items.length > 0 ? shippingCost : 0);
+ // @BAUTO_REFACTOR 2026-10-03: Flete nacional se calcula exclusivamente en checkout según ciudad destino
+ const total = subtotal;
 
  const handleClose = () => {
  playHapticClick();
@@ -171,8 +171,8 @@ export function Carrito() {
 
  <div className="flex justify-between text-bauto-piedra">
  <span>Envío nacional</span>
- <span>
- {formatCOP(shippingCost)}
+ <span className="italic text-[11px] text-bauto-piedra/80">
+ Calculado en checkout
  </span>
  </div>
 

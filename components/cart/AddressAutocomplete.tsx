@@ -22,16 +22,18 @@ interface AddressAutocompleteProps {
   value: string;
   onChange: (address: string) => void;
   onSelectCity?: (city: string) => void;
+  city?: string;
   placeholder?: string;
   required?: boolean;
   hasError?: boolean;
 }
 
-// @BAUTO_REFACTOR 2026-10-02
+// @BAUTO_REFACTOR 2026-10-03: Filtrado de autocompletado restringido por ciudad
 export function AddressAutocomplete({
   value,
   onChange,
   onSelectCity,
+  city,
   placeholder = 'Ej: Carrera 1 # 18-22',
   required = true,
   hasError = false,
@@ -41,7 +43,7 @@ export function AddressAutocomplete({
   const [showDropdown, setShowDropdown] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Debounced fetch a /api/places/autocomplete para predicción opcional
+  // Debounced fetch a /api/places/autocomplete con sesgo por ciudad
   useEffect(() => {
     if (!value || value.trim().length < 4) {
       setPredictions([]);
@@ -53,7 +55,8 @@ export function AddressAutocomplete({
     const timer = setTimeout(async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/places/autocomplete?input=${encodeURIComponent(value.trim())}`);
+        const cityParam = city && city.trim() ? `&city=${encodeURIComponent(city.trim())}` : '';
+        const res = await fetch(`/api/places/autocomplete?input=${encodeURIComponent(value.trim())}${cityParam}`);
         if (res.ok) {
           const data = await res.json();
           if (data.success && Array.isArray(data.predictions) && data.predictions.length > 0) {
@@ -73,7 +76,7 @@ export function AddressAutocomplete({
     }, 350);
 
     return () => clearTimeout(timer);
-  }, [value]);
+  }, [value, city]);
 
   // Cierra el menú al hacer click afuera
   useEffect(() => {

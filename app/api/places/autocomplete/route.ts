@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const input = (searchParams.get("input") || searchParams.get("q") || "").trim();
+    const city = (searchParams.get("city") || "").trim();
 
     if (!input || input.length < 2) {
       return NextResponse.json({
@@ -28,6 +29,9 @@ export async function GET(req: NextRequest) {
       process.env.GOOGLE_PLACES_API_KEY ||
       "AIzaSyB50OdLvtAbWn4iWfo9I6mQBw3oCA0EUL0";
 
+    // Enriquecer la búsqueda hacia Google Places API (New) con la ciudad seleccionada
+    const searchInput = city ? `${input}, ${city}` : input;
+
     // Consulta oficial a Google Places API (New)
     const res = await fetch("https://places.googleapis.com/v1/places:autocomplete", {
       method: "POST",
@@ -36,7 +40,7 @@ export async function GET(req: NextRequest) {
         "X-Goog-Api-Key": apiKey,
       },
       body: JSON.stringify({
-        input: input,
+        input: searchInput,
         includedRegionCodes: ["co"],
       }),
       next: { revalidate: 3600 },
@@ -53,7 +57,12 @@ export async function GET(req: NextRequest) {
 
     const data = await res.json();
 
-    const predictions = (data.suggestions || [])
+    const normalize = (str: string) =>
+      str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    const normCity = city ? normalize(city) : "";
+
+    const rawPredictions = (data.suggestions || [])
       .filter((s: any) => s.placePrediction)
       .map((s: any) => {
         const p = s.placePrediction;
@@ -65,9 +74,20 @@ export async function GET(req: NextRequest) {
         };
       });
 
+    // Si viene ciudad, filtrar sugerencias que contengan la ciudad elegida en descripción o texto secundario
+    const filtered = normCity
+      ? rawPredictions.filter(
+          (p: any) =>
+            normalize(p.description).includes(normCity) ||
+            normalize(p.secondaryText).includes(normCity)
+        )
+      : rawPredictions;
+
+    const finalPredictions = filtered.length > 0 ? filtered : rawPredictions;
+
     return NextResponse.json({
       success: true,
-      predictions,
+      predictions: finalPredictions,
     });
   } catch (error: any) {
     console.error("Error en /api/places/autocomplete:", error);

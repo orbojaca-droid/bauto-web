@@ -163,12 +163,13 @@ export async function sendOrderConfirmationEmail(
               </td>
             </tr>
 
-            <!-- BOTÓN DE RASTREO -->
+            <!-- NOTA DE PREPARACIÓN EN ATELIER Y GUÍA POSTERIOR -->
             <tr>
-              <td align="center" style="padding: 0 35px 40px 35px;">
-                <a href="${trackingUrl}" style="display: inline-block; background-color: #B85C38; color: #FFFFFF; text-decoration: none; padding: 14px 32px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 12px rgba(184, 92, 56, 0.25);">
-                  Rastrear mi pedido en tiempo real
-                </a>
+              <td style="padding: 0 35px 35px 35px;">
+                <div style="background-color: #FAF9F6; border: 1px solid #EAE7DF; border-left: 3px solid #1C1917; padding: 16px 20px; font-size: 12px; color: #6E6E6E; line-height: 1.6;">
+                  <strong style="color: #1C1917; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; display: block; margin-bottom: 4px;">Alistamiento en Taller Santa Marta</strong>
+                  Tus piezas están siendo seleccionadas y perfumadas con dedicación en nuestro taller del Centro Histórico. En cuanto tu paquete sea entregado a Servientrega, recibirás un correo posterior con tu número de guía y el enlace de rastreo en tiempo real.
+                </div>
               </td>
             </tr>
 
@@ -194,6 +195,23 @@ export async function sendOrderConfirmationEmail(
   `;
 
   try {
+    // @BAUTO_REFACTOR 2026-10-03: Puente de pruebas Resend para sandbox onboarding@resend.dev
+    const isSandbox = fromEmail.includes("onboarding@resend.dev");
+    const isOwnerEmail = data.to.toLowerCase().trim() === "bautostudio@gmail.com";
+
+    const actualRecipient = isSandbox && !isOwnerEmail ? "bautostudio@gmail.com" : data.to;
+    const actualSubject =
+      isSandbox && !isOwnerEmail
+        ? `[Copia de Recibo para: ${data.to}] Confirmación de tu pedido BAUTO #${data.orderReference}`
+        : `Confirmación de tu pedido BAUTO #${data.orderReference}`;
+
+    const finalHtml =
+      isSandbox && !isOwnerEmail
+        ? `<div style="background-color: #F8F6F1; border-bottom: 2px solid #B85C38; padding: 12px 20px; font-family: -apple-system, sans-serif; font-size: 11px; color: #6E6E6E; text-align: center;">
+            <strong>Modo Sandbox Resend:</strong> Recibo de compra generado para el cliente <strong>${data.to}</strong> (${data.clientName}). Se entrega en esta cuenta durante el periodo de pruebas sin errores 403.
+          </div>` + emailHtml
+        : emailHtml;
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -202,9 +220,9 @@ export async function sendOrderConfirmationEmail(
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [data.to],
-        subject: `Confirmación de tu pedido BAUTO #${data.orderReference}`,
-        html: emailHtml,
+        to: [actualRecipient],
+        subject: actualSubject,
+        html: finalHtml,
       }),
     });
 

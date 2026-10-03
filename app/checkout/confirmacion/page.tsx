@@ -11,7 +11,7 @@
 import React, { useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Check, PackageCheck, MessageCircle } from 'lucide-react';
+import { Check, MessageCircle } from 'lucide-react';
 import { useCartStore } from '../../../lib/cartStore';
 import { playSuccessChime, playHapticClick } from '../../../lib/sound';
 import { BAUTO_WHATSAPP_PHONE } from '../../../lib/constants';
@@ -23,11 +23,22 @@ function ConfirmationContent() {
 
  const clearCart = useCartStore((state) => state.clearCart);
 
- // Vaciar carrito y reproducir campanada de éxito al confirmar orden
+ // Vaciar carrito, reproducir campanada y asegurar envío del recibo
  useEffect(() => {
  playSuccessChime();
  clearCart();
- }, [clearCart]);
+
+ // @BAUTO_REFACTOR 2026-10-03: Despacho seguro de recibo por correo
+ if (reference && reference !== 'BAUTO-WEB') {
+ fetch('/api/checkout/send-receipt', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ reference, transactionId }),
+ }).catch((err) =>
+ console.warn('[Confirmación] Notificación recibo no bloqueante:', err)
+ );
+ }
+ }, [clearCart, reference, transactionId]);
 
  const whatsappMsg = encodeURIComponent(
  `Hola BAUTO Concierge, acabo de realizar la orden con referencia: ${reference}. Quisiera consultar detalles del alistamiento de mis prendas.`
@@ -35,9 +46,9 @@ function ConfirmationContent() {
  const whatsappUrl = `https://wa.me/${BAUTO_WHATSAPP_PHONE}?text=${whatsappMsg}`;
 
  const stages = [
- { num: '01', title: 'Orden recibida', desc: 'Pago procesado exitosamente por Wompi', done: true },
- { num: '02', title: 'Alistamiento en taller', desc: 'Prenda doblada y perfumada en Santa Marta', current: true },
- { num: '03', title: 'En tránsito con la brisa', desc: 'Guía MiPaquete generada y en camino', pending: true },
+ { num: '01', title: 'Pago aprobado', desc: 'Transacción confirmada por pasarela Wompi', done: true },
+ { num: '02', title: 'Alistamiento en taller', desc: 'Prendas seleccionadas, planchadas y perfumadas en Santa Marta', current: true },
+ { num: '03', title: 'Despacho Servientrega', desc: 'Tu número de guía se enviará por correo al entregar al transportador', pending: true },
  { num: '04', title: 'Entrega en tu puerta', desc: 'Confort consciente del Caribe en tus manos', pending: true },
  ];
 
@@ -90,35 +101,35 @@ function ConfirmationContent() {
  </div>
  </div>
 
+ {/* Aviso editorial de recibo y guía posterior */}
+ <div className="border border-[#EAE7DF] bg-[#FAF9F6] p-4 text-xs text-bauto-carbon mb-10 text-left leading-relaxed">
+ <p className="font-medium text-bauto-carbon mb-1">
+ Recibo de compra enviado a tu correo
+ </p>
+ <p className="text-[11px] text-bauto-piedra">
+ Hemos procesado tu pago con éxito y generado el recibo correspondiente. Cuando el taller entregue tus prendas a Servientrega, recibirás un correo electrónico independiente con el número de guía para consultar el rastreo en tiempo real.
+ </p>
+ </div>
+
  {/* Botones de acción */}
  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
- <Link
- href={`/rastreo?guia=${encodeURIComponent(reference)}`}
- onClick={playHapticClick}
- // @BAUTO_REFACTOR 2026-10-02
- className="w-full sm:w-auto px-7 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-transform active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
- >
- <PackageCheck className="w-4 h-4 stroke-[1.5]" />
- <span>Consultar portal de rastreo</span>
- </Link>
-
  <a
  href={whatsappUrl}
  target="_blank"
  rel="noopener noreferrer"
  onClick={playHapticClick}
- // @BAUTO_REFACTOR 2026-10-02
- className="w-full sm:w-auto px-6 py-3.5  text-bauto-carbon hover:bg-bauto-perla transition-transform active:scale-[0.97] text-xs font-sans flex items-center justify-center gap-2 font-normal"
+ // @BAUTO_REFACTOR 2026-10-03
+ className="w-full sm:w-auto px-7 py-3.5 bg-bauto-carbon text-bauto-nube hover:bg-bauto-carbon-soft transition-transform active:scale-[0.97] text-xs font-sans font-medium flex items-center justify-center gap-2"
  >
- <MessageCircle className="w-4 h-4 text-bauto-carbon/70 stroke-[1.5]" />
- <span>Atención concierge</span>
+ <MessageCircle className="w-4 h-4 stroke-[1.5]" />
+ <span>Atención concierge WhatsApp</span>
  </a>
 
  <Link
  href="/catalogo"
  onClick={playHapticClick}
- // @BAUTO_REFACTOR 2026-10-02
- className="w-full sm:w-auto px-5 py-3.5 text-xs font-sans text-bauto-piedra hover:text-bauto-carbon transition-transform active:scale-[0.97]"
+ // @BAUTO_REFACTOR 2026-10-03
+ className="w-full sm:w-auto px-6 py-3.5 border border-[#EAE7DF] text-bauto-carbon hover:bg-bauto-perla transition-transform active:scale-[0.97] text-xs font-sans flex items-center justify-center gap-2 font-normal"
  >
  <span>Volver al catálogo</span>
  </Link>
